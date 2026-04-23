@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cat Supply Home Page</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8aa899", "secondary": "#e8e0d5", "accent": "#d4a373", "background-light": "#fcfbf9",
+                        "background-dark": "#1c1c1e",
+                        "neutral-surface": "#ffffff",
+                        "neutral-surface-dark": "#2c2c2e",
+                        "neutral-border": "#ebe5de",
+                        "neutral-border-dark": "#3a3a3c",
+                        "text-main": "#333d38",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
+                        "4xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 10px 40px -10px rgba(0,0,0,0.08)",
+                        "glass": "0 8px 32px 0 rgba(31, 38, 135, 0.07)",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass-panel {
+            background: rgba(28, 28, 30, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-main dark:text-slate-100 font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <header
+            class="sticky top-0 z-50 w-full glass-panel border-b border-neutral-border dark:border-neutral-border-dark px-4 sm:px-8 py-4 transition-all duration-300">
+            <div class="flex items-center justify-between max-w-[1440px] mx-auto w-full gap-4">
+                <div class="flex items-center gap-8">
+                    <a class="flex items-center gap-3 group" href="#">
+                        <div
+                            class="size-10 text-white flex items-center justify-center bg-primary rounded-2xl shadow-sm rotate-3 group-hover:rotate-0 transition-transform">
+                            <span class="material-symbols-outlined">pets</span>
+                        </div>
+                        <h2 class="text-text-main dark:text-white text-xl font-extrabold tracking-tight">Purrfect Finds
+                        </h2>
+                    </a>
+                </div>
+                <div class="hidden md:flex flex-1 max-w-lg mx-8">
+                    <label class="flex flex-col w-full relative">
+                        <div
+                            class="flex w-full items-center rounded-full h-11 border border-neutral-border dark:border-neutral-border-dark bg-white dark:bg-neutral-surface-dark focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary transition-all overflow-hidden pl-4 pr-2 shadow-sm">
+                            <span class="material-symbols-outlined text-slate-400">search</span>
+                            <input
+                                class="w-full min-w-0 flex-1 bg-transparent border-none focus:ring-0 text-text-main dark:text-slate-100 placeholder:text-slate-400 px-3 text-sm"
+                                placeholder="Search for food, toys, beds..." value="" />
+                            <button
+                                class="bg-primary/10 hover:bg-primary text-primary hover:text-white p-1.5 rounded-full transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                        </div>
+                    </label>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav class="hidden lg:flex items-center gap-8">
+                        <a class="text-text-main/80 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors"
+                            href="#">Shop</a>
+                        <a class="text-text-main/80 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors"
+                            href="#">Stories</a>
+                        <a class="text-text-main/80 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors"
+                            href="#">Blog</a>
+                    </nav>
+                    <div class="flex items-center gap-3">
+                        <button
+                            class="relative flex items-center justify-center size-10 rounded-full hover:bg-secondary/50 dark:hover:bg-neutral-700 text-text-main dark:text-slate-200 transition-colors">
+                            <span class="material-symbols-outlined">shopping_bag</span>
+                            <span
+                                class="absolute top-1 right-1 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-accent ring-2 ring-white dark:ring-neutral-surface-dark"></span>
+                        </button>
+                        <button
+                            class="hidden sm:flex items-center justify-center size-10 rounded-full hover:bg-secondary/50 dark:hover:bg-neutral-700 text-text-main dark:text-slate-200 transition-colors">
+                            <span class="material-symbols-outlined">person</span>
+                        </button>
+                        <button
+                            class="lg:hidden flex items-center justify-center size-10 rounded-full hover:bg-secondary/50 dark:hover:bg-neutral-700 text-text-main dark:text-slate-200 transition-colors">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1 w-full">
+            <section class="relative w-full h-[600px] lg:h-[750px] overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 z-0">
+                    <img alt="Cinematic cat video background" class="w-full h-full object-cover brightness-[0.85]"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz17RZYyvgFwLmYERe_ds0m8vPGzMTIiMNd6RKeYuYZ57xfSXhh1TvTPMMbZbINa9eySs5nLmr729GLENOpFnZtBy2t0abJ7Aerfhb6anDU0U0hpK-4lkdrqXgtfA6SkTjrgOzT6Bq6kYYyYqlsXt30txyIoV0D9Fz_64hFKsPaqhaBVmzTs5h5AXMDv1L9UgTlK4JHVqJUn4_ia1k8GtvzN11vmB3DxjA3QkdwBKOIfZMGtDljWNzicr4J07cr5_TLqhzsWpwriY" />
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 z-0"></div>
+                <div
+                    class="relative z-10 w-full max-w-[1440px] px-4 sm:px-10 flex flex-col items-start justify-center h-full pt-20">
+                    <div class="glass-panel p-8 md:p-12 rounded-[2rem] max-w-2xl shadow-glass animate-fade-in-up">
+                        <span
+                            class="inline-flex items-center rounded-full bg-white/90 px-4 py-1.5 text-xs font-bold text-primary tracking-wide uppercase mb-6 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-primary mr-2"></span> New Collection
+                        </span>
+                        <h1
+                            class="text-slate-900 text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight mb-6">
+                            Elevate Their <br /> Everyday Life.
+                        </h1>
+                        <p class="text-slate-700 text-lg leading-relaxed mb-8 max-w-lg font-medium">
+                            Thoughtfully designed essentials for the modern cat. From organic treats to architectural
+                            furniture.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button
+                                class="flex items-center justify-center rounded-2xl bg-primary hover:bg-primary/90 text-white px-8 py-4 text-base font-bold shadow-lg shadow-primary/20 hover:-translate-y-1 transition-all duration-300">
+                                Shop The Collection
+                            </button>
+                            <button
+                                class="flex items-center justify-center rounded-2xl bg-white hover:bg-gray-50 text-slate-800 px-8 py-4 text-base font-bold shadow-md hover:-translate-y-1 transition-all duration-300">
+                                <span class="material-symbols-outlined mr-2 text-xl">play_circle</span> Watch Film
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="max-w-[1440px] mx-auto px-4 sm:px-10 -mt-16 relative z-20">
+                <div
+                    class="bg-white dark:bg-neutral-surface-dark rounded-[2.5rem] shadow-soft p-8 md:p-10 border border-neutral-border dark:border-neutral-border-dark">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-2xl font-bold text-text-main dark:text-white">Shop by Category</h2>
+                        <a class="text-primary font-semibold text-sm hover:underline flex items-center gap-1"
+                            href="#">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
+                        <a class="group flex flex-col items-center gap-4 text-center" href="#">
+                            <div
+                                class="size-28 rounded-full bg-secondary/30 dark:bg-neutral-800 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary transition-all duration-300 relative">
+                                <img alt="Food"
+                                    class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuABe__KgLVm8O6gRMKSwq0pdWxbLNCN2M1-WX5ATgY6FUsISOoL2UIKVJpQfVqBIa1WljHP0DAB9Vu_tjWqtkGKy8HpdLSPt4-zdavF8xfNO52LFx4krzDF63ufFCabqJquoSpFhoRqJl17Qnwyn2mGJjhVBYdu_b0_HduZznQQtWuDuPA-qW5vldoHh0Yk25zsGzvo2_Eq4f9ZTAY77_h4h6UU8KWQCHWTPSrSyijCkSQl_cPqgClXinhBmNHrS96S-Gt2St2djFI" />
+                            </div>
+                            <span
+                                class="font-bold text-text-main dark:text-slate-200 group-hover:text-primary transition-colors">Food</span>
+                        </a>
+                        <a class="group flex flex-col items-center gap-4 text-center" href="#">
+                            <div
+                                class="size-28 rounded-full bg-secondary/30 dark:bg-neutral-800 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary transition-all duration-300 relative">
+                                <img alt="Toys"
+                                    class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfKU_xtmrTGigUwTlQi-dwd9QN1Ruvdahvi5fpka0r94mV8ztaNBqwI9YBCDFZXnUEB4wWMbInk8ha1tCDcE8hXxhTDmS2ETt6j2CDu31ICVNrLaprsdXnuECuLCBbdBC-t7CzR_wIbM2lMsX16NOnetzTTzBZcDqIzs896tw-LOJHfpdz57h_4oOkvN9TsWYVacwzObfAYZmMuGotjD1RGM-GChAhRXjo2ZCIXASIFKDD2Kzscfxwk6DItcjO3vXhfWgnHoMF9aY" />
+                            </div>
+                            <span
+                                class="font-bold text-text-main dark:text-slate-200 group-hover:text-primary transition-colors">Toys</span>
+                        </a>
+                        <a class="group flex flex-col items-center gap-4 text-center" href="#">
+                            <div
+                                class="size-28 rounded-full bg-secondary/30 dark:bg-neutral-800 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary transition-all duration-300 relative">
+                                <img alt="Grooming"
+                                    class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuXh_0SqywLeJPI1AzELapaVHiI6TsErjOJBbZ_jhXS801QscnnbPt_FR6_11A1yESFGfzrZD22Du6K841iGqlrrLZanW9lmpxr_uyzXTZcox61FrWofaHJktnowpKlUPTuBKHOCp36lOwz6IPQ473_tgsMTLLQ231yXWfS9yeYbmEQJ2gtQQRk_-5y9J1CEzfjJD5iCWvXd6p17_csFLpb_f4AurYU5ogDT6WiF8LuqKY3OnFvDeROKijTiA7AlIRanZPJjgtfbw" />
+                            </div>
+                            <span
+                                class="font-bold text-text-main dark:text-slate-200 group-hover:text-primary transition-colors">Grooming</span>
+                        </a>
+                        <a class="group flex flex-col items-center gap-4 text-center" href="#">
+                            <div
+                                class="size-28 rounded-full bg-secondary/30 dark:bg-neutral-800 flex items-center justify-center overflow-hidden border border-transparent group-hover:border-primary transition-all duration-300 relative">
+                                <img alt="Litter"
+                                    class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEFT3JddQxaHkV7tAk3jVGbPNSj2JAli9W0xpmUxgsBbZPC7VowsrDiqkugiX4CouaasJ3BIsZZlRlW7Mn6Q8oSP9JtTvBbws1NKvoHkQNZDFbmedzfS0AsSXRDM8q62xiRce9V2ydTnO1oMvV4asDRrZ0aSvmJoo9_AxAcXGcdfgMxXmMKjwiwoUtOH-Bm-LRondwlvaaJFiZ1NnJauLfg8P42-zdW9JqjC5_OaiG3APVO5mpgDy8dWMLXXYp7liq_xwKHXRAgwU" />
+                            </div>
+                            <span
+                                class="font-bold text-text-main dark:text-slate-200 group-hover:text-primary transition-colors">Litter</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-[1440px] mx-auto px-4 sm:px-10 py-16 space-y-20">
+                <section>
+                    <div class="text-center mb-10">
+                        <span class="text-primary font-bold uppercase tracking-wider text-xs mb-2 block">Curated
+                            Collections</span>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-text-main dark:text-white">Shop by Life
+                            Stage</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="group relative overflow-hidden rounded-[2rem] h-64 cursor-pointer">
+                            <div class="absolute inset-0 bg-secondary/50 dark:bg-neutral-800 transition-colors"></div>
+                            <img alt="Kitten"
+                                class="absolute right-[-20%] bottom-[-20%] w-3/4 opacity-40 group-hover:opacity-60 transition-opacity duration-300 rotate-12"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc2wIRnEZrUl7NvqMcN7HNQmXeBj3Cjw6e1d6XH_d3ughsox7Pms9wLBO0pkUSOl7RT5cQLfHAhgQC9sapZ6crKBUtVxbpHl3Jm2UJJFYCHcpYdufTuoodxykQeTrKfow48uFZeDaOlpBCcvh64UN4axH9QGApRJMHrRvujV1TffPo5ijQ-sECy4BcD_gxnLOE-ehB8wgZiGsBBXhFAxk3djhsUOWm3sekeZQf8ZcNWZqKNV3N_n4sY2jRduwuKRAxYt9wc_mcLQo" />
+                            <div class="relative z-10 p-8 h-full flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-text-main dark:text-white">Kitten</h3>
+                                    <p class="text-sm text-text-main/70 dark:text-slate-300 mt-2">0 - 12 Months</p>
+                                </div>
+                                <span
+                                    class="w-10 h-10 rounded-full bg-white dark:bg-neutral-700 flex items-center justify-center shadow-md group-hover:translate-x-2 transition-transform">
+                                    <span class="material-symbols-outlined text-primary">arrow_forward</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-[2rem] h-64 cursor-pointer">
+                            <div class="absolute inset-0 bg-primary/20 dark:bg-primary/10 transition-colors"></div>
+                            <img alt="Adult"
+                                class="absolute right-[-10%] bottom-[-10%] w-3/4 opacity-40 group-hover:opacity-60 transition-opacity duration-300"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzDb23gAY4kjqSdodjFrN-TPUvd86hZ-MekhyW9o3Akf_rtEaifjIxuuy3KxNsqfDhVEQKT5Wc8O2HRc39MheFOMZPguXP-dMbyjtTnUQ2OCatM4amQHj8vBRpscqL4tHmzOCfHy8iqsm3sT8H5sO-KaaAgo1pR3QTHaHva1zKL3O6twtv6e-ZFpfIvehvp9E4jgpVcynA-bikMl-EPmQ1RzXK6IvhwTnpuoPuV7KT8BNqV_kZzvFS1nUNDVTxFKYM4N_jpN9y8fk" />
+                            <div class="relative z-10 p-8 h-full flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-text-main dark:text-white">Adult</h3>
+                                    <p class="text-sm text-text-main/70 dark:text-slate-300 mt-2">1 - 7 Years</p>
+                                </div>
+                                <span
+                                    class="w-10 h-10 rounded-full bg-white dark:bg-neutral-700 flex items-center justify-center shadow-md group-hover:translate-x-2 transition-transform">
+                                    <span class="material-symbols-outlined text-primary">arrow_forward</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-[2rem] h-64 cursor-pointer">
+                            <div class="absolute inset-0 bg-accent/20 dark:bg-accent/10 transition-colors"></div>
+                            <img alt="Senior"
+                                class="absolute right-[-10%] bottom-[-10%] w-3/4 opacity-40 group-hover:opacity-60 transition-opacity duration-300 grayscale"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY20LjjwhDHhN2frvlXw_qxFO55BlQYvGJhY1dNmNHRGjtaAliyu9gFrj62zmoDL2faRzAjy_VhmqXvWBu28p0P27nPssLUSMB2CSEqL92yGq_nWZ5PRV30rAJw6YaODRp9-O-iVDp5UDI5OT6-nXZw9mqCEiHc_4NXLbxc3hGp_8VoHG3-KyYBv90R-Pw2m9l-fq_aFPqVR4x6TJBQ0RodC_RQYUd2yHgqA2RQZK1MQON3ETsjWrngZKtnRCoSWFlTBjtRLZRKy0" />
+                            <div class="relative z-10 p-8 h-full flex flex-col justify-between">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-text-main dark:text-white">Senior</h3>
+                                    <p class="text-sm text-text-main/70 dark:text-slate-300 mt-2">7+ Years</p>
+                                </div>
+                                <span
+                                    class="w-10 h-10 rounded-full bg-white dark:bg-neutral-700 flex items-center justify-center shadow-md group-hover:translate-x-2 transition-transform">
+                                    <span class="material-symbols-outlined text-primary">arrow_forward</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="flex items-end justify-between mb-10">
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-extrabold text-text-main dark:text-white">Best Sellers
+                            </h2>
+                            <p class="text-text-main/60 dark:text-slate-400 mt-2">Community favorites loved by cats
+                                everywhere.</p>
+                        </div>
+                        <a class="hidden md:flex items-center gap-2 font-bold text-primary hover:text-primary/80 transition-colors"
+                            href="#">
+                            View All Products <span class="material-symbols-outlined">arrow_right_alt</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="group relative flex flex-col">
+                            <div
+                                class="relative aspect-square rounded-[2rem] overflow-hidden bg-secondary/30 dark:bg-neutral-800 mb-4">
+                                <span
+                                    class="absolute top-4 left-4 z-20 bg-white/90 dark:bg-black/60 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Top
+                                    Rated</span>
+                                <button
+                                    class="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/50 hover:bg-white text-slate-500 hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300">
+                                    <span class="material-symbols-outlined text-[20px] fill-current">favorite</span>
+                                </button>
+                                <img alt="Premium Salmon Food"
+                                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhYmTdiGfrCvDcofxOpSfwbrArmK8IRHqSbAZ-AuThDXdSSxgdUZ_n-g8sJ6-nxIXXd55tm8C4J1PPeG9iDWmzhdMpyFGZyJJ0Q083MiMNS1Z_sFjRROdaspJJzHoQVTnPzM-_jcQCwbwRTMBevIykcICS12WFtPyoC-6dIvssyNq1JLuEkk2F3i91MH0ZcGxnGRDv-MCbE3UbznGTXj-weKOLBxILtUmY3mAJlFCtM4_ysyU5dXhcY3E_KvsPuCwqwRI5DuaAOC4" />
+                                <img alt="Premium Salmon Food Detail"
+                                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 scale-105"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuABe__KgLVm8O6gRMKSwq0pdWxbLNCN2M1-WX5ATgY6FUsISOoL2UIKVJpQfVqBIa1WljHP0DAB9Vu_tjWqtkGKy8HpdLSPt4-zdavF8xfNO52LFx4krzDF63ufFCabqJquoSpFhoRqJl17Qnwyn2mGJjhVBYdu_b0_HduZznQQtWuDuPA-qW5vldoHh0Yk25zsGzvo2_Eq4f9ZTAY77_h4h6UU8KWQCHWTPSrSyijCkSQl_cPqgClXinhBmNHrS96S-Gt2St2djFI" />
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <div class="flex items-center gap-1">
+                                    <div class="flex text-accent text-sm">
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star_half</span>
+                                    </div>
+                                    <span class="text-xs text-slate-400">(128)</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-text-main dark:text-white leading-tight">Premium
+                                    Salmon Feast</h3>
+                                <p class="text-sm text-slate-500 mb-2">Dry Food</p>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-lg font-bold text-text-main dark:text-white">$24.99</span>
+                                    <button
+                                        class="w-8 h-8 rounded-full bg-text-main text-white flex items-center justify-center hover:bg-primary transition-colors">
+                                        <span class="material-symbols-outlined text-[18px]">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative flex flex-col">
+                            <div
+                                class="relative aspect-square rounded-[2rem] overflow-hidden bg-secondary/30 dark:bg-neutral-800 mb-4">
+                                <button
+                                    class="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/50 hover:bg-white text-slate-500 hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300">
+                                    <span class="material-symbols-outlined text-[20px] fill-current">favorite</span>
+                                </button>
+                                <img alt="Toy"
+                                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzDb23gAY4kjqSdodjFrN-TPUvd86hZ-MekhyW9o3Akf_rtEaifjIxuuy3KxNsqfDhVEQKT5Wc8O2HRc39MheFOMZPguXP-dMbyjtTnUQ2OCatM4amQHj8vBRpscqL4tHmzOCfHy8iqsm3sT8H5sO-KaaAgo1pR3QTHaHva1zKL3O6twtv6e-ZFpfIvehvp9E4jgpVcynA-bikMl-EPmQ1RzXK6IvhwTnpuoPuV7KT8BNqV_kZzvFS1nUNDVTxFKYM4N_jpN9y8fk" />
+                                <img alt="Toy Detail"
+                                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 scale-105"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfKU_xtmrTGigUwTlQi-dwd9QN1Ruvdahvi5fpka0r94mV8ztaNBqwI9YBCDFZXnUEB4wWMbInk8ha1tCDcE8hXxhTDmS2ETt6j2CDu31ICVNrLaprsdXnuECuLCBbdBC-t7CzR_wIbM2lMsX16NOnetzTTzBZcDqIzs896tw-LOJHfpdz57h_4oOkvN9TsWYVacwzObfAYZmMuGotjD1RGM-GChAhRXjo2ZCIXASIFKDD2Kzscfxwk6DItcjO3vXhfWgnHoMF9aY" />
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <div class="flex items-center gap-1">
+                                    <div class="flex text-accent text-sm">
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                    </div>
+                                    <span class="text-xs text-slate-400">(85)</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-text-main dark:text-white leading-tight">Feather Wand
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-2">Interactive Toy</p>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-lg font-bold text-text-main dark:text-white">$12.50</span>
+                                    <button
+                                        class="w-8 h-8 rounded-full bg-text-main text-white flex items-center justify-center hover:bg-primary transition-colors">
+                                        <span class="material-symbols-outlined text-[18px]">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative flex flex-col">
+                            <div
+                                class="relative aspect-square rounded-[2rem] overflow-hidden bg-secondary/30 dark:bg-neutral-800 mb-4">
+                                <span
+                                    class="absolute top-4 left-4 z-20 bg-accent text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">-15%</span>
+                                <button
+                                    class="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/50 hover:bg-white text-slate-500 hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300">
+                                    <span class="material-symbols-outlined text-[20px] fill-current">favorite</span>
+                                </button>
+                                <img alt="Bed"
+                                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc2wIRnEZrUl7NvqMcN7HNQmXeBj3Cjw6e1d6XH_d3ughsox7Pms9wLBO0pkUSOl7RT5cQLfHAhgQC9sapZ6crKBUtVxbpHl3Jm2UJJFYCHcpYdufTuoodxykQeTrKfow48uFZeDaOlpBCcvh64UN4axH9QGApRJMHrRvujV1TffPo5ijQ-sECy4BcD_gxnLOE-ehB8wgZiGsBBXhFAxk3djhsUOWm3sekeZQf8ZcNWZqKNV3N_n4sY2jRduwuKRAxYt9wc_mcLQo" />
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <div class="flex items-center gap-1">
+                                    <div class="flex text-accent text-sm">
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                    </div>
+                                    <span class="text-xs text-slate-400">(210)</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-text-main dark:text-white leading-tight">Cloud Comfort
+                                    Bed</h3>
+                                <p class="text-sm text-slate-500 mb-2">Bedding</p>
+                                <div class="flex items-center justify-between mt-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-lg font-bold text-text-main dark:text-white">$38.25</span>
+                                        <span class="text-sm text-slate-400 line-through">$45.00</span>
+                                    </div>
+                                    <button
+                                        class="w-8 h-8 rounded-full bg-text-main text-white flex items-center justify-center hover:bg-primary transition-colors">
+                                        <span class="material-symbols-outlined text-[18px]">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative flex flex-col">
+                            <div
+                                class="relative aspect-square rounded-[2rem] overflow-hidden bg-secondary/30 dark:bg-neutral-800 mb-4">
+                                <button
+                                    class="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/50 hover:bg-white text-slate-500 hover:text-red-500 transition-all opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300">
+                                    <span class="material-symbols-outlined text-[20px] fill-current">favorite</span>
+                                </button>
+                                <img alt="Fountain"
+                                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXXuvX7JAQ4aBrsHgUHnkpKucZcm6M5thS-0k3_QajHUlDmXR-imjh9c2i6t_7g_B6P1XnOSpj_w9QeTULudcEEQKG3ZUlLSgWcvuwCAAWJdCw5Fg-5KYFOX2qblz1e00BoJ3IWp4mVBo8s3ub0r5F2JxN6swpxHO_NkdZIclEluRfQML37AiUPqN10G4lnv-jRbSmuDlyZGrmanvtDtq8WwncKnPsLw7sXSwVb93CFQ7sRZN9yzYKWQX1QXjxdB1zw_QwVEVMy_I" />
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <div class="flex items-center gap-1">
+                                    <div class="flex text-accent text-sm">
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] fill-current"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-[16px] text-slate-300">star</span>
+                                    </div>
+                                    <span class="text-xs text-slate-400">(54)</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-text-main dark:text-white leading-tight">Ceramic
+                                    Fountain</h3>
+                                <p class="text-sm text-slate-500 mb-2">Hydration</p>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-lg font-bold text-text-main dark:text-white">$55.00</span>
+                                    <button
+                                        class="w-8 h-8 rounded-full bg-text-main text-white flex items-center justify-center hover:bg-primary transition-colors">
+                                        <span class="material-symbols-outlined text-[18px]">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="bg-secondary/20 dark:bg-neutral-surface-dark rounded-[3rem] overflow-hidden">
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <div class="relative h-96 lg:h-auto min-h-[400px]">
+                            <img alt="Pet of the month owner" class="absolute inset-0 w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWRJCanj0JoaI7JVm9XEYTW5MNGsBmrRJRS-1OSPWJohYiFpD2lMDse8hLfNuyAGlnhAFhF6kWcO2_79FUSC3dRecEXc9LU92c5Qzpo_hiKyO6GWl1i8jB_g4XBsULlhPg8NBc-8vGRwlAyR9OplftaGTcENxRPOGNYZnmLsCvk5YUTVG9jXx6syKhIrt248lW1K-DzgEwHS1SOfwFOz9z8OCXaHaafburJPOgk7W13nA3g7xCDKODY9RqX50VtruZtQQdDq9_pXE" />
+                            <div
+                                class="absolute bottom-6 right-6 bg-white/90 dark:bg-black/70 backdrop-blur-md p-3 rounded-xl shadow-lg flex items-center gap-3 max-w-xs">
+                                <div class="size-12 rounded-lg bg-gray-100 overflow-hidden flex-shrink-0">
+                                    <img alt="Product" class="w-full h-full object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhYmTdiGfrCvDcofxOpSfwbrArmK8IRHqSbAZ-AuThDXdSSxgdUZ_n-g8sJ6-nxIXXd55tm8C4J1PPeG9iDWmzhdMpyFGZyJJ0Q083MiMNS1Z_sFjRROdaspJJzHoQVTnPzM-_jcQCwbwRTMBevIykcICS12WFtPyoC-6dIvssyNq1JLuEkk2F3i91MH0ZcGxnGRDv-MCbE3UbznGTXj-weKOLBxILtUmY3mAJlFCtM4_ysyU5dXhcY3E_KvsPuCwqwRI5DuaAOC4" />
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs text-slate-500 font-bold uppercase">Favorite Pick</span>
+                                    <span class="text-sm font-bold text-slate-900 dark:text-white leading-tight">Premium
+                                        Salmon Feast</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-10 lg:p-16 flex flex-col justify-center items-start">
+                            <div
+                                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-bold uppercase mb-6">
+                                <span class="material-symbols-outlined text-sm">trophy</span>
+                                Pet of the Month
+                            </div>
+                            <h2 class="text-3xl lg:text-4xl font-black text-text-main dark:text-white mb-6">Meet Luna
+                                &amp; Sarah</h2>
+                            <div class="prose prose-slate dark:prose-invert">
+                                <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed italic mb-6">
+                                    "Luna used to be such a picky eater until we discovered Purrfect Finds. The Premium
+                                    Salmon Feast is literally the only thing she'll purr for now. It's changed our
+                                    mornings completely!"
+                                </p>
+                                <p class="text-slate-500 dark:text-slate-400 mb-8">
+                                    Sarah has been a community member since 2021. Luna is a 4-year-old rescue who loves
+                                    sunny spots and her salmon treats.
+                                </p>
+                            </div>
+                            <button class="text-primary font-bold hover:text-primary/80 flex items-center gap-2 group">
+                                Read Full Story <span
+                                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="flex items-center justify-between mb-10">
+                        <h2 class="text-3xl font-bold text-text-main dark:text-white">Latest Insights</h2>
+                        <a class="hidden sm:block text-slate-500 hover:text-primary font-semibold text-sm transition-colors"
+                            href="#">View All Articles</a>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <article
+                            class="flex flex-col sm:flex-row gap-6 bg-white dark:bg-neutral-surface-dark p-4 rounded-[2rem] border border-neutral-border dark:border-neutral-border-dark hover:shadow-soft transition-shadow duration-300 group cursor-pointer">
+                            <div
+                                class="w-full sm:w-48 aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden shrink-0">
+                                <img alt="Cat health"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd3EeACFbCxIIqIBV3bKNe20sEUhvHV8IlyYs7rU5QjremW9NlpBfy_BlGneQCJ3Y_k8y_9ePLdopp4m3Jn539K8bM8rxSmzYyonbXAmrinEjOmtRavehlUfa02iMZf57SOKRfEy6tCECx3aOozxMcMZxJJuJpMvkmvTAVCucMFsJZm9xqstoGP9t9cMMp7a-IHQ9TGLetKP1e7YipaX54Ig4xDu8MDaT91ryLI6wJI31NyvkBSpB3vCVWWOWmO5GL4m17DqxttFg" />
+                            </div>
+                            <div class="flex flex-col justify-center py-2 pr-4">
+                                <span class="text-primary text-xs font-bold uppercase tracking-wider mb-2">Health &amp;
+                                    Wellness</span>
+                                <h3
+                                    class="text-xl font-bold text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">
+                                    5 Signs Your Cat Needs a Vet Visit Immediately</h3>
+                                <p class="text-slate-500 text-sm line-clamp-2 mb-4">Understanding the subtle signals
+                                    your feline friend sends when they aren't feeling their best.</p>
+                                <span class="text-xs text-slate-400 font-medium">5 min read • Oct 24</span>
+                            </div>
+                        </article>
+                        <article
+                            class="flex flex-col sm:flex-row gap-6 bg-white dark:bg-neutral-surface-dark p-4 rounded-[2rem] border border-neutral-border dark:border-neutral-border-dark hover:shadow-soft transition-shadow duration-300 group cursor-pointer">
+                            <div
+                                class="w-full sm:w-48 aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden shrink-0">
+                                <img alt="Cat behavior"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfKU_xtmrTGigUwTlQi-dwd9QN1Ruvdahvi5fpka0r94mV8ztaNBqwI9YBCDFZXnUEB4wWMbInk8ha1tCDcE8hXxhTDmS2ETt6j2CDu31ICVNrLaprsdXnuECuLCBbdBC-t7CzR_wIbM2lMsX16NOnetzTTzBZcDqIzs896tw-LOJHfpdz57h_4oOkvN9TsWYVacwzObfAYZmMuGotjD1RGM-GChAhRXjo2ZCIXASIFKDD2Kzscfxwk6DItcjO3vXhfWgnHoMF9aY" />
+                            </div>
+                            <div class="flex flex-col justify-center py-2 pr-4">
+                                <span
+                                    class="text-accent text-xs font-bold uppercase tracking-wider mb-2">Behavior</span>
+                                <h3
+                                    class="text-xl font-bold text-text-main dark:text-white mb-3 group-hover:text-primary transition-colors">
+                                    Why Do Cats Knead? The Truth Behind 'Making Biscuits'</h3>
+                                <p class="text-slate-500 text-sm line-clamp-2 mb-4">Explore the evolutionary and
+                                    emotional reasons behind this adorable kneading behavior.</p>
+                                <span class="text-xs text-slate-400 font-medium">3 min read • Oct 20</span>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                <div class="rounded-[3rem] bg-text-main dark:bg-neutral-800 overflow-hidden relative mt-12">
+                    <div
+                        class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+                    </div>
+                    <div class="absolute -top-24 -right-24 size-64 rounded-full bg-primary/20 blur-3xl"></div>
+                    <div
+                        class="relative px-6 py-16 md:px-16 md:py-20 flex flex-col lg:flex-row items-center justify-between gap-10">
+                        <div class="text-center lg:text-left max-w-xl">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Join the Purrfect Club</h2>
+                            <p class="text-slate-300 text-lg">Subscribe for exclusive offers, new product alerts, and
+                                expert cat care tips delivered to your inbox.</p>
+                        </div>
+                        <div class="w-full max-w-md">
+                            <form class="flex flex-col gap-3">
+                                <div class="relative">
+                                    <input
+                                        class="w-full rounded-2xl border-0 bg-white/10 text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary px-6 py-4 pr-36 text-sm backdrop-blur-sm"
+                                        placeholder="Enter your email" type="email" />
+                                    <button
+                                        class="absolute right-2 top-2 bottom-2 bg-primary hover:bg-primary/90 text-white font-bold px-6 rounded-xl transition-colors shadow-lg"
+                                        type="button">Subscribe</button>
+                                </div>
+                                <p class="text-xs text-slate-400 text-center lg:text-left pl-2">We respect your privacy.
+                                    Unsubscribe at any time.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer
+            class="bg-white dark:bg-neutral-surface-dark border-t border-neutral-border dark:border-neutral-border-dark pt-16 pb-8">
+            <div class="max-w-[1440px] mx-auto px-4 sm:px-10">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
+                    <div class="col-span-2 lg:col-span-2">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="size-10 text-white flex items-center justify-center bg-primary rounded-xl shadow-sm">
+                                <span class="material-symbols-outlined">pets</span>
+                            </div>
+                            <h2 class="text-text-main dark:text-white text-2xl font-extrabold tracking-tight">Purrfect
+                                Finds</h2>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-sm mb-8">
+                            Dedicated to providing the best for your feline companions. From premium nutrition to
+                            engaging toys, we have everything your cat needs to thrive.
+                        </p>
+                        <div class="flex gap-4">
+                            <a class="size-10 rounded-full border border-neutral-border dark:border-neutral-border-dark flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
+                                href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
+                            <a class="size-10 rounded-full border border-neutral-border dark:border-neutral-border-dark flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
+                                href="#"><span class="material-symbols-outlined text-[20px]">photo_camera</span></a>
+                            <a class="size-10 rounded-full border border-neutral-border dark:border-neutral-border-dark flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
+                                href="#"><span class="material-symbols-outlined text-[20px]">alternate_email</span></a>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-text-main dark:text-white font-bold mb-6 text-lg">Shop</h3>
+                        <ul class="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
+                            <li><a class="hover:text-primary transition-colors" href="#">Food &amp; Treats</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Toys</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Grooming</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Litter &amp; Accessories</a>
+                            </li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Sale</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-text-main dark:text-white font-bold mb-6 text-lg">Support</h3>
+                        <ul class="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
+                            <li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">FAQs</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Order Tracking</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-text-main dark:text-white font-bold mb-6 text-lg">Company</h3>
+                        <ul class="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
+                            <li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-neutral-border dark:border-neutral-border-dark pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <p class="text-xs text-slate-400 text-center md:text-left">© 2023 Purrfect Finds. All rights
+                        reserved.</p>
+                    <div
+                        class="flex items-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+                        <img alt="Visa" class="h-5"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJob-kkNhtkT9oVs54BYgE-lGV_yhZ5GMsY3btwXfuYAieVo6FxkQobU3vdMbd8p5G3w_99P0oRzA1prvKsu55xVfa6Ua9j0E2OfCVQiFZma4GmRxfwB0OSjfhI1Iv93Kko8Bt-_KPy7hblVykk2kiPjk9HdnaliYZ-ors9wDN3bVzu0evyoCHB5FsSFbvYitgmf6PlAN3qYewrreu7JhsLfIs4wW8qA_8ZQ2DxnR_3CA_8zUHClAQyz5tfONK3jA3Ywj64z9aUA" />
+                        <img alt="Mastercard" class="h-8"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqbdGDr7xKrDXeySE800GbIqrYEUSDAo-Bdwb3Zptb9YreRtFA-KrOkDVDiv0BvBdYp_5WxpHuZhGNzVg-B6Z6QD0RjWumYj7tbi696nDztYpqqHMb5CLAWYNnE9O8cuxqpHNdvtagzPUqPwqzMJCSXT1L2vxZ67Tscjz3U12BeLm_UOabTwJKVhY1Pxt0zIepeTfmo4AjUY1EIv48YmSBN3mnUOmW3DHm6cntJA6_78Jl2_QvjU9qUbfsjO5nbuln2TNxUxKJHkk" />
+                        <img alt="Paypal" class="h-5"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoTvrNVUb1UvMebn701INgWWHbUghNn9duzfQ5ScXczKFw-e3kDaohsZqIbOtr2IOBuX-6cynyv-ZoEi_nrQTAh5OJ20W8M22xkW0he1tag7yzKNa0c3SehBVbp7Awk1U1QZZFqAv6lKTh2IB3yL_yFrSzg5-EDbeCRqhu8S-bqyOG9JwXFDJLstzCm50fG1mns1ZqVE0LILvigZbnQaTLh9uDvtO6BwDVZRbD5AwqJ-hpKvLK62Vyu09SSrINkWC5TOsxaqKuP-s" />
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
