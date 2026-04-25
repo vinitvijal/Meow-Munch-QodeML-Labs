@@ -4,7 +4,7 @@ import { MagnifyingGlass, ShoppingBag, User, ArrowRight } from "@medusajs/icons"
 
 export default function CustomNav() {
   return (
-    <header className="sticky top-0 z-50 w-full glass-panel border-b border-neutral-border dark:border-neutral-border-dark px-4 sm:px-8 py-4 transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-[#e5e7eb] px-4 sm:px-8 py-4 transition-all duration-300">
       <div className="flex items-center justify-between max-w-[1440px] mx-auto w-full gap-4">
         <div className="flex items-center gap-8">
           <Link className="flex items-center gap-3 group" href="/">

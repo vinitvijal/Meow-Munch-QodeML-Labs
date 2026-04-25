@@ -89,16 +89,22 @@ export const listProducts = async ({
  * This will fetch 100 products to the Next.js cache and sort them based on the sortBy parameter.
  * It will then return the paginated products based on the page and limit parameters.
  */
+import { getProductPrice } from "@lib/util/get-product-price"
+
 export const listProductsWithSort = async ({
   page = 0,
   queryParams,
   sortBy = "created_at",
   countryCode,
+  minPrice,
+  maxPrice,
 }: {
   page?: number
   queryParams?: HttpTypes.FindParams & HttpTypes.StoreProductParams
   sortBy?: SortOptions
   countryCode: string
+  minPrice?: string
+  maxPrice?: string
 }): Promise<{
   response: { products: HttpTypes.StoreProduct[]; count: number }
   nextPage: number | null
@@ -117,18 +123,28 @@ export const listProductsWithSort = async ({
     countryCode,
   })
 
-  const sortedProducts = sortProducts(products, sortBy)
+  let sortedProducts = sortProducts(products, sortBy)
+
+  if (minPrice || maxPrice) {
+    const min = minPrice ? parseFloat(minPrice) : 0;
+    const max = maxPrice ? parseFloat(maxPrice) : Infinity;
+    sortedProducts = sortedProducts.filter(p => {
+      const pInfo = getProductPrice({ product: p });
+      if (!pInfo || !pInfo.cheapestPrice) return true;
+      return pInfo.cheapestPrice.calculated_price_number >= min && pInfo.cheapestPrice.calculated_price_number <= max;
+    });
+  }
 
   const pageParam = (page - 1) * limit
-
-  const nextPage = count > pageParam + limit ? pageParam + limit : null
+  const filteredCount = sortedProducts.length
+  const nextPage = filteredCount > pageParam + limit ? Math.floor(pageParam/limit) + 2 : null
 
   const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
 
   return {
     response: {
       products: paginatedProducts,
-      count,
+      count: filteredCount,
     },
     nextPage,
     queryParams,
