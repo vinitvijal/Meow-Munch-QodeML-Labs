@@ -5,7 +5,7 @@ import { listCategories } from "@lib/data/categories"
 
 export default async function CustomFooter() {
   const [collectionsResponse, categories] = await Promise.all([
-    listCollections({ offset: 0, limit: 5 }),
+    listCollections({ offset: "0", limit: "5" }),
     listCategories()
   ]);
 
@@ -37,9 +37,9 @@ export default async function CustomFooter() {
             <h3 className="text-text-main dark:text-white font-bold mb-6 text-lg">Collections</h3>
             <ul className="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
               {collections.map((c) => (
-                  <li key={c.id}>
-                    <Link className="hover:text-primary transition-colors" href={`/collections/${c.handle}`}>{c.title}</Link>
-                  </li>
+                <li key={c.id}>
+                  <Link className="hover:text-primary transition-colors" href={`/collections/${c.handle}`}>{c.title}</Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -47,9 +47,9 @@ export default async function CustomFooter() {
             <h3 className="text-text-main dark:text-white font-bold mb-6 text-lg">Categories</h3>
             <ul className="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
               {topCategories.map((c) => (
-                  <li key={c.id}>
-                    <Link className="hover:text-primary transition-colors" href={`/categories/${c.handle}`}>{c.name}</Link>
-                  </li>
+                <li key={c.id}>
+                  <Link className="hover:text-primary transition-colors" href={`/categories/${c.handle}`}>{c.name}</Link>
+                </li>
               ))}
             </ul>
           </div>
