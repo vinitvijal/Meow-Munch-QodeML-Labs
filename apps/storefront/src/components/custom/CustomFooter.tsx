@@ -1,7 +1,17 @@
 import React from "react"
 import Link from "next/link"
+import { listCollections } from "@lib/data/collections"
+import { listCategories } from "@lib/data/categories"
 
-export default function CustomFooter() {
+export default async function CustomFooter() {
+  const [collectionsResponse, categories] = await Promise.all([
+    listCollections({ offset: 0, limit: 5 }),
+    listCategories()
+  ]);
+
+  const collections = collectionsResponse?.collections?.slice(0, 5) || [];
+  const topCategories = categories ? categories.slice(0, 5) : [];
+
   return (
     <footer className="bg-white dark:bg-neutral-surface-dark border-t border-neutral-border dark:border-neutral-border-dark pt-16 pb-8">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
@@ -24,22 +34,23 @@ export default function CustomFooter() {
             </div>
           </div>
           <div>
-            <h3 className="text-text-main dark:text-white font-bold mb-6 text-lg">Shop</h3>
+            <h3 className="text-text-main dark:text-white font-bold mb-6 text-lg">Collections</h3>
             <ul className="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
-              <li><Link className="hover:text-primary transition-colors" href="#">Food & Treats</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Toys</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Grooming</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Litter & Accessories</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Sale</Link></li>
+              {collections.map((c) => (
+                  <li key={c.id}>
+                    <Link className="hover:text-primary transition-colors" href={`/collections/${c.handle}`}>{c.title}</Link>
+                  </li>
+              ))}
             </ul>
           </div>
           <div>
-            <h3 className="text-text-main dark:text-white font-bold mb-6 text-lg">Support</h3>
+            <h3 className="text-text-main dark:text-white font-bold mb-6 text-lg">Categories</h3>
             <ul className="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
-              <li><Link className="hover:text-primary transition-colors" href="#">Contact Us</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">FAQs</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Shipping & Returns</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Order Tracking</Link></li>
+              {topCategories.map((c) => (
+                  <li key={c.id}>
+                    <Link className="hover:text-primary transition-colors" href={`/categories/${c.handle}`}>{c.name}</Link>
+                  </li>
+              ))}
             </ul>
           </div>
           <div>
