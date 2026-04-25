@@ -1,14 +1,14 @@
 import { Metadata } from "next"
 
-import FeaturedProducts from "@modules/home/components/featured-products"
-import Hero from "@modules/home/components/hero"
+import CustomHome from "components/custom/CustomHome"
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
+import { listProducts } from "@lib/data/products"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: "Purrfect Finds | Home",
   description:
-    "A performant frontend ecommerce starter template with Next.js 15 and Medusa.",
+    "Elevate Their Everyday Life with thoughtfully designed essentials for the modern cat.",
 }
 
 export default async function Home(props: {
@@ -28,14 +28,35 @@ export default async function Home(props: {
     return null
   }
 
+  // Filter collections for Life Stage
+  const lifeStageTitles = ["Kitten", "Adult", "Senior"]
+  const lifeStageCollections = collections.filter(c =>
+    lifeStageTitles.includes(c.title || "")
+  ).sort((a, b) =>
+    lifeStageTitles.indexOf(a.title || "") - lifeStageTitles.indexOf(b.title || "")
+  )
+
+  // Fetch Best Seller products
+  const bestSellerCollection = collections.find(c => c.handle === "trending" || c.title?.toLowerCase() === "trending")
+
+  console.log("Best Seller : ", bestSellerCollection)
+  let bestSellerProducts: any[] = []
+  if (bestSellerCollection) {
+    const { response } = await listProducts({
+      queryParams: { collection_id: [bestSellerCollection.id], limit: 4 },
+      countryCode,
+    })
+    bestSellerProducts = response.products
+  }
+
   return (
     <>
-      <Hero />
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
-      </div>
+      <CustomHome
+        collections={collections}
+        region={region}
+        lifeStageCollections={lifeStageCollections}
+        bestSellerProducts={bestSellerProducts}
+      />
     </>
   )
 }
