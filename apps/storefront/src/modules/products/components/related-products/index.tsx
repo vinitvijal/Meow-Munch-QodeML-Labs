@@ -47,17 +47,16 @@ export default async function RelatedProducts({
   }
 
   return (
-    <div className="product-page-constraint">
-      <div className="flex flex-col items-center text-center mb-16">
-        <span className="text-base-regular text-gray-600 mb-6">
-          Related products
-        </span>
-        <p className="text-2xl-regular text-ui-fg-base max-w-lg">
-          You might also want to check out these products.
+    <div className="product-page-constraint py-20">
+      <div className="flex flex-col items-center text-center mb-24">
+        <span className="text-orange-500 font-extrabold uppercase tracking-[0.4em] text-[10px] mb-8 block font-sans">Curated Pairing</span>
+        <h2 className="text-6xl font-black text-slate-900 tracking-tighter mb-10 font-display uppercase leading-none">Customers also <span className="text-slate-200">Loved.</span></h2>
+        <p className="text-lg text-slate-400 font-medium max-w-lg">
+          Complete your gourmet collection with these hand-picked favorites from our current stock.
         </p>
       </div>
 
-      <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
         {products.map((product) => (
           <li key={product.id}>
             <Product region={region} product={product} />

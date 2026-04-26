@@ -249,50 +249,51 @@ export default function CustomHome({
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
                             {bestSellerProducts.map((product: any) => (
-                                <div key={product.id} className="group flex flex-col relative">
-                                    <div className="relative aspect-[3/4] rounded-[3.5rem] overflow-hidden bg-[#F7F7F7] mb-10 shadow-sm group-hover:shadow-[0_48px_80px_-16px_rgba(0,0,0,0.12)] transition-all duration-700 translate-y-0 group-hover:-translate-y-2">
+                                <LocalizedClientLink 
+                                    key={product.id} 
+                                    href={`/products/${product.handle}`}
+                                    className="group flex flex-col relative"
+                                >
+                                    <div className="relative aspect-[4/5] rounded-[3.5rem] overflow-hidden bg-[#F7F7F7] dark:bg-slate-900 mb-8 transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-orange-100 group-hover:-translate-y-2">
                                         <div className="absolute top-8 left-8 z-20 flex flex-col gap-2.5">
-                                            <span className="bg-orange-500 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-xl">Top Choice</span>
-                                            <span className="bg-white/90 backdrop-blur-md text-slate-900 px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-sm">Popular</span>
+                                            <span className="bg-slate-900 text-white px-5 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-xl">Best Seller</span>
+                                            {product.variants?.[0]?.calculated_price?.price_type === "sale" && (
+                                                <span className="bg-orange-500 text-white px-5 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-xl animate-pulse">Special Offer</span>
+                                            )}
                                         </div>
 
-                                        <LocalizedClientLink href={`/products/${product.handle}`} className="block h-full">
+                                        <div className="absolute inset-0 flex items-center justify-center p-12">
                                             <img
                                                 alt={product.title}
-                                                className="w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-110"
+                                                className="w-full h-full object-contain transition-all duration-[1.5s] group-hover:scale-105"
                                                 src={product.thumbnail || "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba"}
                                             />
-                                        </LocalizedClientLink>
-
-                                        <div className="absolute inset-x-0 bottom-0 p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-20">
-                                            <LocalizedClientLink
-                                                href={`/products/${product.handle}`}
-                                                className="w-full bg-slate-900 text-white h-16 rounded-[1.5rem] flex items-center justify-center gap-3 font-black uppercase tracking-widest shadow-2xl hover:bg-orange-600 transition-all"
-                                            >
-                                                <Plus width={20} height={20} /> Preview
-                                            </LocalizedClientLink>
                                         </div>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+
+                                        <div className="absolute inset-x-8 bottom-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-30">
+                                            <div className="w-full bg-white/90 backdrop-blur-md text-slate-900 h-16 rounded-[1.5rem] flex items-center justify-center gap-3 font-black uppercase tracking-widest shadow-2xl border border-white group-hover:bg-orange-500 group-hover:text-white transition-all">
+                                                <Plus width={18} height={18} /> Add to Pantry
+                                            </div>
+                                        </div>
+                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-700"></div>
                                     </div>
 
-                                    <div className="flex flex-col items-center text-center gap-3 px-2">
-                                        <div className="flex items-center gap-2 mb-1">
+                                    <div className="flex flex-col gap-2 px-2">
+                                        <div className="flex items-center justify-between gap-4">
+                                            <span className="text-[9px] font-extrabold text-slate-300 uppercase tracking-[0.3em]">Signature Collection</span>
                                             <div className="flex text-orange-400">
-                                                <StarSolid className="size-4" />
-                                                <StarSolid className="size-4" />
-                                                <StarSolid className="size-4" />
-                                                <StarSolid className="size-4" />
-                                                <StarSolid className="size-4" />
+                                                <StarSolid className="size-2" />
+                                                <StarSolid className="size-2" />
+                                                <StarSolid className="size-2" />
                                             </div>
-                                            <span className="text-[11px] font-black text-slate-300 mt-1 tracking-widest">1,420 REVIEWS</span>
                                         </div>
-                                        <LocalizedClientLink href={`/products/${product.handle}`}>
-                                            <h3 className="text-2xl font-black text-slate-900 tracking-tight leading-tight group-hover:text-orange-500 transition-colors uppercase italic font-display">{product.title}</h3>
-                                        </LocalizedClientLink>
-                                        <p className="text-xs font-black text-slate-400 uppercase tracking-[0.25em]">{product.product_category?.name || 'Exclusive Feast'}</p>
 
-                                        <div className="mt-6 flex items-center gap-3">
-                                            <span className="text-3xl font-black text-slate-900 tracking-tighter">
+                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white leading-tight font-display tracking-tight group-hover:text-orange-500 transition-colors">
+                                            {product.title}
+                                        </h3>
+
+                                        <div className="mt-1 flex items-baseline gap-3">
+                                            <span className="text-xl font-black text-slate-900 dark:text-white tracking-tighter">
                                                 {product.variants?.[0]?.calculated_price?.calculated_amount ?
                                                     new Intl.NumberFormat(undefined, {
                                                         style: 'currency',
@@ -301,9 +302,17 @@ export default function CustomHome({
                                                     : '$19.99'
                                                 }
                                             </span>
+                                            {product.variants?.[0]?.calculated_price?.original_amount && product.variants[0].calculated_price.price_type === 'sale' && (
+                                                <span className="text-xs font-bold text-slate-300 line-through decoration-orange-500/50">
+                                                    {new Intl.NumberFormat(undefined, {
+                                                        style: 'currency',
+                                                        currency: product.variants[0].calculated_price.currency_code
+                                                    }).format(product.variants[0].calculated_price.original_amount)}
+                                                </span>
+                                            )}
                                         </div>
                                     </div>
-                                </div>
+                                </LocalizedClientLink>
                             ))}
                         </div>
                     </section>

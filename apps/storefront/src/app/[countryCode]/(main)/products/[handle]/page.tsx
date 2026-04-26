@@ -2,8 +2,11 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { listProducts } from "@lib/data/products"
 import { getRegion, listRegions } from "@lib/data/regions"
-import ProductTemplate from "@modules/products/templates"
 import { HttpTypes } from "@medusajs/types"
+import { Suspense } from "react"
+import ProductActionsWrapper from "@modules/products/templates/product-actions-wrapper"
+import RelatedProducts from "@modules/products/components/related-products"
+import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>
@@ -98,6 +101,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 }
 
+import ProductTemplate from "@modules/products/templates"
+
 export default async function ProductPage(props: Props) {
   const params = await props.params
   const region = await getRegion(params.countryCode)
@@ -126,6 +131,16 @@ export default async function ProductPage(props: Props) {
       region={region}
       countryCode={params.countryCode}
       images={images ?? []}
+      productActions={
+        <Suspense fallback={<div className="h-40 w-full bg-slate-50 dark:bg-slate-800 animate-pulse rounded-[2rem]" />}>
+          <ProductActionsWrapper id={pricedProduct.id} region={region} />
+        </Suspense>
+      }
+      relatedProducts={
+        <Suspense fallback={<SkeletonRelatedProducts />}>
+          <RelatedProducts product={pricedProduct} countryCode={params.countryCode} />
+        </Suspense>
+      }
     />
   )
 }

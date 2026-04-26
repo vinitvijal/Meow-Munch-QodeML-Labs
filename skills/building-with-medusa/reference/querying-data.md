@@ -219,7 +219,7 @@ filters: {
 filters: {
   status: "active",
   created_at: {
-    $gte: new Date("2024-01-01"),
+    $gte: new Date("2026-01-01"),
   },
   price: {
     $gte: 10,

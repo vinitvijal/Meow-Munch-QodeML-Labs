@@ -68,7 +68,7 @@ export default async function CustomFooter() {
           </div>
         </div>
         <div className="border-t border-neutral-border dark:border-neutral-border-dark pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-xs text-slate-400 text-center md:text-left">© 2023 Meow Munch. All rights reserved.</p>
+          <p className="text-xs text-slate-400 text-center md:text-left">© 2026 Meow Munch. All rights reserved.</p>
           <div className="flex items-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
             <img alt="Visa" className="h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJob-kkNhtkT9oVs54BYgE-lGV_yhZ5GMsY3btwXfuYAieVo6FxkQobU3vdMbd8p5G3w_99P0oRzA1prvKsu55xVfa6Ua9j0E2OfCVQiFZma4GmRxfwB0OSjfhI1Iv93Kko8Bt-_KPy7hblVykk2kiPjk9HdnaliYZ-ors9wDN3bVzu0evyoCHB5FsSFbvYitgmf6PlAN3qYewrreu7JhsLfIs4wW8qA_8ZQ2DxnR_3CA_8zUHClAQyz5tfONK3jA3Ywj64z9aUA" />
             <img alt="Mastercard" className="h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqbdGDr7xKrDXeySE800GbIqrYEUSDAo-Bdwb3Zptb9YreRtFA-KrOkDVDiv0BvBdYp_5WxpHuZhGNzVg-B6Z6QD0RjWumYj7tbi696nDztYpqqHMb5CLAWYNnE9O8cuxqpHNdvtagzPUqPwqzMJCSXT1L2vxZ67Tscjz3U12BeLm_UOabTwJKVhY1Pxt0zIepeTfmo4AjUY1EIv48YmSBN3mnUOmW3DHm6cntJA6_78Jl2_QvjU9qUbfsjO5nbuln2TNxUxKJHkk" />

@@ -182,8 +182,8 @@ export default function ProductActions({
           {!selectedVariant && !options
             ? "Complete Variant"
             : !inStock || !isValidVariant
-            ? "Pantry Empty"
-            : "Claim Gourmet Bites"}
+              ? "Pantry Empty"
+              : "Add to Cart"}
         </Button>
         <MobileActions
           product={product}

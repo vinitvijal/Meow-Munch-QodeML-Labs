@@ -4,9 +4,6 @@ import React, { Suspense } from "react"
 import { notFound } from "next/navigation"
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import ProductActionsWrapper from "./product-actions-wrapper"
-import RelatedProducts from "@modules/products/components/related-products"
-import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import ProductTabs from "@modules/products/components/product-tabs"
 import Modal from "@modules/common/components/modal"
 
@@ -15,6 +12,8 @@ type ProductTemplateProps = {
   region: HttpTypes.StoreRegion
   countryCode: string
   images: HttpTypes.StoreProductImage[]
+  productActions: React.ReactNode
+  relatedProducts: React.ReactNode
 }
 
 const ProductTemplate: React.FC<ProductTemplateProps> = ({
@@ -22,6 +21,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   region,
   countryCode,
   images,
+  productActions,
+  relatedProducts,
 }) => {
   const [mainImage, setMainImage] = React.useState<string | undefined>(images?.[0]?.url || product.thumbnail || "")
   const [isZoomOpen, setIsZoomOpen] = React.useState(false)
@@ -144,9 +145,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
               </div>
 
               <div className="py-10">
-                <Suspense fallback={<div className="h-40 w-full bg-slate-50 dark:bg-slate-800 animate-pulse rounded-[2rem]" />}>
-                  <ProductActionsWrapper id={product.id} region={region} />
-                </Suspense>
+                {productActions}
               </div>
 
               <div className="grid grid-cols-2 gap-8 mb-10">
@@ -221,14 +220,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       </section>
 
       {/* Upsell Section */}
-      <section className="py-40 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
-        <div className="flex flex-col items-center text-center mb-24">
-          <span className="text-orange-500 font-black uppercase tracking-[0.4em] text-[10px] mb-6">Curated Pairing</span>
-          <h2 className="text-6xl font-black text-slate-900 tracking-tighter font-display uppercase leading-none">Complete the <span className="text-slate-200">Pantry.</span></h2>
-        </div>
-        <Suspense fallback={<SkeletonRelatedProducts />}>
-          <RelatedProducts product={product} countryCode={countryCode} />
-        </Suspense>
+      <section className="py-0 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
+        {relatedProducts}
       </section>
 
       {/* Enhanced Reviews Section */}
