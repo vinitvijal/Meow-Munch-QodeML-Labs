@@ -11,8 +11,8 @@ export default function CustomNav() {
             <div className="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-orange-200 group-hover:rotate-6 transition-transform">
               <span className="material-symbols-outlined text-2xl font-bold">pets</span>
             </div>
-            <span className="text-xl font-black text-gray-900 tracking-tighter uppercase">
-              Meow<span className="text-orange-500 font-medium">Munch</span>
+            <span className="text-xl font-black text-gray-900 tracking-tighter uppercase font-display">
+              Meow<span className="text-orange-500 font-medium tracking-normal lowercase italic">Munch</span>
             </span>
           </Link>
         </div>

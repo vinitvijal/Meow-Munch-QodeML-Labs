@@ -34,7 +34,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        "display": ["Plus Jakarta Sans", "sans-serif"],
+        display: ["Outfit", "sans-serif"],
         sans: [
           "Inter",
           "-apple-system",
@@ -77,18 +77,6 @@ module.exports = {
       },
       fontSize: {
         "3xl": "2rem",
-      },
-      fontFamily: {
-        sans: [
-          "Inter",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Ubuntu",
-          "sans-serif",
-        ],
       },
       keyframes: {
         ring: {
