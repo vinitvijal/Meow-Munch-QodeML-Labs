@@ -9,11 +9,11 @@ export default function CustomNav() {
         <div className="flex items-center gap-8">
           <Link className="flex items-center gap-3 group" href="/">
             <div className="size-10 text-white flex items-center justify-center bg-primary rounded-2xl shadow-sm rotate-3 group-hover:rotate-0 transition-transform">
-               {/* Note: Medusa icons might not have a 'pet', use something else or just text */}
-               <span className="font-bold text-xl">P</span>
+              {/* Note: Medusa icons might not have a 'pet', use something else or just text */}
+              <span className="font-bold text-xl">P</span>
             </div>
             <h2 className="text-text-main dark:text-white text-xl font-extrabold tracking-tight">
-              Purrfect Finds
+              Meow Munch
             </h2>
           </Link>
         </div>

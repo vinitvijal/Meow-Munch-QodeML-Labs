@@ -38,6 +38,7 @@ export default function ProductActions({
 
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
+  const [showToast, setShowToast] = useState(false)
   const countryCode = useParams().countryCode as string
 
   // If there is only 1 variant, preselect the options
@@ -133,6 +134,8 @@ export default function ProductActions({
     })
 
     setIsAdding(false)
+    setShowToast(true)
+    setTimeout(() => setShowToast(false), 3000)
   }
 
   return (
@@ -194,6 +197,12 @@ export default function ProductActions({
           optionsDisabled={!!disabled || isAdding}
         />
       </div>
+      {showToast && (
+        <div className="fixed bottom-4 right-4 z-50 rounded-lg bg-gray-900 px-6 py-4 text-white shadow-lg flex items-center gap-3 transition-all duration-300">
+          <span className="material-symbols-outlined text-green-400" aria-hidden="true" style={{ fontFamily: 'Material Symbols Outlined', fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+          <p className="text-sm font-medium">Added to cart!</p>
+        </div>
+      )}
     </>
   )
 }

@@ -6,7 +6,7 @@ import { getRegion } from "@lib/data/regions"
 import { listProducts } from "@lib/data/products"
 
 export const metadata: Metadata = {
-  title: "Purrfect Finds | Home",
+  title: "Meow Munch | Home",
   description:
     "Elevate Their Everyday Life with thoughtfully designed essentials for the modern cat.",
 }

@@ -236,7 +236,7 @@ export default function CustomHome({ collections, region, lifeStageCollections =
                                 &amp; Sarah</h2>
                             <div className="prose prose-slate dark:prose-invert">
                                 <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed italic mb-8 font-medium">
-                                    "Luna used to be such a picky eater until we discovered Purrfect Finds. The Premium Salmon Feast is literally the only thing she'll purr for now. It's changed our mornings completely!"
+                                    "Luna used to be such a picky eater until we discovered Meow Munch. The Premium Salmon Feast is literally the only thing she'll purr for now. It's changed our mornings completely!"
                                 </p>
                                 <p className="text-slate-500 dark:text-slate-400 mb-10 font-medium">
                                     Sarah has been a community member since 2021. Luna is a 4-year-old rescue who loves sunny spots and her salmon treats.

@@ -5,37 +5,29 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Cat Food Collection - PurrfectPantry</title>
-    <!-- Google Fonts -->
+    <title>Purrfect Post - Modern Oak Scratching Post</title>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <!-- Material Symbols -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <!-- Tailwind CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <!-- Theme Config -->
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
                         "primary": "#13ec5b",
-                        "primary-hover": "#0fd451",
-                        "primary-content": "#111813",
-                        "neutral-light": "#f0f4f2",
-                        "neutral-border": "#dbe6df",
-                        "neutral-text": "#61896f",
-                        "text-main": "#111813",
-                        "background-light": "#ffffff",
+                        "background-light": "#f6f8f6",
                         "background-dark": "#102216",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2e22",
                     },
                     fontFamily: {
                         "display": ["Plus Jakarta Sans", "sans-serif"]
@@ -47,456 +39,578 @@
     </script>
 </head>
 
-<body class="bg-background-light font-display text-text-main antialiased selection:bg-primary/30">
-    <!-- Top Navigation -->
-    <header class="sticky top-0 z-50 w-full border-b border-neutral-light bg-background-light/95 backdrop-blur-sm">
-        <div class="px-6 md:px-10 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-8">
-                <a class="flex items-center gap-3 text-text-main hover:opacity-80 transition-opacity" href="#">
-                    <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary-content">
-                        <span class="material-symbols-outlined text-xl">pets</span>
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col">
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-50 w-full bg-surface-light dark:bg-surface-dark border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="text-primary size-8">
+                        <span class="material-symbols-outlined text-3xl">pets</span>
                     </div>
-                    <h2 class="text-lg font-bold tracking-tight">PurrfectPantry</h2>
-                </a>
-                <div class="hidden lg:flex w-full max-w-sm">
-                    <div class="relative w-full">
-                        <div
-                            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-neutral-text">
-                            <span class="material-symbols-outlined text-[20px]">search</span>
-                        </div>
-                        <input
-                            class="block w-full rounded-lg border-0 bg-neutral-light py-2 pl-10 pr-4 text-sm text-text-main placeholder:text-neutral-text focus:ring-2 focus:ring-primary focus:ring-inset"
-                            placeholder="Search for food, toys..." type="text" />
-                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Purrfect Post</span>
                 </div>
-            </div>
-            <div class="flex items-center gap-6">
-                <nav class="hidden md:flex items-center gap-6">
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Brands</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Deals</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Learn</a>
+                <!-- Nav Links -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-sm font-medium text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors"
+                        href="#">Shop</a>
+                    <a class="text-sm font-medium text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors"
+                        href="#">Collections</a>
+                    <a class="text-sm font-medium text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors"
+                        href="#">About Us</a>
+                    <a class="text-sm font-medium text-slate-700 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors"
+                        href="#">Blog</a>
                 </nav>
-                <div class="flex items-center gap-3">
+                <!-- Actions -->
+                <div class="flex items-center gap-4">
+                    <div class="hidden sm:flex relative group">
+                        <input
+                            class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-sm rounded-full pl-10 pr-4 py-2 w-64 border-none focus:ring-2 focus:ring-primary transition-all"
+                            placeholder="Search..." type="text" />
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-2 text-slate-400 dark:text-slate-500 text-[20px]">search</span>
+                    </div>
                     <button
-                        class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-light text-text-main hover:bg-neutral-border transition-colors">
-                        <span class="material-symbols-outlined text-[20px]">person</span>
+                        class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative">
+                        <span class="material-symbols-outlined text-slate-700 dark:text-slate-300">shopping_cart</span>
+                        <span class="absolute top-1 right-1 size-2 bg-primary rounded-full"></span>
                     </button>
-                    <button
-                        class="relative flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-bold text-primary-content hover:bg-primary-hover transition-colors shadow-sm shadow-primary/20">
-                        <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
-                        <span class="hidden sm:inline">Cart (2)</span>
+                    <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <span class="material-symbols-outlined text-slate-700 dark:text-slate-300">account_circle</span>
                     </button>
                 </div>
             </div>
         </div>
     </header>
-    <!-- Main Layout -->
-    <div class="min-h-screen px-4 py-8 md:px-10 lg:px-14">
-        <!-- Breadcrumbs & Header -->
-        <div class="mb-8">
-            <nav class="flex items-center text-sm text-neutral-text mb-4">
+    <main class="flex-grow">
+        <!-- Breadcrumbs -->
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <nav class="flex text-sm text-slate-500 dark:text-slate-400">
                 <a class="hover:text-primary transition-colors" href="#">Home</a>
                 <span class="mx-2">/</span>
-                <a class="hover:text-primary transition-colors" href="#">Cats</a>
+                <a class="hover:text-primary transition-colors" href="#">Furniture</a>
                 <span class="mx-2">/</span>
-                <span class="text-text-main font-medium">Cat Food</span>
+                <span class="text-slate-900 dark:text-white font-medium">Scratching Posts</span>
             </nav>
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-                <div>
-                    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-text-main">Premium Cat Food</h1>
-                    <p class="mt-2 text-neutral-text">Nourish your feline friend with our curated selection.</p>
-                </div>
-                <div class="relative min-w-[180px]">
-                    <select
-                        class="w-full appearance-none rounded-lg border border-neutral-border bg-white py-2.5 pl-4 pr-10 text-sm font-medium text-text-main focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer">
-                        <option>Featured</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                        <option>Newest Arrivals</option>
-                        <option>Best Selling</option>
-                    </select>
+        </div>
+        <!-- Product Hero Section -->
+        <section class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+                <!-- Image Gallery -->
+                <div class="flex flex-col gap-4">
                     <div
-                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-text">
-                        <span class="material-symbols-outlined text-sm">expand_more</span>
+                        class="aspect-[4/3] w-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 relative group">
+                        <img alt="Modern oak cat scratching post in living room"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            data-alt="Modern oak cat scratching post in living room"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeXcnIXCkLQAmGAq8wwRnsBbmv-4_NAsdZgQyZesRuYMWvr3jpLG6lDUwntqD2KmaM3BijDMxBtUchd1G-ICQMkaIyAWPG82C5YW0q9R58_xgrr0Zb99GrSWuJQzAkjnXXgLMnZ2U_G6gleVVVc2VUKPxIfZ9993OwuEX8GlIqdqKPk2DvgMQuNmu6y78nK68zXO_4_vA-L-GcjzR6DIJl_79c7dCTBZwAxdpZgHMUpIaV0B0Q_mhTB5lJ_LWSfT--IsDb66TXNHU" />
+                        <div
+                            class="absolute top-4 right-4 bg-white dark:bg-slate-900 rounded-full px-3 py-1 text-xs font-bold text-slate-900 dark:text-white shadow-sm">
+                            Best Seller
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4">
+                        <button
+                            class="aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 ring-2 ring-primary ring-offset-2 ring-offset-background-light dark:ring-offset-background-dark">
+                            <img alt="Cat scratching post close up texture" class="w-full h-full object-cover"
+                                data-alt="Cat scratching post close up texture"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlDc5AhEnGdhQ-bDUFcaJSNCxj8TqXY2HKPViwkkJE773AiDrU-2mF2nKNuInIGrh_dHgveyQJFTh0T2td8b4dOapkK5FLIEDXPGCJbV-RMFCV1X5tW4PfOolRH9U8b76BX9rdr-g1Rhbf5G-PsjqsMhi2Utefz5W62HZ9s35I8qN6-1XOYYk67sJKdJPcez8XfcjInNzgRPSHo-z5jaPy9inKqvN2m4CGeSIcdjOMh_wtKqrl47vY65k9_LrE1bsYRNQwWANdtqg" />
+                        </button>
+                        <button
+                            class="aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 opacity-70 hover:opacity-100 transition-opacity">
+                            <img alt="Cat playing with scratching post" class="w-full h-full object-cover"
+                                data-alt="Cat playing with scratching post"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkNdIOJ-HMEJX8CVvieIFCeXBSbf60lwektZv_mAT-b8pNe6FqpE48UhhvmxhrSQ0BS5sNRPx29OM7SP3puAri12TPmXVawCrXE-2r9p4PXiAIragCjPW7qAnmzDE3laZyTDDrdEi7y0rIODnR4RSzBZ5I-sXzVd9qdG4_c5BxYG2Ae7zKQgzWHA79QJ_jL6Kmp7R284At9L2fnEoFZB1XoupiTaTzIC9ZWXvCZ27Bqm5HbfBq51s95IHfN3-MX_bDm71V_vErU6Y" />
+                        </button>
+                        <button
+                            class="aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 opacity-70 hover:opacity-100 transition-opacity">
+                            <img alt="Minimalist cat furniture detail" class="w-full h-full object-cover"
+                                data-alt="Minimalist cat furniture detail"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI6DlaFVuCbnq2ulGNq2HHOxfvX5lHskQp-IINNHTdm4EHeW4SGvABqNS_26j07RQduaZqVzLv8U-E1o2xPUkYLfJqBgcL74sBvIVXrxiwNkxsgKfIxEJKVRY5yyjJh83Sn0fSPzM6RRpXHy7_Fepa0nFoMoN7HRR3w77nr6am2ofC1rj-u4CDATKw7dkwCX5QS2azStKwY_y5hs8f4tKqdd4IkHIoBICGxO9_Rzn81dMkuKJNxcVhGTzaTF5VAqcOq6PJ1KCGTjk" />
+                        </button>
+                        <div
+                            class="aspect-square rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+                            <span class="text-sm font-medium">+3 more</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Info -->
+                <div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
+                    <div class="flex flex-col gap-6">
+                        <div>
+                            <h1
+                                class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
+                                Modern Oak Scratching Post</h1>
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-yellow-400 text-xl"
+                                        style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined text-yellow-400 text-xl"
+                                        style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined text-yellow-400 text-xl"
+                                        style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined text-yellow-400 text-xl"
+                                        style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined text-yellow-400 text-xl"
+                                        style="font-variation-settings: 'FILL' 1;">star_half</span>
+                                    <span class="ml-2 text-sm font-medium text-slate-600 dark:text-slate-400">4.8 (124
+                                        reviews)</span>
+                                </div>
+                                <span class="text-slate-300 dark:text-slate-700">|</span>
+                                <span class="text-sm text-green-600 dark:text-green-400 font-medium">In Stock</span>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline gap-4">
+                            <p class="text-4xl font-bold text-slate-900 dark:text-white">$149.99</p>
+                            <p class="text-lg text-slate-500 line-through">$189.99</p>
+                        </div>
+                        <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300">
+                            <p>Give your feline friend the ultimate scratching experience with our handcrafted Oak
+                                Scratching Post. Designed to blend seamlessly with modern interiors, this post features
+                                durable sisal rope and a sturdy solid wood base that won't tip over.</p>
+                        </div>
+                        <!-- Highlights Grid -->
+                        <div class="grid grid-cols-2 gap-4 py-6 border-y border-slate-200 dark:border-slate-800">
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg text-green-700 dark:text-green-400">
+                                    <span class="material-symbols-outlined">eco</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">Eco-Friendly</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Sustainably sourced oak</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-700 dark:text-blue-400">
+                                    <span class="material-symbols-outlined">architecture</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">Modern Design</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Minimalist aesthetic</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg text-amber-700 dark:text-amber-400">
+                                    <span class="material-symbols-outlined">verified_user</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">Ultra Durable</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Premium sisal rope</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg text-purple-700 dark:text-purple-400">
+                                    <span class="material-symbols-outlined">handyman</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">Easy Assembly</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Tools included</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Actions -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <div
+                                class="flex items-center border border-slate-300 dark:border-slate-700 rounded-lg h-12 w-32">
+                                <button
+                                    class="w-10 h-full flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-l-lg transition-colors">
+                                    <span class="material-symbols-outlined text-sm">remove</span>
+                                </button>
+                                <input
+                                    class="w-full h-full text-center border-none bg-transparent text-slate-900 dark:text-white font-medium focus:ring-0"
+                                    type="text" value="1" />
+                                <button
+                                    class="w-10 h-full flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-r-lg transition-colors">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                            <button
+                                class="flex-1 bg-primary hover:bg-green-400 text-slate-900 h-12 rounded-lg font-bold text-base transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined">shopping_cart</span>
+                                Add to Cart
+                            </button>
+                            <button
+                                class="h-12 w-12 flex items-center justify-center border border-slate-300 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:text-red-500 hover:border-red-500 dark:hover:text-red-400 dark:hover:border-red-400 transition-colors">
+                                <span class="material-symbols-outlined">favorite</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="flex flex-col lg:flex-row gap-8 xl:gap-12">
-            <!-- Sidebar Filters -->
-            <aside class="w-full lg:w-64 flex-shrink-0 space-y-8">
-                <!-- Filter Group: Brand -->
-                <div>
-                    <h3 class="font-bold text-text-main mb-4 flex items-center justify-between">
-                        Brand
-                        <span class="material-symbols-outlined text-neutral-text text-sm">remove</span>
-                    </h3>
-                    <div class="space-y-3">
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="h-4 w-4 rounded border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Acana
-                                (12)</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="h-4 w-4 rounded border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Blue
-                                Buffalo (8)</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input checked=""
-                                class="h-4 w-4 rounded border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Fancy
-                                Feast (24)</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="h-4 w-4 rounded border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Hill's
-                                Science Diet (15)</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="h-4 w-4 rounded border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Royal
-                                Canin (18)</span>
-                        </label>
+        </section>
+        <!-- Detailed Features Section -->
+        <section class="bg-surface-light dark:bg-surface-dark py-16 border-t border-slate-100 dark:border-slate-800">
+            <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-3 lg:gap-12">
+                    <div class="lg:col-span-1">
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Why cats love it</h2>
+                        <p class="text-slate-600 dark:text-slate-300 mb-6">Designed with feline instincts in mind,
+                            combining height, texture, and stability.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-slate-700 dark:text-slate-200">Tall enough for full stretch</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-slate-700 dark:text-slate-200">Heavy base prevents wobbling</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-slate-700 dark:text-slate-200">Replaceable scratching pads</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-slate-700 dark:text-slate-200">Non-toxic finish</span>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="h-px bg-neutral-light"></div>
-                <!-- Filter Group: Life Stage -->
-                <div>
-                    <h3 class="font-bold text-text-main mb-4 flex items-center justify-between">
-                        Life Stage
-                        <span class="material-symbols-outlined text-neutral-text text-sm">remove</span>
-                    </h3>
-                    <div class="space-y-3">
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input class="h-4 w-4 border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                name="lifestage" type="radio" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Kitten
-                                (0-1 year)</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input checked=""
-                                class="h-4 w-4 border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                name="lifestage" type="radio" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Adult
-                                (1-7 years)</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input class="h-4 w-4 border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                name="lifestage" type="radio" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Senior
-                                (7+ years)</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="h-px bg-neutral-light"></div>
-                <!-- Filter Group: Diet Type -->
-                <div>
-                    <h3 class="font-bold text-text-main mb-4 flex items-center justify-between">
-                        Dietary Needs
-                        <span class="material-symbols-outlined text-neutral-text text-sm">remove</span>
-                    </h3>
-                    <div class="space-y-3">
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="h-4 w-4 rounded border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                type="checkbox" />
-                            <span
-                                class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Grain-Free</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="h-4 w-4 rounded border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                type="checkbox" />
-                            <span
-                                class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Organic</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="h-4 w-4 rounded border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">High
-                                Protein</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input
-                                class="h-4 w-4 rounded border-neutral-border text-primary focus:ring-primary cursor-pointer"
-                                type="checkbox" />
-                            <span class="text-sm text-neutral-text group-hover:text-text-main transition-colors">Weight
-                                Control</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="h-px bg-neutral-light"></div>
-                <!-- Filter Group: Price -->
-                <div>
-                    <h3 class="font-bold text-text-main mb-4 flex items-center justify-between">
-                        Price Range
-                        <span class="material-symbols-outlined text-neutral-text text-sm">remove</span>
-                    </h3>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="relative w-full">
-                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-text text-xs">$</span>
-                            <input
-                                class="w-full rounded-md border-neutral-border bg-neutral-light py-2 pl-6 pr-2 text-sm focus:border-primary focus:ring-primary"
-                                type="number" value="0" />
-                        </div>
-                        <span class="text-neutral-text">-</span>
-                        <div class="relative w-full">
-                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-text text-xs">$</span>
-                            <input
-                                class="w-full rounded-md border-neutral-border bg-neutral-light py-2 pl-6 pr-2 text-sm focus:border-primary focus:ring-primary"
-                                type="number" value="100" />
-                        </div>
-                    </div>
-                    <input class="w-full accent-primary h-1 bg-neutral-border rounded-lg appearance-none cursor-pointer"
-                        type="range" />
-                </div>
-            </aside>
-            <!-- Product Grid -->
-            <div class="flex-1">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
-                    <!-- Product Card 1 -->
-                    <div class="group relative flex flex-col">
-                        <div class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-neutral-light">
-                            <img alt="Cat eating from a bowl on a clean background"
-                                class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                                data-alt="Close up of a fluffy cat eating dry food"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuARLqe6PXL8IVV3Ae_7KwCqOXS8SzjU3YGQkcu18AD-Db7psxzB4f-E-i30UAr_NL2XhvTSxeNxkqC6EuqtGGuM5o2opDG9ADpHQ5Z3R_-ak9iSQ9aI8lVoaUnHTfzQm_22-xa4OftayZPIurFB4_Dp4-8DwYpRJW6BTaeOr5CkhnoKIh-szkVodk6URnasoN9lK1OTK4ULJrHO2n7GDtNUvrnd8L-D3lTeZqyETW8blhuFgWHXOEOpNRBhNmbataYNHlCJUcExsfo" />
-                            <div class="absolute top-3 left-3">
-                                <span
-                                    class="bg-primary/90 text-primary-content text-xs font-bold px-2 py-1 rounded">Best
-                                    Seller</span>
+                    <div class="lg:col-span-2 mt-8 lg:mt-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl flex items-center justify-center text-primary mb-4 shadow-sm">
+                                    <span class="material-symbols-outlined">texture</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Natural Sisal</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">We use only premium, chemical-free
+                                    sisal rope that satisfies your cat's natural urge to scratch while protecting your
+                                    furniture.</p>
                             </div>
-                            <button
-                                class="absolute bottom-4 left-4 right-4 translate-y-4 bg-white text-text-main font-bold py-3 rounded-lg shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-neutral-50 flex items-center justify-center gap-2">
-                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
-                                Add to Cart
-                            </button>
-                        </div>
-                        <div class="mt-4 flex flex-col gap-1">
-                            <p class="text-sm text-neutral-text">Hill's Science Diet</p>
-                            <h3
-                                class="text-base font-bold text-text-main group-hover:text-primary transition-colors cursor-pointer">
-                                Adult Indoor Cat Dry Food</h3>
-                            <div class="flex items-center gap-1 text-yellow-500 text-xs">
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star_half</span>
-                                <span class="text-neutral-text ml-1">(428)</span>
+                            <div class="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl">
+                                <div
+                                    class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl flex items-center justify-center text-primary mb-4 shadow-sm">
+                                    <span class="material-symbols-outlined">forest</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Solid Oak Wood</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Unlike cardboard posts that shred
+                                    easily, our solid oak construction ensures longevity and adds warmth to your home
+                                    decor.</p>
                             </div>
-                            <p class="mt-1 text-lg font-bold text-text-main">$42.99</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 2 -->
-                    <div class="group relative flex flex-col">
-                        <div class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-neutral-light">
-                            <img alt="Cat looking at wet food can"
-                                class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                                data-alt="Tabby cat sitting next to premium food packaging"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3j-u9DEjtf5hjo8JUktgLjCqnpqjTC6l5Z_5ek1lAj0fSlc_5WqEi-A66DIpxQCPIQMajiwk_Dh9MnmHiWBJxVdLYxMCCvsNgWbo3NU-VBL35DNJkIx1ngRMDf5c_8ZYU8ncOrUNvXJ_vN3E8jbE6iTU8mW02pKhaKBJxDOlH3xm9Y1Iz0hyqI3j-NDIeRFj6wgUgG-Bv-GizYsAEOrR7fn_qnCwxi9zZA10UGK8dAO1jLisBn_3IYl4x27n2HjUxO_lgcg45LBE" />
-                            <button
-                                class="absolute bottom-4 left-4 right-4 translate-y-4 bg-white text-text-main font-bold py-3 rounded-lg shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-neutral-50 flex items-center justify-center gap-2">
-                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
-                                Add to Cart
-                            </button>
-                        </div>
-                        <div class="mt-4 flex flex-col gap-1">
-                            <p class="text-sm text-neutral-text">Fancy Feast</p>
-                            <h3
-                                class="text-base font-bold text-text-main group-hover:text-primary transition-colors cursor-pointer">
-                                Grilled Poultry &amp; Beef Feast</h3>
-                            <div class="flex items-center gap-1 text-yellow-500 text-xs">
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="text-neutral-text ml-1">(156)</span>
-                            </div>
-                            <p class="mt-1 text-lg font-bold text-text-main">$18.49</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 3 -->
-                    <div class="group relative flex flex-col">
-                        <div class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-neutral-light">
-                            <img alt="White cat eating from modern bowl"
-                                class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                                data-alt="Elegant cat eating from a ceramic bowl"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhA24OuScKRAtyMPcVLWTS4uR3j2aoFriIz35NTznWIfct3AxV2kORiOAqDiALjtGO6acyDw1-LxjS67gQ8oVdH18Uu9QZ2KgtWQz38YypQJ6wZg5kITflcN7VBstHXZl1DLARyZjsmXhFv65P2yqR-KAV8tfmz-MxOkwhDsmmiXzAROlP85IJt-_WB6eIJRAbXqf0E-3Z0CrkiYXWSYVzMIA2Ozo4A5d7ZECYeLKnouOCc7G9BIspKgXHjTePsnj2lqUvbIhF_EQ" />
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">Sale</span>
-                            </div>
-                            <button
-                                class="absolute bottom-4 left-4 right-4 translate-y-4 bg-white text-text-main font-bold py-3 rounded-lg shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-neutral-50 flex items-center justify-center gap-2">
-                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
-                                Add to Cart
-                            </button>
-                        </div>
-                        <div class="mt-4 flex flex-col gap-1">
-                            <p class="text-sm text-neutral-text">Blue Buffalo</p>
-                            <h3
-                                class="text-base font-bold text-text-main group-hover:text-primary transition-colors cursor-pointer">
-                                Wilderness Grain-Free Chicken</h3>
-                            <div class="flex items-center gap-1 text-yellow-500 text-xs">
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="text-neutral-text ml-1">(892)</span>
-                            </div>
-                            <div class="flex items-center gap-2 mt-1">
-                                <p class="text-lg font-bold text-text-main">$34.99</p>
-                                <p class="text-sm text-neutral-text line-through">$39.99</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product Card 4 -->
-                    <div class="group relative flex flex-col">
-                        <div class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-neutral-light">
-                            <img alt="Curious cat looking up"
-                                class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                                data-alt="Close up portrait of a curious cat"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_zRBOjqExU8s11bkeKBv2DwO_Z8_3RD6DdDruLhmJ9QaPdloEEgorVY8H706dRhX9K35WCP6914n0uNugL3GjHAK0BueTk_xl6CjbzgyCJxBOd7IgIUhKzdHtSPH_46LnTyDQV3POOdaN5U5fimexnn59277tnmxXoImtq_bvBlK8ulw0v200C2t4fvCatgl8ALxqJg4FMD1YDFp_3Q0qU8mnMf5_xBWWuLZmNtNFzBuCSRfAMxcIcMFHUVgmWsaIUOhQhWi1UtI" />
-                            <button
-                                class="absolute bottom-4 left-4 right-4 translate-y-4 bg-white text-text-main font-bold py-3 rounded-lg shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-neutral-50 flex items-center justify-center gap-2">
-                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
-                                Add to Cart
-                            </button>
-                        </div>
-                        <div class="mt-4 flex flex-col gap-1">
-                            <p class="text-sm text-neutral-text">Acana</p>
-                            <h3
-                                class="text-base font-bold text-text-main group-hover:text-primary transition-colors cursor-pointer">
-                                Bountiful Catch Fish Formula</h3>
-                            <div class="flex items-center gap-1 text-yellow-500 text-xs">
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="text-neutral-text ml-1">(64)</span>
-                            </div>
-                            <p class="mt-1 text-lg font-bold text-text-main">$46.00</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 5 -->
-                    <div class="group relative flex flex-col">
-                        <div class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-neutral-light">
-                            <img alt="Cat with treats"
-                                class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                                data-alt="Cute cat sitting next to treat bag"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8BomnaD8Hz6wga_MGKqTcYXX2F2qm6oqwSQf2hdRhwOrG_tAapnYNmImVCh5VVZqiHq6C_Z9bGGVuo05Z0HlD8Pakc5IwqHB_0avrw5AbseCoMi1uZpI3ZjVSWgNwKoL2HQswLMPYFwZW-sS_oNeXLL_TS-oTtvYkwQxVaKwVLNgu5EiFHxKUwWSSwL78SZQclfk7s_EAw778J8klv7II28isXL6Jpudq0Z0TQTA4n2ab4a5QWUSQafOKnk2hz2PusY5xPoRs2TI" />
-                            <button
-                                class="absolute bottom-4 left-4 right-4 translate-y-4 bg-white text-text-main font-bold py-3 rounded-lg shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-neutral-50 flex items-center justify-center gap-2">
-                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
-                                Add to Cart
-                            </button>
-                        </div>
-                        <div class="mt-4 flex flex-col gap-1">
-                            <p class="text-sm text-neutral-text">Royal Canin</p>
-                            <h3
-                                class="text-base font-bold text-text-main group-hover:text-primary transition-colors cursor-pointer">
-                                Digestive Care Dry Food</h3>
-                            <div class="flex items-center gap-1 text-yellow-500 text-xs">
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star_half</span>
-                                <span class="text-neutral-text ml-1">(312)</span>
-                            </div>
-                            <p class="mt-1 text-lg font-bold text-text-main">$52.99</p>
-                        </div>
-                    </div>
-                    <!-- Product Card 6 -->
-                    <div class="group relative flex flex-col">
-                        <div class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-neutral-light">
-                            <img alt="Kitten eating"
-                                class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                                data-alt="Small kitten eating from a white bowl"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8BmzuxqdIKkcOEJ7RTelgZCVdDjWWMEi_6MCdaqs9swKVJP-6OgUylOoS2PiVkMUE9Oa3guhGTrSz07wo1MteDztRyd2v3XXMMFdaDES0ZuL2VqTvk8cSm3b8Eb6sfXhIrWlRFCS93pXVhFnv7ATbOBBR2BY6xo6MCeONKNlzgByrXmFN9M2MdzDatbmUwk_Zeonn9hB2_11HMHZ87e1rm1jcJ2vZlKxWz5kU6jv5J1RWY0PxpD-q2OH67eg-vTqM1MxRvfqyJoY" />
-                            <button
-                                class="absolute bottom-4 left-4 right-4 translate-y-4 bg-white text-text-main font-bold py-3 rounded-lg shadow-lg opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-neutral-50 flex items-center justify-center gap-2">
-                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
-                                Add to Cart
-                            </button>
-                        </div>
-                        <div class="mt-4 flex flex-col gap-1">
-                            <p class="text-sm text-neutral-text">Purina ONE</p>
-                            <h3
-                                class="text-base font-bold text-text-main group-hover:text-primary transition-colors cursor-pointer">
-                                Healthy Kitten Formula</h3>
-                            <div class="flex items-center gap-1 text-yellow-500 text-xs">
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="material-symbols-outlined text-[16px] fill-current">star</span>
-                                <span class="text-neutral-text ml-1">(1,024)</span>
-                            </div>
-                            <p class="mt-1 text-lg font-bold text-text-main">$16.48</p>
                         </div>
                     </div>
                 </div>
-                <!-- Pagination -->
-                <div class="mt-16 flex items-center justify-center gap-2">
+            </div>
+        </section>
+        <!-- Customers Also Bought Carousel -->
+        <section class="py-16 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Customers also bought</h2>
+                <div class="flex gap-2">
                     <button
-                        class="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-border text-neutral-text hover:bg-neutral-light hover:text-text-main disabled:opacity-50">
-                        <span class="material-symbols-outlined">chevron_left</span>
+                        class="p-2 rounded-full border border-slate-200 dark:border-slate-700 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <span class="material-symbols-outlined">arrow_back</span>
                     </button>
                     <button
-                        class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-content font-bold">1</button>
-                    <button
-                        class="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-border text-text-main hover:bg-neutral-light">2</button>
-                    <button
-                        class="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-border text-text-main hover:bg-neutral-light">3</button>
-                    <span class="px-2 text-neutral-text">...</span>
-                    <button
-                        class="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-border text-text-main hover:bg-neutral-light">12</button>
-                    <button
-                        class="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-border text-neutral-text hover:bg-neutral-light hover:text-text-main">
-                        <span class="material-symbols-outlined">chevron_right</span>
+                        class="p-2 rounded-full border border-slate-200 dark:border-slate-700 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Newsletter Section -->
-    <section class="mt-20 border-t border-neutral-light bg-neutral-50 py-16">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mx-auto max-w-xl">
-                <div
-                    class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/20 text-primary-content">
-                    <span class="material-symbols-outlined text-3xl">mail</span>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Product Card 1 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden mb-4 relative">
+                        <img alt="Plush cat bed grey"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            data-alt="Plush cat bed grey"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2IU42jaB0i3VB0ujG9z4sqW864rHLeZz_r-__NhxDzw3DEBGcSCgtDS-jmBmtINrJW6MuTVBv1pZbf-pQyXN9EbwRY5StoEc-0HqQkyDTf3fePNNixqXtQQWBRkvylmZ1xfmo5zky0ZWuZnkdwampsdK4EMWXoTsJ7nJMKc2Xn4U3S6_8dKafWP5r0S79HdDPpQC0Q7RIVGOnfCQvRC4CYCNzVMKNjkXhjmeQnOYLng5h0wbT-x766Mi5jggXJ5fptU0ReR4Sp-M" />
+                        <button
+                            class="absolute bottom-3 right-3 bg-white dark:bg-slate-900 p-2 rounded-full shadow-md text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
+                            <span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                        </button>
+                    </div>
+                    <h3
+                        class="font-bold text-slate-900 dark:text-white text-base mb-1 group-hover:text-primary transition-colors">
+                        Cloud Comfort Bed</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">$45.00</p>
                 </div>
-                <h2 class="text-3xl font-bold text-text-main">Join the PurrfectPantry Club</h2>
-                <p class="mt-4 text-neutral-text">Subscribe to get special offers, free giveaways, and
-                    once-in-a-lifetime deals for your feline friends.</p>
-                <form class="mt-8 flex flex-col gap-4 sm:flex-row">
-                    <input
-                        class="flex-1 rounded-lg border-neutral-border bg-white px-5 py-3 text-text-main placeholder:text-neutral-text focus:border-primary focus:ring-primary"
-                        placeholder="Enter your email" type="email" />
-                    <button
-                        class="rounded-lg bg-primary px-8 py-3 font-bold text-primary-content hover:bg-primary-hover shadow-lg shadow-primary/20 transition-all"
-                        type="button">Subscribe</button>
-                </form>
+                <!-- Product Card 2 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden mb-4 relative">
+                        <img alt="Interactive cat toy feather wand"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            data-alt="Interactive cat toy feather wand"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtYqWIwtYI8UBI90xevJwxND-Ml1HvRDzoon6RR83Op9d12MPkpkx-6gNkehHyOFJ6e0o80q1N5d2m8acZfnaI0B4otw3XVxQpf8STc4zVYXslSOyq6DYFx-OzqyhmpnyzOBT9v-NVKgy82WNuD28fQVRdRk1CbkOBQ3W4MhQdOFc2efFuL8eDuIAv83aBB7KylrJYmmaNw7gRqzKSyGhWFz_xd3BJWoDwqK8FUa_V2gcIwTNOD_z_Thr7FDc3tiZXuoXKsvu55_o" />
+                        <button
+                            class="absolute bottom-3 right-3 bg-white dark:bg-slate-900 p-2 rounded-full shadow-md text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
+                            <span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                        </button>
+                    </div>
+                    <h3
+                        class="font-bold text-slate-900 dark:text-white text-base mb-1 group-hover:text-primary transition-colors">
+                        Feather Wand Pro</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">$12.99</p>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden mb-4 relative">
+                        <img alt="Ceramic cat food bowl set"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            data-alt="Ceramic cat food bowl set"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDikdXWeWDnLBlpyazQMjtov78YxUAllA76CftPMmboieHcBqOPHy597C7QILlkhdHbXhy8PvPk6xgi_RsrfFrYBzmoRicgBXm4WLDl_YgQw0XGNRGjL2uH3e8Wq6GB_005dPeyGJZcqix5y6-MiKWFza3kSbmZeaG5V2-tHEGn-8ZwrIi_FUo0NSRFD49QtqMYQruTJn37bllv9CoQMYOsaOzTezOWlbEPItddJEVpqbO_FpBMRul2QzWhXlKeCLvts_Eb201mwoo" />
+                        <button
+                            class="absolute bottom-3 right-3 bg-white dark:bg-slate-900 p-2 rounded-full shadow-md text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
+                            <span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                        </button>
+                    </div>
+                    <h3
+                        class="font-bold text-slate-900 dark:text-white text-base mb-1 group-hover:text-primary transition-colors">
+                        Ceramic Bowl Set</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">$28.50</p>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden mb-4 relative">
+                        <img alt="Organic catnip jar"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            data-alt="Organic catnip jar"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtVmYun8vEPclzwQQiaISqI24CZ6kNd6hw6yYoEdEeMJAuq3L_2pIeTWFhO_sWSvJKkMd4WqKKccW6rLH6QvVcGdMDpZ9osAwEhkxib8jwaEOiGQ2Rf5pPllNPaXiVwUab3FbbuukmPaHuC5reiNbY01uzMJvWxOQYn_svQ-vBtbpjhe-IVWvhj6VtydRwuyz9sY-fCTF7CVLRS2LZabcmI15NYwhHPN6gkNm8vKpCC7ySPAzeVsNDjEWwGam369qwCHCm6osNTCo" />
+                        <button
+                            class="absolute bottom-3 right-3 bg-white dark:bg-slate-900 p-2 rounded-full shadow-md text-slate-900 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
+                            <span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                        </button>
+                    </div>
+                    <h3
+                        class="font-bold text-slate-900 dark:text-white text-base mb-1 group-hover:text-primary transition-colors">
+                        Organic Catnip</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">$9.99</p>
+                </div>
+            </div>
+        </section>
+        <!-- Reviews Section -->
+        <section class="bg-surface-light dark:bg-surface-dark py-16 border-t border-slate-100 dark:border-slate-800">
+            <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-[300px_1fr] gap-12">
+                    <!-- Rating Summary -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Reviews</h2>
+                        <div class="flex items-end gap-3 mb-2">
+                            <span
+                                class="text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">4.8</span>
+                            <div class="mb-2">
+                                <div class="flex text-yellow-400 text-sm">
+                                    <span class="material-symbols-outlined"
+                                        style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined"
+                                        style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined"
+                                        style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined"
+                                        style="font-variation-settings: 'FILL' 1;">star</span>
+                                    <span class="material-symbols-outlined"
+                                        style="font-variation-settings: 'FILL' 1;">star_half</span>
+                                </div>
+                                <span class="text-sm text-slate-500 dark:text-slate-400">Based on 124 reviews</span>
+                            </div>
+                        </div>
+                        <!-- Progress Bars -->
+                        <div class="space-y-2 mt-6">
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-3 text-slate-600 dark:text-slate-400">5</span>
+                                <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 dark:bg-slate-200 w-[80%] rounded-full"></div>
+                                </div>
+                                <span class="w-8 text-right text-slate-400">80%</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-3 text-slate-600 dark:text-slate-400">4</span>
+                                <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 dark:bg-slate-200 w-[12%] rounded-full"></div>
+                                </div>
+                                <span class="w-8 text-right text-slate-400">12%</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-3 text-slate-600 dark:text-slate-400">3</span>
+                                <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 dark:bg-slate-200 w-[5%] rounded-full"></div>
+                                </div>
+                                <span class="w-8 text-right text-slate-400">5%</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-3 text-slate-600 dark:text-slate-400">2</span>
+                                <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 dark:bg-slate-200 w-[1%] rounded-full"></div>
+                                </div>
+                                <span class="w-8 text-right text-slate-400">1%</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="w-3 text-slate-600 dark:text-slate-400">1</span>
+                                <div class="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-slate-900 dark:bg-slate-200 w-[2%] rounded-full"></div>
+                                </div>
+                                <span class="w-8 text-right text-slate-400">2%</span>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-4">Customer Photos</h4>
+                            <div class="grid grid-cols-4 gap-2">
+                                <div class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden">
+                                    <img alt="User uploaded photo of cat using scratching post"
+                                        class="w-full h-full object-cover"
+                                        data-alt="User uploaded photo of cat using scratching post"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP0ytnadG66KjBqLkQDlFOVxED2Z43UMyIGXWahJqkB5FTADCQZDGx8ef1AM3QdB94uQWpXi4uotoZW-yuXHQdizGWli02Lc_CqZ5k_X4n9TqOIiiyAxux7pI2R9tFHxGD4WL-qZ588hFR2BqMBk11OsBfULIL2QPrH7mQS_grIMGhwqQnlwt07HfGAF6DymSaiNtF4bbUaHyDfIP7g8bOlwVDXQ8zUVyzryFurBR7omzL2ObuHrmX2hPsgdLRmi9B2C-l2zVIRCQ" />
+                                </div>
+                                <div class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden">
+                                    <img alt="User uploaded photo of cat sleeping on post base"
+                                        class="w-full h-full object-cover"
+                                        data-alt="User uploaded photo of cat sleeping on post base"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7WI0N87lBNi9fB8Twq89z9dxNEfsHblEIwVOtPT9ovLWqrP_Lrg5Lpj6SiBID096yCEdH9BFIeQj7waT7B8ojsUrjQkOpjpxq3w0X7xSFi46P9fbT-P7zspufbCmxPgxtEs1O2XFkaRnEGtT1lMibz3d_-hNE-weBqAVqG3ty9JrQEAbwOVldUmhzW3YOL6XQIKnMD37RAddrvjQK1V067kkz5Li04ngMm-fiAFOQjP2oJbC5Zste8ARajMJwVCZYE1UHHDlPOtM" />
+                                </div>
+                                <div class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden">
+                                    <img alt="User uploaded photo of cat scratching post"
+                                        class="w-full h-full object-cover"
+                                        data-alt="User uploaded photo of cat scratching post"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAolvo43tKFcE6iPMv5S_v40UTF652owATkUmCPr0n2sfSXfUX14jcaJh_mrrYQL0LEjhDxZGzLDqBYFsUC8Uk9yX1hSAuKQoTLIY8_BpGJeyFi_YWRWcbPFsdANACCq1uR0F8BcWiUV2T8fnYnoeds-LfRUy0cSnRjgGk3V-YWtworpWHRi1KbogNABMnoFnZZlFN7kV68VE58qpYkiPDdAdLpleclRUbwi7a2TgJyTy1-vebGSDHULGUhfEsEZlUEpx7LXXhv4oQ" />
+                                </div>
+                                <div
+                                    class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden flex items-center justify-center text-xs text-slate-500 font-medium cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+                                    +24
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Individual Reviews -->
+                    <div class="space-y-8">
+                        <!-- Review 1 -->
+                        <div class="border-b border-slate-100 dark:border-slate-800 pb-8 last:border-0 last:pb-0">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-300 font-bold">
+                                        JD
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white text-sm">Jane Doe</h4>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-slate-400">2 weeks ago</span>
+                            </div>
+                            <h5 class="font-bold text-slate-900 dark:text-white text-base mt-3 mb-2">Finally a stylish
+                                scratching post!</h5>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">My cat Mochi
+                                absolutely loves this. It's sturdy enough for his zoomed runs and looks like a piece of
+                                modern art in my living room. Totally worth the price tag.</p>
+                        </div>
+                        <!-- Review 2 -->
+                        <div class="border-b border-slate-100 dark:border-slate-800 pb-8 last:border-0 last:pb-0">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-300 font-bold">
+                                        MS
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white text-sm">Mark Smith</h4>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span
+                                                class="material-symbols-outlined text-[16px] text-slate-200 dark:text-slate-700"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-slate-400">1 month ago</span>
+                            </div>
+                            <h5 class="font-bold text-slate-900 dark:text-white text-base mt-3 mb-2">Great quality, but
+                                heavy</h5>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The build quality is
+                                incredible. Solid oak as advertised. Just be aware it is quite heavy, so pick a spot and
+                                stick to it! My Maine Coon can't tip it over, which is a huge plus.</p>
+                        </div>
+                        <button
+                            class="w-full py-3 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            Load More Reviews
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-light dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4">Shop</h3>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">All Products</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Furniture</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Toys</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4">Support</h3>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Shipping</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Returns</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4">Company</h3>
+                    <ul class="space-y-3 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4">Stay in the loop</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Join our newsletter for exclusive offers
+                        and cat care tips.</p>
+                    <div class="flex gap-2">
+                        <input
+                            class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-2 w-full text-sm focus:ring-2 focus:ring-primary"
+                            placeholder="Enter your email" type="email" />
+                        <button
+                            class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2 rounded-lg font-bold text-sm hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-100 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-slate-400">© 2024 Purrfect Post. All rights reserved.</p>
+                <div class="flex gap-4 text-slate-400">
+                    <a class="hover:text-slate-600 dark:hover:text-slate-200 transition-colors" href="#">Privacy
+                        Policy</a>
+                    <a class="hover:text-slate-600 dark:hover:text-slate-200 transition-colors" href="#">Terms of
+                        Service</a>
+                </div>
             </div>
         </div>
-    </section>
+    </footer>
 </body>
 
 </html>
