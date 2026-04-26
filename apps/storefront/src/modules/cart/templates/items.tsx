@@ -12,9 +12,11 @@ type ItemsTemplateProps = {
 const ItemsTemplate = ({ cart }: ItemsTemplateProps) => {
   const items = cart?.items
   return (
-    <div>
-      <div className="pb-3 flex items-center">
-        <Heading className="text-[2rem] leading-[2.75rem]">Cart</Heading>
+    <div className="flex flex-col gap-y-4">
+      <div className="pb-3 border-b border-gray-100 flex items-center justify-between">
+        <h2 className="text-xl font-bold text-gray-900">
+          Items ({items?.length || 0})
+        </h2>
       </div>
       <Table>
         <Table.Header className="border-t-0">
