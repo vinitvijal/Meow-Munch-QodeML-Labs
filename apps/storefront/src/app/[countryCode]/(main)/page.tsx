@@ -4,6 +4,7 @@ import CustomHome from "components/custom/CustomHome"
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 import { listProducts } from "@lib/data/products"
+import { listCategories } from "@lib/data/categories"
 
 export const metadata: Metadata = {
   title: "Meow Munch | Home",
@@ -20,13 +21,19 @@ export default async function Home(props: {
 
   const region = await getRegion(countryCode)
 
-  const { collections } = await listCollections({
-    fields: "id, handle, title",
-  })
+  const [categories, { collections }] = await Promise.all([
+    listCategories(),
+    listCollections({
+      fields: "id, handle, title",
+    }),
+  ])
 
   if (!collections || !region) {
     return null
   }
+
+  // Filter categories to only show top-level ones or specific ones
+  const mainCategories = categories.filter((c) => !c.parent_category)
 
   // Filter collections for Life Stage
   const lifeStageTitles = ["Kitten", "Adult", "Senior"]
@@ -39,7 +46,6 @@ export default async function Home(props: {
   // Fetch Best Seller products
   const bestSellerCollection = collections.find(c => c.handle === "trending" || c.title?.toLowerCase() === "trending")
 
-  console.log("Best Seller : ", bestSellerCollection)
   let bestSellerProducts: any[] = []
   if (bestSellerCollection) {
     const { response } = await listProducts({
@@ -52,6 +58,7 @@ export default async function Home(props: {
   return (
     <>
       <CustomHome
+        categories={mainCategories}
         collections={collections}
         region={region}
         lifeStageCollections={lifeStageCollections}
