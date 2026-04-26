@@ -18,10 +18,14 @@ export default async function CustomFooter() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
           <div className="col-span-2 lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="size-10 text-white flex items-center justify-center bg-primary rounded-xl shadow-sm">
-                <span className="font-bold">P</span>
-              </div>
-              <h2 className="text-text-main dark:text-white text-2xl font-extrabold tracking-tight">Meow Munch</h2>
+              <Link className="flex items-center gap-3 group" href="/">
+                <div className="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-orange-200 group-hover:rotate-6 transition-transform">
+                  <span className="material-symbols-outlined text-2xl font-bold">pets</span>
+                </div>
+                <span className="text-xl font-black text-gray-900 tracking-tighter uppercase">
+                  Meow<span className="text-orange-500 font-medium">Munch</span>
+                </span>
+              </Link>
             </div>
             <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-sm mb-8">
               Dedicated to providing the best for your feline companions. From premium nutrition to

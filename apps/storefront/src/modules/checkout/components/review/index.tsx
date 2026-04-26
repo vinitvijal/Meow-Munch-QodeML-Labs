@@ -21,34 +21,35 @@ const Review = ({ cart }: { cart: HttpTypes.StoreCart }) => {
     (cart.payment_collection || paidByGiftcard)
 
   return (
-    <div className="bg-white">
-      <div className="flex flex-row items-center justify-between mb-6">
+    <div className="">
+      <div className="flex flex-row items-center justify-between mb-8">
         <Heading
           level="h2"
           className={clx(
-            "flex flex-row text-3xl-regular gap-x-2 items-baseline",
+            "flex items-center text-2xl font-bold text-gray-900 gap-x-3",
             {
               "opacity-50 pointer-events-none select-none": !isOpen,
             }
           )}
         >
-          Review
+          <span className="w-1.5 h-6 bg-orange-500 rounded-full"></span>
+          Review Order
         </Heading>
       </div>
       {isOpen && previousStepsCompleted && (
-        <>
-          <div className="flex items-start gap-x-1 w-full mb-6">
+        <div className="animate-in fade-in slide-in-from-top-2 duration-500">
+          <div className="flex items-start gap-x-1 w-full mb-8 bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
             <div className="w-full">
-              <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                By clicking the Place Order button, you confirm that you have
-                read, understand and accept our Terms of Use, Terms of Sale and
-                Returns Policy and acknowledge that you have read Medusa
-                Store&apos;s Privacy Policy.
+              <Text className="text-sm text-gray-500 leading-relaxed">
+                By clicking the **Place Order** button, you confirm that you have
+                read, understand and accept our **Terms of Use**, **Terms of Sale** and
+                **Returns Policy** and acknowledge that you have read Meow Munch
+                Store&apos;s **Privacy Policy**.
               </Text>
             </div>
           </div>
           <PaymentButton cart={cart} data-testid="submit-order-button" />
-        </>
+        </div>
       )}
     </div>
   )

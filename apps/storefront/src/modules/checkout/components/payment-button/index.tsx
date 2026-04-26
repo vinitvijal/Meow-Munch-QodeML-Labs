@@ -138,6 +138,7 @@ const StripePaymentButton = ({
         disabled={disabled || notReady}
         onClick={handlePayment}
         size="large"
+        className="w-full h-12 bg-orange-500 hover:bg-orange-600 transition-all rounded-xl mt-4"
         isLoading={submitting}
         data-testid={dataTestId}
       >
@@ -178,6 +179,7 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
         isLoading={submitting}
         onClick={handlePayment}
         size="large"
+        className="w-full h-12 bg-orange-500 hover:bg-orange-600 transition-all rounded-xl mt-4"
         data-testid="submit-order-button"
       >
         Place order

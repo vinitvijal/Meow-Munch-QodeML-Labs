@@ -8,13 +8,12 @@ export default function CustomNav() {
       <div className="flex items-center justify-between max-w-[1440px] mx-auto w-full gap-4">
         <div className="flex items-center gap-8">
           <Link className="flex items-center gap-3 group" href="/">
-            <div className="size-10 text-white flex items-center justify-center bg-primary rounded-2xl shadow-sm rotate-3 group-hover:rotate-0 transition-transform">
-              {/* Note: Medusa icons might not have a 'pet', use something else or just text */}
-              <span className="font-bold text-xl">P</span>
+            <div className="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-orange-200 group-hover:rotate-6 transition-transform">
+              <span className="material-symbols-outlined text-2xl font-bold">pets</span>
             </div>
-            <h2 className="text-text-main dark:text-white text-xl font-extrabold tracking-tight">
-              Meow Munch
-            </h2>
+            <span className="text-xl font-black text-gray-900 tracking-tighter uppercase">
+              Meow<span className="text-orange-500 font-medium">Munch</span>
+            </span>
           </Link>
         </div>
         <div className="hidden md:flex flex-1 max-w-lg mx-8">
