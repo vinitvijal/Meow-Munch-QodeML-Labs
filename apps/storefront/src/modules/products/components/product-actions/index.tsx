@@ -175,15 +175,15 @@ export default function ProductActions({
             !isValidVariant
           }
           variant="primary"
-          className="w-full h-10"
+          className="w-full h-20 rounded-[2rem] bg-slate-900 border-none text-white font-black uppercase tracking-[0.2em] shadow-2xl hover:bg-orange-600 transition-all duration-300 transform hover:-translate-y-1 mb-4"
           isLoading={isAdding}
           data-testid="add-product-button"
         >
           {!selectedVariant && !options
-            ? "Select variant"
+            ? "Complete Variant"
             : !inStock || !isValidVariant
-            ? "Out of stock"
-            : "Add to cart"}
+            ? "Pantry Empty"
+            : "Claim Gourmet Bites"}
         </Button>
         <MobileActions
           product={product}

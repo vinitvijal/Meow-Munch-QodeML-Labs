@@ -9,17 +9,18 @@ import { HttpTypes } from "@medusajs/types"
 
 type ProductTabsProps = {
   product: HttpTypes.StoreProduct
+  region: HttpTypes.StoreRegion
 }
 
-const ProductTabs = ({ product }: ProductTabsProps) => {
+const ProductTabs = ({ product, region }: ProductTabsProps) => {
   const tabs = [
     {
-      label: "Product Information",
+      label: "Specifications",
       component: <ProductInfoTab product={product} />,
     },
     {
-      label: "Shipping & Returns",
-      component: <ShippingInfoTab />,
+      label: "Pantry Delivery",
+      component: <ShippingInfoTab region={region} product={product} />,
     },
   ]
 
@@ -32,6 +33,7 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
             title={tab.label}
             headingSize="medium"
             value={tab.label}
+            className="border-none py-2"
           >
             {tab.component}
           </Accordion.Item>
@@ -41,36 +43,28 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
   )
 }
 
-const ProductInfoTab = ({ product }: ProductTabsProps) => {
+const ProductInfoTab = ({ product }: { product: HttpTypes.StoreProduct }) => {
   return (
-    <div className="text-small-regular py-8">
-      <div className="grid grid-cols-2 gap-x-8">
-        <div className="flex flex-col gap-y-4">
-          <div>
-            <span className="font-semibold">Material</span>
-            <p>{product.material ? product.material : "-"}</p>
+    <div className="text-sm py-6">
+      <div className="grid grid-cols-2 gap-8">
+        <div className="flex flex-col gap-y-6">
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Material</span>
+            <p className="font-bold text-slate-900">{product.material || "N/A"}</p>
           </div>
-          <div>
-            <span className="font-semibold">Country of origin</span>
-            <p>{product.origin_country ? product.origin_country : "-"}</p>
-          </div>
-          <div>
-            <span className="font-semibold">Type</span>
-            <p>{product.type ? product.type.value : "-"}</p>
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Provenance</span>
+            <p className="font-bold text-slate-900">{product.origin_country || "N/A"}</p>
           </div>
         </div>
-        <div className="flex flex-col gap-y-4">
-          <div>
-            <span className="font-semibold">Weight</span>
-            <p>{product.weight ? `${product.weight} g` : "-"}</p>
+        <div className="flex flex-col gap-y-6">
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Weight</span>
+            <p className="font-bold text-slate-900">{product.weight ? `${product.weight} g` : "N/A"}</p>
           </div>
-          <div>
-            <span className="font-semibold">Dimensions</span>
-            <p>
-              {product.length && product.width && product.height
-                ? `${product.length}L x ${product.width}W x ${product.height}H`
-                : "-"}
-            </p>
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Profile</span>
+            <p className="font-bold text-slate-900">{product.type ? product.type.value : "N/A"}</p>
           </div>
         </div>
       </div>
@@ -78,38 +72,31 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
   )
 }
 
-const ShippingInfoTab = () => {
+const ShippingInfoTab = ({ region, product }: { region: HttpTypes.StoreRegion; product: HttpTypes.StoreProduct }) => {
+  const shippingPolicy = (product.metadata?.shipping_policy as string) || `Standard delivery available to your pantry in ${region.name}.`;
+  
   return (
-    <div className="text-small-regular py-8">
-      <div className="grid grid-cols-1 gap-y-8">
-        <div className="flex items-start gap-x-2">
-          <FastDelivery />
-          <div>
-            <span className="font-semibold">Fast delivery</span>
-            <p className="max-w-sm">
-              Your package will arrive in 3-5 business days at your pick up
-              location or in the comfort of your home.
+    <div className="text-sm py-6">
+      <div className="flex flex-col gap-y-8">
+        <div className="flex items-start gap-x-4">
+           <div className="size-10 rounded-xl bg-orange-50 flex items-center justify-center text-orange-600 border border-orange-100 flex-shrink-0">
+              <span className="material-symbols-outlined">local_shipping</span>
+           </div>
+           <div>
+            <span className="text-[11px] font-black uppercase tracking-widest text-slate-900 block mb-1">Gourmet Shipping</span>
+            <p className="text-slate-500 font-medium leading-relaxed">
+              {shippingPolicy}
             </p>
           </div>
         </div>
-        <div className="flex items-start gap-x-2">
-          <Refresh />
-          <div>
-            <span className="font-semibold">Simple exchanges</span>
-            <p className="max-w-sm">
-              Is the fit not quite right? No worries - we&apos;ll exchange your
-              product for a new one.
-            </p>
-          </div>
-        </div>
-        <div className="flex items-start gap-x-2">
-          <Back />
-          <div>
-            <span className="font-semibold">Easy returns</span>
-            <p className="max-w-sm">
-              Just return your product and we&apos;ll refund your money. No
-              questions asked – we&apos;ll do our best to make sure your return
-              is hassle-free.
+        <div className="flex items-start gap-x-4">
+           <div className="size-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-900 border border-slate-200 flex-shrink-0">
+               <span className="material-symbols-outlined text-[20px]">sync</span>
+           </div>
+           <div>
+            <span className="text-[11px] font-black uppercase tracking-widest text-slate-900 block mb-1">Quality Promise</span>
+            <p className="text-slate-500 font-medium leading-relaxed">
+              If your feline friend isn't satisfied, we offer stress-free exchanges in {region.name} within 30 days.
             </p>
           </div>
         </div>
