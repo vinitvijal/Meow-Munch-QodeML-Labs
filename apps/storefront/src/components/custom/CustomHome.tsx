@@ -8,21 +8,21 @@ const slides = [
     {
         title: "Artisanal Comfort, Pure Joy.",
         subtitle: "Handcrafted beds and organic wellness treats for the modern feline.",
-        image: "/images/hero_cat_bed.png",
+        image: "/images/hero_cat_bed_themed.png",
         badge: "New Collection",
         accent: "Pure Joy."
     },
     {
         title: "The Handcrafted Feline Pantry.",
         subtitle: "Elevate your cat's play with thoughtfully designed artisanal toys.",
-        image: "/images/hero_cat_toy.png",
+        image: "/images/hero_cat_toy_themed.png",
         badge: "Limited Edition",
         accent: "Modern Pantry."
     },
     {
         title: "Elegance in Every Detail.",
         subtitle: "Science-backed nutrition and accessories that make them purr.",
-        image: "/images/hero_cat_collar.png",
+        image: "/images/hero_cat_collar_themed.png",
         badge: "Community Favorite",
         accent: "Every Detail."
     }
