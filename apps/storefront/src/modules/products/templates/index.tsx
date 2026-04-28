@@ -6,6 +6,7 @@ import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ProductTabs from "@modules/products/components/product-tabs"
 import Modal from "@modules/common/components/modal"
+import Image from "next/image"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -32,13 +33,13 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   }
 
   return (
-    <main className="bg-white dark:bg-slate-950 min-h-screen pt-10">
+    <main className="bg-background-light min-h-screen pt-10 font-sans">
 
       {/* Zoom Modal */}
       <Modal isOpen={isZoomOpen} close={() => setIsZoomOpen(false)} size="large" search={true}>
         <Modal.Body>
           <div className="relative w-full max-h-screen flex items-center justify-center">
-            <div className="bg-white p-2 rounded-[3.5rem] shadow-2xl overflow-hidden max-w-[90vw] max-h-[90vh] border border-slate-100">
+            <div className="bg-white p-2 rounded-[3.5rem] shadow-2xl overflow-hidden max-w-[90vw] max-h-[90vh] border border-neutral-border">
               <img
                 src={mainImage}
                 alt={product.title}
@@ -47,9 +48,12 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             </div>
             <button
               onClick={() => setIsZoomOpen(false)}
-              className="fixed top-8 right-8 size-16 rounded-full bg-white flex items-center justify-center text-slate-900 transition-all shadow-2xl hover:bg-orange-500 hover:text-white group z-[100]"
+              className="fixed top-8 right-8 size-16 rounded-full bg-white flex items-center justify-center text-accent transition-all shadow-2xl hover:bg-primary hover:text-white group z-[100]"
             >
-              <span className="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">close</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:rotate-90 transition-transform">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
             </button>
           </div>
         </Modal.Body>
@@ -57,22 +61,22 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
       {/* Breadcrumbs */}
       <nav className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 mb-6">
-        <div className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.25em] text-slate-400">
-          <LocalizedClientLink href="/" className="hover:text-orange-500 transition-colors">Home</LocalizedClientLink>
+        <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[0.25em] text-primary/40">
+          <LocalizedClientLink href="/" className="hover:text-primary transition-colors">Home</LocalizedClientLink>
           <span className="opacity-30">/</span>
-          <LocalizedClientLink href="/store" className="hover:text-orange-500 transition-colors">Pantry</LocalizedClientLink>
+          <LocalizedClientLink href="/store" className="hover:text-primary transition-colors">Pantry</LocalizedClientLink>
           <span className="opacity-30">/</span>
-          <span className="text-slate-900 dark:text-white font-extrabold">{product.title}</span>
+          <span className="text-accent font-black tracking-widest">{product.title}</span>
         </div>
       </nav>
 
       {/* Product Hero Section */}
       <section className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 pb-24">
-        <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-12 xl:gap-x-20">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-12 xl:gap-x-24">
 
           {/* Image Gallery - 7 cols */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
-            <div className="aspect-square w-full rounded-[4rem] overflow-hidden bg-white dark:bg-slate-900 relative group flex items-center justify-center border border-slate-50 dark:border-slate-800 shadow-sm transition-all duration-700 hover:shadow-2xl hover:shadow-orange-100/30">
+          <div className="lg:col-span-7 flex flex-col gap-8">
+            <div className="aspect-square w-full rounded-[4rem] overflow-hidden bg-white relative group flex items-center justify-center border border-neutral-border shadow-soft transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10">
               {mainImage ? (
                 <img
                   alt={product.title}
@@ -80,33 +84,33 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                   src={mainImage}
                 />
               ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center text-slate-300 gap-4">
-                  <span className="material-symbols-outlined text-6xl opacity-20">image</span>
-                  <span className="font-bold text-xs uppercase tracking-widest">Image Unavailable</span>
+                <div className="w-full h-full flex flex-col items-center justify-center text-primary/20 gap-4">
+                   <span className="material-symbols-outlined text-6xl">image</span>
+                  <span className="font-black text-xs uppercase tracking-[0.2em]">Image Unavailable</span>
                 </div>
               )}
 
               {product.collection && (
-                <div className="absolute top-10 left-10 bg-white/40 backdrop-blur-xl border border-white/50 rounded-2xl px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 shadow-sm">
+                <div className="absolute top-10 left-10 bg-white/40 backdrop-blur-xl border border-white/50 rounded-2xl px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-accent shadow-sm">
                   {product.collection.title}
                 </div>
               )}
 
               <button
                 onClick={() => setIsZoomOpen(true)}
-                className="absolute bottom-10 right-10 size-16 rounded-3xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-2xl hover:bg-orange-500 hover:text-white transition-all duration-500 transform hover:scale-110 group"
+                className="absolute bottom-10 right-10 size-16 rounded-3xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-2xl hover:bg-primary hover:text-white transition-all duration-500 transform hover:scale-110 group border border-white/50"
               >
-                <span className="material-symbols-outlined text-3xl">zoom_in</span>
+                 <span className="material-symbols-outlined text-3xl">zoom_in</span>
               </button>
             </div>
 
             {images && images.length > 1 && (
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-4">
+              <div className="grid grid-cols-4 sm:grid-cols-6 gap-6">
                 {images.slice(0, 6).map((image, idx) => (
                   <button
                     key={image.id || idx}
                     onClick={() => setMainImage(image.url)}
-                    className={`aspect-square rounded-[2rem] overflow-hidden bg-white dark:bg-slate-900 transition-all border-2 ${mainImage === image.url ? 'border-orange-500 shadow-lg scale-95' : 'border-transparent hover:border-slate-200'}`}
+                    className={`aspect-square rounded-[2rem] overflow-hidden bg-white transition-all border-2 ${mainImage === image.url ? 'border-primary shadow-lg scale-95' : 'border-neutral-border hover:border-primary/50'}`}
                   >
                     <img src={image.url} alt={`Preview ${idx}`} className="w-full h-full object-cover" />
                   </button>
@@ -118,58 +122,58 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           {/* Product Details - 5 cols */}
           <div className="lg:col-span-5 mt-12 lg:mt-0">
             <div className="sticky top-32 flex flex-col h-full">
-              <div className="pb-10 border-b border-slate-50 dark:border-slate-800">
-                <div className="flex items-center gap-2 mb-8">
-                  <div className="flex text-orange-400">
+              <div className="pb-10 border-b border-primary/10">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="flex text-primary">
                     {[...Array(5)].map((_, i) => (
                       <span key={i} className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                     ))}
                   </div>
-                  <span className="text-[9px] font-bold text-slate-400 tracking-[0.2em] uppercase">Verified Perfection • 124 Purrs</span>
+                  <span className="text-[9px] font-black text-primary/40 tracking-[0.2em] uppercase">Verified Excellence • 124 Reviews</span>
                 </div>
 
-                <h1 className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-6 leading-[1.1] tracking-tight font-display">
+                <h1 className="text-5xl lg:text-7xl font-black text-accent mb-8 leading-[0.95] tracking-tight font-display italic">
                   {product.title}
                 </h1>
 
                 <div className="flex items-center gap-4 mb-10">
-                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[9px] font-black uppercase tracking-[0.2em]">
-                    Freshly Stocked
+                  <span className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-accent text-white text-[9px] font-black uppercase tracking-[0.2em]">
+                    Artisanal Selection
                   </span>
-                  <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{product.variants?.[0]?.sku || 'MM-ELITE-001'}</span>
+                  <span className="text-[10px] font-black text-primary/30 uppercase tracking-[0.2em]">{product.variants?.[0]?.sku || 'MM-PANTRY-001'}</span>
                 </div>
 
-                <p className="text-slate-500 font-medium text-lg leading-relaxed max-w-xl">
-                  {product.description || "A curated masterpiece for your cat's daily routine, combining artisanal quality with modern nutritional science."}
+                <p className="text-primary/70 font-medium text-lg leading-relaxed max-w-xl">
+                  {product.description || "A curated masterpiece for your cat's daily routine, combining artisanal quality with modern feline science."}
                 </p>
               </div>
 
-              <div className="py-10">
+              <div className="py-12">
                 {productActions}
               </div>
 
-              <div className="grid grid-cols-2 gap-8 mb-10">
+              <div className="grid grid-cols-2 gap-8 mb-12">
                 <div className="flex items-start gap-4">
-                  <div className="size-10 rounded-xl bg-orange-50 dark:bg-orange-500/10 flex items-center justify-center text-orange-600">
-                    <span className="material-symbols-outlined text-xl">local_shipping</span>
+                  <div className="size-12 rounded-2xl bg-secondary/50 flex items-center justify-center text-primary border border-secondary shadow-sm">
+                    <span className="material-symbols-outlined text-2xl">local_shipping</span>
                   </div>
                   <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white block">Speedy Delivery</span>
-                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Arrives in 2-3 Days</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent block mb-1">House Delivery</span>
+                    <span className="text-[10px] text-primary/40 font-black uppercase tracking-tighter italic">2-4 Business Days</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="size-10 rounded-xl bg-green-50 dark:bg-green-500/10 flex items-center justify-center text-green-600">
-                    <span className="material-symbols-outlined text-xl">verified_user</span>
+                  <div className="size-12 rounded-2xl bg-secondary/50 flex items-center justify-center text-primary border border-secondary shadow-sm">
+                    <span className="material-symbols-outlined text-2xl">verified</span>
                   </div>
                   <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white block">Secure Vault</span>
-                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">100% Protection</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent block mb-1">Ethical Sourcing</span>
+                    <span className="text-[10px] text-primary/40 font-black uppercase tracking-tighter italic">100% Quality Assurance</span>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-auto bg-[#F8F9FA] dark:bg-slate-900/50 p-10 rounded-[3.5rem] border border-slate-100 dark:border-slate-800">
+              <div className="mt-auto bg-white/50 backdrop-blur-sm p-10 rounded-[3.5rem] border border-neutral-border shadow-soft">
                 <ProductTabs product={product} region={region} />
               </div>
             </div>
@@ -178,41 +182,41 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       </section>
 
       {/* Cinematic Showcase Section */}
-      <section className="bg-slate-950 py-40 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(249,115,22,0.05),transparent_50%)]"></div>
+      <section className="bg-accent py-40 relative overflow-hidden text-white">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
           <div className="lg:grid lg:grid-cols-2 lg:gap-32 lg:items-center">
             <div>
-              <span className="text-orange-500 font-black uppercase tracking-[0.4em] text-[10px] mb-8 block">The Gourmet Philosophy</span>
-              <h2 className="text-6xl lg:text-7xl font-black text-white tracking-tighter mb-10 leading-[0.95] font-display">Crafted for <br /> <span className="text-orange-500 decoration-8 decoration-orange-500/20 underline-offset-8">Instincts.</span></h2>
-              <p className="text-xl text-slate-400 font-medium leading-relaxed mb-16 max-w-lg">Designed after studying thousands of feline interaction patterns. We don&apos;t just make food and toys; we craft moments of pure feline joy.</p>
+              <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-8 block underline decoration-primary/30 underline-offset-8">Our Feline Manifesto</span>
+              <h2 className="text-6xl lg:text-8xl font-black text-white tracking-tighter mb-12 leading-[0.85] font-display italic">Crafted for <br /> <span className="text-secondary not-italic tracking-normal">Instincts.</span></h2>
+              <p className="text-xl text-white/60 font-medium leading-relaxed mb-16 max-w-lg">Designed after studying thousands of feline interaction patterns. We don&apos;t just create objects; we craft moments of pure feline joy.</p>
 
               <div className="grid grid-cols-2 gap-12">
                 <div className="space-y-3">
-                  <span className="text-5xl font-black text-white font-display">100%</span>
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500">Pure Grade Integrity</p>
+                  <span className="text-6xl font-black text-white font-display italic">100%</span>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">House Grade Integrity</p>
                 </div>
                 <div className="space-y-3">
-                  <span className="text-5xl font-black text-white font-display">Elite</span>
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500">Nutritional Profile</p>
+                  <span className="text-6xl font-black text-white font-display">Elite</span>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">Signature Profile</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-24 lg:mt-0 grid sm:grid-cols-2 gap-8">
-              <div className="bg-white/5 backdrop-blur-2xl p-12 rounded-[4rem] border border-white/10 hover:border-orange-500/30 transition-all duration-700 group">
-                <div className="size-20 rounded-3xl bg-orange-500 mb-10 flex items-center justify-center text-white shadow-3xl shadow-orange-500/30 group-hover:scale-110 transition-transform duration-500">
+            <div className="mt-24 lg:mt-0 grid sm:grid-cols-2 gap-10">
+              <div className="bg-white/5 backdrop-blur-2xl p-12 rounded-[4rem] border border-white/10 hover:border-primary/30 transition-all duration-700 group shadow-2xl">
+                <div className="size-20 rounded-3xl bg-primary mb-10 flex items-center justify-center text-white shadow-2xl shadow-primary/20 group-hover:rotate-6 transition-all duration-500">
                   <span className="material-symbols-outlined text-4xl">texture</span>
                 </div>
-                <h3 className="text-3xl font-black text-white mb-6 font-display">Tactile Edge</h3>
-                <p className="text-slate-400 font-medium text-base leading-relaxed">Unique textures that stimulate feline senses and promote natural engagement.</p>
+                <h3 className="text-3xl font-black text-white mb-6 font-display italic">Tactile Edge</h3>
+                <p className="text-white/50 font-medium text-base leading-relaxed">Unique textures that stimulate feline senses and promote natural, joyful engagement.</p>
               </div>
-              <div className="bg-white/5 backdrop-blur-2xl p-12 rounded-[4rem] border border-white/10 hover:border-orange-500/30 transition-all duration-700 group sm:translate-y-20">
-                <div className="size-20 rounded-3xl bg-white mb-10 flex items-center justify-center text-slate-900 shadow-3xl group-hover:scale-110 transition-transform duration-500">
+              <div className="bg-white/5 backdrop-blur-2xl p-12 rounded-[4rem] border border-white/10 hover:border-primary/30 transition-all duration-700 group shadow-2xl sm:translate-y-20">
+                <div className="size-20 rounded-3xl bg-white mb-10 flex items-center justify-center text-accent shadow-2xl group-hover:-rotate-6 transition-all duration-500">
                   <span className="material-symbols-outlined text-4xl">health_and_safety</span>
                 </div>
-                <h3 className="text-3xl font-black text-white mb-6 font-display">Expertly Vetted</h3>
-                <p className="text-slate-400 font-medium text-base leading-relaxed">Every batch is verified for safety and nutritional compliance by world experts.</p>
+                <h3 className="text-3xl font-black text-white mb-6 font-display italic">Vetted Quality</h3>
+                <p className="text-white/50 font-medium text-base leading-relaxed">Every creation is verified for safety and feline compliance by our global curators.</p>
               </div>
             </div>
           </div>
@@ -220,30 +224,39 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       </section>
 
       {/* Upsell Section */}
-      <section className="py-0 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
-        {relatedProducts}
+      <section className="py-24 bg-background-light">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
+           <div className="flex items-center justify-between mb-16 border-b border-primary/10 pb-8">
+              <h2 className="text-4xl lg:text-5xl font-black text-accent font-display italic tracking-tight">You May Also Like</h2>
+              <LocalizedClientLink href="/store" className="text-primary font-black uppercase tracking-widest text-[10px] hover:text-accent transition-all flex items-center gap-3">
+                 View Pantry <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </LocalizedClientLink>
+           </div>
+           {relatedProducts}
+        </div>
       </section>
 
       {/* Enhanced Reviews Section */}
-      <section className="bg-white py-40 border-t border-slate-50">
+      <section className="bg-white py-40 border-t border-neutral-border">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-32">
             <div className="lg:col-span-4">
               <div className="sticky top-32">
-                <h2 className="text-6xl font-black text-slate-900 tracking-tighter mb-12 font-display uppercase leading-none">The <br /> <span className="text-orange-500">Purrs.</span></h2>
+                 <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-8 block">Community Voices</span>
+                <h2 className="text-6xl font-black text-accent tracking-tighter mb-12 font-display italic leading-none underline decoration-primary/20 decoration-8 underline-offset-8">The <br /> Purrs.</h2>
                 <div className="flex items-end gap-6 mb-12">
-                  <span className="text-9xl font-black text-slate-900 tracking-tighter leading-none font-display">4.8</span>
+                  <span className="text-9xl font-black text-accent tracking-tighter leading-none font-display italic">4.8</span>
                   <div className="mb-4 flex flex-col gap-3">
-                    <div className="flex text-orange-400">
+                    <div className="flex text-primary">
                       {[...Array(5)].map((_, i) => (
                         <span key={i} className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                       ))}
                     </div>
-                    <span className="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] whitespace-nowrap">Global Satisfaction Score</span>
+                    <span className="text-[11px] font-black text-primary/30 uppercase tracking-[0.2em] whitespace-nowrap italic">Global Satisfaction Score</span>
                   </div>
                 </div>
 
-                <button className="w-full bg-slate-900 text-white h-24 rounded-[3rem] font-black uppercase tracking-[0.25em] shadow-3xl hover:bg-orange-600 transition-all duration-500 transform hover:-translate-y-2">
+                <button className="w-full bg-accent text-white h-24 rounded-[2.5rem] font-black uppercase tracking-[0.2em] shadow-2xl hover:bg-primary transition-all duration-500 transform hover:-translate-y-2">
                   Add Your Voice
                 </button>
               </div>
@@ -252,28 +265,28 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             <div className="lg:col-span-8 flex flex-col gap-12">
               {/* Review Cards */}
               {[1, 2].map((i) => (
-                <div key={i} className="p-16 rounded-[4.5rem] bg-[#F9FAFB] border border-slate-50 transition-all duration-700 hover:shadow-2xl hover:bg-white relative overflow-hidden group">
+                <div key={i} className="p-16 rounded-[4.5rem] bg-secondary/20 border border-secondary transition-all duration-700 hover:shadow-2xl hover:bg-white relative overflow-hidden group">
                   <div className="absolute -top-10 -right-10 opacity-5 group-hover:opacity-10 transition-opacity duration-1000">
-                    <span className="material-symbols-outlined text-[15rem]">format_quote</span>
+                    <span className="material-symbols-outlined text-[15rem] text-primary">format_quote</span>
                   </div>
                   <div className="flex justify-between items-start mb-10 relative z-10">
                     <div className="flex items-center gap-6">
-                      <div className="size-16 rounded-3xl bg-white shadow-xl flex items-center justify-center text-slate-900 font-black shadow-orange-100/50">
+                      <div className="size-16 rounded-3xl bg-white shadow-xl flex items-center justify-center text-accent font-black shadow-primary/5">
                         {i === 1 ? 'JD' : 'SM'}
                       </div>
                       <div>
-                        <h4 className="font-black text-slate-900 text-xl uppercase font-display tracking-tight">{i === 1 ? 'Jane Doe' : 'Sam Meow'}</h4>
-                        <div className="flex text-orange-400 text-xs mt-1">
+                        <h4 className="font-black text-accent text-xl uppercase font-display tracking-tight italic">{i === 1 ? 'Jane Doe' : 'Sam Meow'}</h4>
+                        <div className="flex text-primary text-xs mt-1">
                           {[...Array(5)].map((_, idx) => (
                             <span key={idx} className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                           ))}
                         </div>
                       </div>
                     </div>
-                    <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.25em]">{i === 1 ? 'Last Week' : 'Last Month'}</span>
+                    <span className="text-[10px] font-black text-primary/30 uppercase tracking-[0.25em] italic">{i === 1 ? 'Last Week' : 'Last Month'}</span>
                   </div>
-                  <h5 className="text-3xl font-black text-slate-900 mb-6 tracking-tight font-display uppercase">{i === 1 ? 'Absolutely Gourmet!' : 'The only food they eat'}</h5>
-                  <p className="text-slate-500 font-medium text-xl leading-relaxed max-w-2xl relative z-10">
+                  <h5 className="text-3xl font-black text-accent mb-6 tracking-tight font-display italic underline decoration-primary/10 decoration-4 underline-offset-4">{i === 1 ? 'Absolutely Gourmet!' : 'The only food they eat'}</h5>
+                  <p className="text-primary/60 font-medium text-xl leading-relaxed max-w-2xl relative z-10">
                     {i === 1
                       ? "I was hesitant about the price at first, but seeing the joy in my cat's eyes every morning makes it more than worth it. The packaging itself is a piece of art!"
                       : "We have tried every premium brand on the market and Meow Munch is the only one that gets them running to the kitchen. Top tier quality."
@@ -290,4 +303,3 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 }
 
 export default ProductTemplate
-
