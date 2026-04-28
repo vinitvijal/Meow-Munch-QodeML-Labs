@@ -32,21 +32,21 @@ export default function PriceFilter() {
 
   return (
     <>
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-6">
             <div className="relative w-full">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#61896f] text-xs">$</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 text-[10px] font-black">$</span>
                 <input
-                    className="w-full rounded-md border-[#dbe6df] bg-[#f0f4f2] py-2 pl-6 pr-2 text-sm focus:border-[#13ec5b] focus:ring-[#13ec5b]"
+                    className="w-full rounded-xl border-neutral-border bg-white py-3 pl-8 pr-3 text-xs font-bold text-accent focus:border-primary focus:ring-primary/20 transition-all"
                     type="number" 
                     value={minPrice} 
                     onChange={(e) => setMinPrice(e.target.value)} 
                 />
             </div>
-            <span className="text-[#61896f]">-</span>
+            <span className="text-primary/30 font-black">-</span>
             <div className="relative w-full">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#61896f] text-xs">$</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 text-[10px] font-black">$</span>
                 <input
-                    className="w-full rounded-md border-[#dbe6df] bg-[#f0f4f2] py-2 pl-6 pr-2 text-sm focus:border-[#13ec5b] focus:ring-[#13ec5b]"
+                    className="w-full rounded-xl border-neutral-border bg-white py-3 pl-8 pr-3 text-xs font-bold text-accent focus:border-primary focus:ring-primary/20 transition-all"
                     type="number" 
                     value={maxPrice} 
                     onChange={(e) => setMaxPrice(e.target.value)} 
@@ -54,7 +54,7 @@ export default function PriceFilter() {
             </div>
         </div>
         <input 
-            className="w-full accent-[#13ec5b] h-1 bg-[#dbe6df] rounded-lg appearance-none cursor-pointer"
+            className="w-full accent-primary h-1.5 bg-neutral-border rounded-full appearance-none cursor-pointer"
             type="range" 
             min="0"
             max="1000"

@@ -31,64 +31,64 @@ const StoreTemplate = async ({
     <div className="min-h-screen px-4 py-8 md:px-10 lg:px-14 max-w-[1440px] mx-auto w-full">
         {/* Breadcrumbs & Header */}
         <div className="mb-8">
-            <nav className="flex items-center text-sm text-[#61896f] mb-4">
-                <a className="hover:text-[#13ec5b] transition-colors" href="/">Home</a>
-                <span className="mx-2">/</span>
-                <span className="text-[#111813] font-medium">All</span>
+            <nav className="flex items-center text-sm text-primary mb-4">
+                <a className="hover:text-accent transition-colors font-bold uppercase tracking-widest text-[10px]" href="/">Home</a>
+                <span className="mx-2 opacity-30">/</span>
+                <span className="text-accent font-black uppercase tracking-widest text-[10px]">All</span>
             </nav>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[#111813]">All Products</h1>
-                    <p className="mt-2 text-[#61896f]">Nourish your feline friend with our curated selection.</p>
+                    <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-accent font-display italic">All Products</h1>
+                    <p className="mt-2 text-primary font-medium">Nourish your feline friend with our curated selection.</p>
                 </div>
             </div>
         </div>
-        <div className="flex flex-col lg:flex-row gap-8 xl:gap-12">
+        <div className="flex flex-col lg:flex-row gap-8 xl:gap-16">
             {/* Sidebar Filters */}
-            <aside className="w-full lg:w-64 flex-shrink-0 space-y-8 sticky top-28 self-start">
+            <aside className="w-full lg:w-72 flex-shrink-0 space-y-10 sticky top-32 self-start bg-white/50 backdrop-blur-sm p-8 rounded-[2.5rem] border border-neutral-border">
                 {/* Filter Group: Sort By */}
                 <div>
-                    <h3 className="font-bold text-[#111813] mb-4 flex items-center justify-between">
+                    <h3 className="font-black text-accent mb-6 flex items-center justify-between text-xs uppercase tracking-[0.2em]">
                         Sort By
                     </h3>
                     <RefinementList sortBy={sort} />
                 </div>
-                <div className="h-px bg-[#f0f4f2]"></div>
+                <div className="h-px bg-neutral-border"></div>
                 {/* Filter Group: Categories */}
                 <div>
-                    <h3 className="font-bold text-[#111813] mb-4 flex items-center justify-between">
+                    <h3 className="font-black text-accent mb-6 flex items-center justify-between text-xs uppercase tracking-[0.2em]">
                         Categories
-                        <span className="material-symbols-outlined text-[#61896f] text-sm">remove</span>
+                        <span className="material-symbols-outlined text-primary text-sm">remove</span>
                     </h3>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                         {product_categories && product_categories.map((c) => (
-                            <LocalizedClientLink key={c.id} href={`/categories/${c.handle}`} className="block text-sm text-[#61896f] hover:text-[#111813] transition-colors font-medium">
+                            <LocalizedClientLink key={c.id} href={`/categories/${c.handle}`} className="block text-sm text-primary/60 hover:text-accent transition-colors font-bold uppercase tracking-widest text-[10px]">
                                 {c.name}
                             </LocalizedClientLink>
                         ))}
                     </div>
                 </div>
-                <div className="h-px bg-[#f0f4f2]"></div>
+                <div className="h-px bg-neutral-border"></div>
                 {/* Filter Group: Life Stage */}
                 <div>
-                    <h3 className="font-bold text-[#111813] mb-4 flex items-center justify-between">
+                    <h3 className="font-black text-accent mb-6 flex items-center justify-between text-xs uppercase tracking-[0.2em]">
                         Life Stage
-                        <span className="material-symbols-outlined text-[#61896f] text-sm">remove</span>
+                        <span className="material-symbols-outlined text-primary text-sm">remove</span>
                     </h3>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                         {['Kitten (0-1 year)', 'Adult (1-7 years)', 'Senior (7+ years)'].map((l, i) => (
                         <label key={i} className="flex items-center gap-3 cursor-pointer group">
-                            <input className="h-4 w-4 border-[#dbe6df] text-[#13ec5b] focus:ring-[#13ec5b] cursor-pointer"
+                            <input className="h-4 w-4 border-neutral-border text-primary focus:ring-primary cursor-pointer rounded-full"
                                 name="lifestage" type="radio" defaultChecked={i===1} />
-                            <span className="text-sm text-[#61896f] group-hover:text-[#111813] transition-colors">{l}</span>
+                            <span className="text-[10px] font-bold text-primary/60 group-hover:text-accent transition-colors uppercase tracking-widest">{l}</span>
                         </label>
                         ))}
                     </div>
                 </div>
-                <div className="h-px bg-[#f0f4f2]"></div>
+                <div className="h-px bg-neutral-border"></div>
                 {/* Filter Group: Price */}
                 <div>
-                    <h3 className="font-bold text-[#111813] mb-4 flex items-center justify-between">
+                    <h3 className="font-black text-accent mb-6 flex items-center justify-between text-xs uppercase tracking-[0.2em]">
                         Price Range
                     </h3>
                     <PriceFilter />
