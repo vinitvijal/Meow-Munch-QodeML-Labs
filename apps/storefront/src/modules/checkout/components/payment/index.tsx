@@ -117,22 +117,22 @@ const Payment = ({
         <Heading
           level="h2"
           className={clx(
-            "flex items-center text-2xl font-bold text-gray-900 gap-x-3",
+            "flex items-center text-2xl font-black text-accent gap-x-4 font-display italic",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && !paymentReady,
             }
           )}
         >
-          <span className="w-1.5 h-6 bg-orange-500 rounded-full"></span>
+          <span className="w-1.5 h-6 bg-primary rounded-full"></span>
           Payment
-          {!isOpen && paymentReady && <CheckCircleSolid className="text-orange-500" />}
+          {!isOpen && paymentReady && <CheckCircleSolid className="text-primary" />}
         </Heading>
         {!isOpen && paymentReady && (
           <Text>
             <button
               onClick={handleEdit}
-              className="text-orange-600 font-medium hover:text-orange-700 transition-colors"
+              className="text-primary font-black uppercase tracking-widest text-[10px] hover:text-accent transition-colors underline underline-offset-4 decoration-primary/30"
               data-testid="edit-payment-button"
             >
               Edit
@@ -179,15 +179,15 @@ const Payment = ({
           )}
 
           {paidByGiftcard && (
-            <div className="flex items-center gap-4 bg-orange-50 p-4 rounded-2xl border border-orange-100 max-w-max">
-              <div className="bg-orange-100 p-2 rounded-lg">
-                 <span className="material-symbols-outlined text-orange-600">card_giftcard</span>
+            <div className="flex items-center gap-6 bg-background-light p-6 rounded-[2rem] border border-neutral-border max-w-max">
+              <div className="bg-secondary p-3 rounded-2xl shadow-sm">
+                 <span className="material-symbols-outlined text-primary text-2xl">card_giftcard</span>
               </div>
               <div className="flex flex-col">
-                <Text className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">
+                <Text className="text-[9px] font-black text-primary/40 uppercase tracking-[0.2em] mb-1 italic">
                   Payment Method
                 </Text>
-                <Text className="font-semibold text-gray-900" data-testid="payment-method-summary">
+                <Text className="font-black text-accent uppercase tracking-widest text-[11px]" data-testid="payment-method-summary">
                   Gift card
                 </Text>
               </div>
@@ -201,7 +201,7 @@ const Payment = ({
 
           <Button
             size="large"
-            className="w-full h-12 bg-orange-500 hover:bg-orange-600 transition-all rounded-xl mt-8"
+            className="w-full h-16 bg-accent hover:bg-primary transition-all duration-300 rounded-2xl mt-8 text-white font-black uppercase tracking-[0.2em] shadow-xl shadow-accent/10 transform hover:-translate-y-1"
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={
@@ -218,19 +218,19 @@ const Payment = ({
 
         <div className={isOpen ? "hidden" : "block animate-in fade-in duration-500"}>
           {cart && paymentReady && activeSession ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 bg-neutral-50 rounded-2xl border border-neutral-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 bg-background-light rounded-[2rem] border border-neutral-border">
               <div className="flex flex-col">
-                <Text className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+                <Text className="text-[9px] font-black text-primary/40 uppercase tracking-[0.2em] mb-4 italic">
                   Payment Method
                 </Text>
-                <div className="flex items-center gap-2">
-                  <div className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
+                <div className="flex items-center gap-4">
+                  <div className="bg-white p-3 rounded-2xl border border-neutral-border shadow-sm">
                     {paymentInfoMap[activeSession?.provider_id]?.icon || (
-                      <CreditCard className="text-gray-400" />
+                      <CreditCard className="text-primary/40" />
                     )}
                   </div>
                   <Text
-                    className="font-semibold text-gray-900"
+                    className="font-black text-accent uppercase tracking-widest text-[11px]"
                     data-testid="payment-method-summary"
                   >
                     {paymentInfoMap[activeSession?.provider_id]?.title ||

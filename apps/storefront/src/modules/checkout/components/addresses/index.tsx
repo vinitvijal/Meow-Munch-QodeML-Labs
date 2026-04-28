@@ -44,17 +44,17 @@ const Addresses = ({
       <div className="flex flex-row items-center justify-between mb-8">
         <Heading
           level="h2"
-          className="flex items-center text-2xl font-bold text-gray-900 gap-x-3"
+          className="flex items-center text-2xl font-black text-accent gap-x-4 font-display italic"
         >
-          <span className="w-1.5 h-6 bg-orange-500 rounded-full"></span>
+          <span className="w-1.5 h-6 bg-primary rounded-full"></span>
           Shipping Address
-          {!isOpen && <CheckCircleSolid className="text-orange-500" />}
+          {!isOpen && <CheckCircleSolid className="text-primary" />}
         </Heading>
         {!isOpen && cart?.shipping_address && (
           <Text>
             <button
               onClick={handleEdit}
-              className="text-orange-600 font-medium hover:text-orange-700 transition-colors"
+              className="text-primary font-black uppercase tracking-widest text-[10px] hover:text-accent transition-colors underline underline-offset-4 decoration-primary/30"
               data-testid="edit-address-button"
             >
               Edit
@@ -84,7 +84,7 @@ const Addresses = ({
                 <BillingAddress cart={cart} />
               </div>
             )}
-            <SubmitButton className="mt-10 h-12 bg-orange-500 hover:bg-orange-600 transition-all rounded-xl" data-testid="submit-address-button">
+            <SubmitButton className="mt-10 h-16 bg-accent hover:bg-primary transition-all duration-300 rounded-2xl text-white font-black uppercase tracking-[0.2em] shadow-xl shadow-accent/10" data-testid="submit-address-button">
               Continue to delivery
             </SubmitButton>
             <ErrorMessage error={message} data-testid="address-error-message" />
@@ -94,12 +94,12 @@ const Addresses = ({
         <div className="animate-in fade-in duration-500">
           <div className="text-small-regular">
             {cart && cart.shipping_address ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-4 bg-neutral-50 rounded-2xl border border-neutral-100">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-8 bg-background-light rounded-[2rem] border border-neutral-border">
                 <div
-                  className="flex flex-col"
-                  data-testid="shipping-address-summary"
+                   className="flex flex-col"
+                   data-testid="shipping-address-summary"
                 >
-                  <Text className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+                  <Text className="text-[9px] font-black text-primary/40 uppercase tracking-[0.2em] mb-4 italic">
                     Shipping Details
                   </Text>
                   <Text className="font-semibold text-gray-900">

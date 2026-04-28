@@ -26,21 +26,21 @@ const Review = ({ cart }: { cart: HttpTypes.StoreCart }) => {
         <Heading
           level="h2"
           className={clx(
-            "flex items-center text-2xl font-bold text-gray-900 gap-x-3",
+            "flex items-center text-2xl font-black text-accent gap-x-4 font-display italic",
             {
               "opacity-50 pointer-events-none select-none": !isOpen,
             }
           )}
         >
-          <span className="w-1.5 h-6 bg-orange-500 rounded-full"></span>
+          <span className="w-1.5 h-6 bg-primary rounded-full"></span>
           Review Order
         </Heading>
       </div>
       {isOpen && previousStepsCompleted && (
         <div className="animate-in fade-in slide-in-from-top-2 duration-500">
-          <div className="flex items-start gap-x-1 w-full mb-8 bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
+          <div className="flex items-start gap-x-1 w-full mb-8 bg-background-light p-8 rounded-[2rem] border border-neutral-border">
             <div className="w-full">
-              <Text className="text-sm text-gray-500 leading-relaxed">
+              <Text className="text-xs text-primary/60 leading-relaxed font-medium italic">
                 By clicking the **Place Order** button, you confirm that you have
                 read, understand and accept our **Terms of Use**, **Terms of Sale** and
                 **Returns Policy** and acknowledge that you have read Meow Munch
