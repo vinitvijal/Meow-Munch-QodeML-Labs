@@ -24,9 +24,9 @@ const Summary = ({ cart }: SummaryProps) => {
   const step = getCheckoutStep(cart)
 
   return (
-    <div className="flex flex-col gap-y-6 p-6 rounded-2xl bg-white/80 backdrop-blur-md shadow-xl border border-orange-100 transition-all hover:shadow-2xl hover:border-orange-200">
-      <Heading level="h2" className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-        <span className="w-2 h-8 bg-orange-500 rounded-full"></span>
+    <div className="flex flex-col gap-y-6 p-10 rounded-[2.5rem] bg-white shadow-soft border border-neutral-border transition-all hover:shadow-2xl hover:shadow-primary/5">
+      <Heading level="h2" className="text-2xl font-black text-accent flex items-center gap-3 font-display italic">
+        <span className="w-2 h-8 bg-primary rounded-full"></span>
         Order Summary
       </Heading>
       
@@ -38,7 +38,7 @@ const Summary = ({ cart }: SummaryProps) => {
         href={"/checkout?step=" + step}
         data-testid="checkout-button"
       >
-        <Button className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:scale-95 transition-all text-white font-bold rounded-xl shadow-lg shadow-orange-200">
+        <Button className="w-full h-16 bg-accent hover:bg-primary transition-all duration-300 text-white font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-accent/10 transform hover:-translate-y-1">
           Proceed to Checkout
         </Button>
       </LocalizedClientLink>
