@@ -32,11 +32,11 @@ export default function PriceFilter() {
 
   return (
     <>
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-2 lg:gap-3 mb-6">
             <div className="relative w-full">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 text-[10px] font-black">$</span>
+                <span className="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 text-primary/40 text-[8px] lg:text-[10px] font-black">$</span>
                 <input
-                    className="w-full rounded-xl border-neutral-border bg-white py-3 pl-8 pr-3 text-xs font-bold text-accent focus:border-primary focus:ring-primary/20 transition-all"
+                    className="w-full rounded-xl border-neutral-border bg-white py-2.5 lg:py-3 pl-6 lg:pl-8 pr-2 lg:pr-3 text-[10px] lg:text-xs font-bold text-accent focus:border-primary focus:ring-primary/20 transition-all"
                     type="number" 
                     value={minPrice} 
                     onChange={(e) => setMinPrice(e.target.value)} 
@@ -44,9 +44,9 @@ export default function PriceFilter() {
             </div>
             <span className="text-primary/30 font-black">-</span>
             <div className="relative w-full">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 text-[10px] font-black">$</span>
+                <span className="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 text-primary/40 text-[8px] lg:text-[10px] font-black">$</span>
                 <input
-                    className="w-full rounded-xl border-neutral-border bg-white py-3 pl-8 pr-3 text-xs font-bold text-accent focus:border-primary focus:ring-primary/20 transition-all"
+                    className="w-full rounded-xl border-neutral-border bg-white py-2.5 lg:py-3 pl-6 lg:pl-8 pr-2 lg:pr-3 text-[10px] lg:text-xs font-bold text-accent focus:border-primary focus:ring-primary/20 transition-all"
                     type="number" 
                     value={maxPrice} 
                     onChange={(e) => setMaxPrice(e.target.value)} 
