@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./apps/backend
+    ports:
+      - "9000:9000"
+    env_file:
+      - ./apps/backend/.env
+    depends_on:
+      - database
+      - redis
+    restart: always
+
+  storefront:
+    image: meow-munch-storefront:latest
+    # build:
+    #   context: ./apps/storefront
+    #   args:
+    #     - NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9000
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./apps/storefront/.env.local
+    environment:
+      # This is the URL used by the storefront at runtime to communicate with the backend container
+      - NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://backend:9000
+    depends_on:
+      - backend
+    restart: always

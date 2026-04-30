@@ -4,6 +4,7 @@ WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package*.json ./
+RUN npm config set strict-ssl false 
 RUN npm install --force
 
 # Copy the rest of the backend source code
