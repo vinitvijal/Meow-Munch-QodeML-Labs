@@ -1,10 +1,10 @@
-FROM node:20-alpine
+FROM node:24-alpine
 
 WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install --force
 
 # Copy the rest of the backend source code
 COPY . .
@@ -13,6 +13,13 @@ COPY . .
 RUN npm run build
 
 EXPOSE 9000
+
+# CD to .medusa/server
+WORKDIR /app/.medusa/server
+
+# Copy .env
+COPY ../../../.env ./.env.production
+
 
 # Start the Medusa production server
 CMD ["npm", "run", "start"]
