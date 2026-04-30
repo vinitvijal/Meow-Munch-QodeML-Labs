@@ -30,7 +30,7 @@ export const retrieveVariant = async (
         },
         headers,
         next,
-        cache: "no-cache",
+        cache: "force-cache",
       }
     )
     .then(({ variant }) => variant)

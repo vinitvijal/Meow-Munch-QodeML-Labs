@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  app:
+    image: cat-backend
+    container_name: cat_app
+    ports: 
+      - "9000:9000"
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`temple.meowcrunch.com`)"
+      - "traefik.http.routers.backend.entrypoints=web"
+      - "traefik.http.routers.backend.service=backend"
+      - "traefik.http.services.backend.loadbalancer.server.port=9000"
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls.certresolver=letsencrypt"

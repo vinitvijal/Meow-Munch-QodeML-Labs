@@ -11,6 +11,9 @@
     "dev": "next dev --turbopack -p 8000",
     "build": "next build",
     "start": "next start -p 8000",
+    "docker": "docker build -t cat-storefront . && docker compose up",
+    "docker:build": "docker build -t cat-storefront .",
+    "docker:run": "docker run -p 8000:8000 --env-file .env cat-storefront",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build"
   },

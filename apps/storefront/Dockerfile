@@ -4,15 +4,13 @@ WORKDIR /app
 
 # Install dependencies
 COPY package*.json ./
-RUN npm install --force
+RUN npm config set strict-ssl false 
+RUN npm cache clean --force
+RUN npm install --legacy-peer-deps
 
 # Copy source code
 COPY . .
 
-# Next.js requires the Medusa backend to be reachable during the build step (for SSG).
-# We accept this as a build argument. Default is host network for local builds.
-ARG NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9000
-ENV NEXT_PUBLIC_MEDUSA_BACKEND_URL=$NEXT_PUBLIC_MEDUSA_BACKEND_URL
 
 # Build the Next.js application
 RUN npm run build

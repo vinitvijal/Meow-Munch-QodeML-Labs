@@ -1,0 +1,14 @@
+services:
+  app:
+    image: cat-storefront
+    container_name: cat_storefront
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.local
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`meowcrunch.com`)"
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.backend.loadbalancer.server.port=8000"
