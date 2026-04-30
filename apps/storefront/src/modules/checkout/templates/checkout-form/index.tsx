@@ -26,19 +26,19 @@ export default async function CheckoutForm({
 
   return (
     <div className="w-full grid grid-cols-1 gap-y-6">
-      <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 transition-all hover:shadow-md">
+      <div className="bg-white rounded-[2.5rem] p-10 shadow-soft border border-neutral-border transition-all hover:shadow-2xl hover:shadow-primary/5">
         <Addresses cart={cart} customer={customer} />
       </div>
 
-      <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 transition-all hover:shadow-md">
+      <div className="bg-white rounded-[2.5rem] p-10 shadow-soft border border-neutral-border transition-all hover:shadow-2xl hover:shadow-primary/5">
         <Shipping cart={cart} availableShippingMethods={shippingMethods} />
       </div>
 
-      <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 transition-all hover:shadow-md">
+      <div className="bg-white rounded-[2.5rem] p-10 shadow-soft border border-neutral-border transition-all hover:shadow-2xl hover:shadow-primary/5">
         <Payment cart={cart} availablePaymentMethods={paymentMethods} />
       </div>
 
-      <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 transition-all hover:shadow-md">
+      <div className="bg-white rounded-[2.5rem] p-10 shadow-soft border border-neutral-border transition-all hover:shadow-2xl hover:shadow-primary/5">
         <Review cart={cart} />
       </div>
     </div>

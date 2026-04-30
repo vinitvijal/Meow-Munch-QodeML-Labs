@@ -12,13 +12,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary": "#8aa899", "secondary": "#e8e0d5", "accent": "#d4a373", "background-light": "#fcfbf9",
+        "primary": "#967E67", // Medium brown
+        "secondary": "#F5E6DA", // Light beige
+        "accent": "#4A3728", // Dark brown
+        "background-light": "#FDF8F5", // Soft beige
         "background-dark": "#1c1c1e",
         "neutral-surface": "#ffffff",
         "neutral-surface-dark": "#2c2c2e",
-        "neutral-border": "#ebe5de",
+        "neutral-border": "#E8DED3",
         "neutral-border-dark": "#3a3a3c",
-        "text-main": "#333d38",
+        "text-main": "#4A3728", // Dark brown text
         grey: {
           0: "#FFFFFF",
           5: "#F9FAFB",
@@ -34,7 +37,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        display: ["Outfit", "sans-serif"],
+        display: ["Playfair Display", "serif"],
+        serif: ["Playfair Display", "serif"],
         sans: [
           "Inter",
           "-apple-system",
@@ -47,8 +51,8 @@ module.exports = {
         ],
       },
       boxShadow: {
-        "soft": "0 10px 40px -10px rgba(0,0,0,0.08)",
-        "glass": "0 8px 32px 0 rgba(31, 38, 135, 0.07)",
+        "soft": "0 10px 40px -10px rgba(74, 55, 40, 0.08)",
+        "glass": "0 8px 32px 0 rgba(74, 55, 40, 0.07)",
       },
       borderRadius: {
         none: "0px",

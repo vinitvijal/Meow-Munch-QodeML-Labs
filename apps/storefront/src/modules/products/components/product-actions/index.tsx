@@ -175,7 +175,7 @@ export default function ProductActions({
             !isValidVariant
           }
           variant="primary"
-          className="w-full h-20 rounded-[2rem] bg-slate-900 border-none text-white font-black uppercase tracking-[0.2em] shadow-2xl hover:bg-orange-600 transition-all duration-300 transform hover:-translate-y-1 mb-4"
+          className="w-full h-20 rounded-[2rem] bg-accent border-none text-white font-black uppercase tracking-[0.2em] shadow-2xl hover:bg-primary transition-all duration-300 transform hover:-translate-y-1 mb-4"
           isLoading={isAdding}
           data-testid="add-product-button"
         >

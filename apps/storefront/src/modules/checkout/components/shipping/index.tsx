@@ -157,17 +157,17 @@ const Shipping: React.FC<ShippingProps> = ({
         <Heading
           level="h2"
           className={clx(
-            "flex items-center text-2xl font-bold text-gray-900 gap-x-3",
+            "flex items-center text-2xl font-black text-accent gap-x-4 font-display italic",
             {
               "opacity-50 pointer-events-none select-none":
                 !isOpen && cart.shipping_methods?.length === 0,
             }
           )}
         >
-          <span className="w-1.5 h-6 bg-orange-500 rounded-full"></span>
+          <span className="w-1.5 h-6 bg-primary rounded-full"></span>
           Delivery Method
           {!isOpen && (cart.shipping_methods?.length ?? 0) > 0 && (
-            <CheckCircleSolid className="text-orange-500" />
+            <CheckCircleSolid className="text-primary" />
           )}
         </Heading>
         {!isOpen &&
@@ -177,7 +177,7 @@ const Shipping: React.FC<ShippingProps> = ({
             <Text>
               <button
                 onClick={handleEdit}
-                className="text-orange-600 font-medium hover:text-orange-700 transition-colors"
+                className="text-primary font-black uppercase tracking-widest text-[10px] hover:text-accent transition-colors underline underline-offset-4 decoration-primary/30"
                 data-testid="edit-delivery-button"
               >
                 Edit
@@ -212,9 +212,9 @@ const Shipping: React.FC<ShippingProps> = ({
                       value={PICKUP_OPTION_ON}
                       data-testid="delivery-option-radio"
                       className={clx(
-                        "flex items-center justify-between p-4 bg-white border rounded-2xl transition-all cursor-pointer hover:border-orange-200 hover:bg-orange-50/10",
+                        "flex items-center justify-between p-5 bg-white border-2 rounded-[2rem] transition-all cursor-pointer hover:border-primary/50 hover:bg-background-light/50",
                         {
-                          "border-orange-500 ring-1 ring-orange-500 bg-orange-50/30":
+                          "border-primary bg-secondary/30 shadow-lg shadow-primary/5":
                             showPickupOptions === PICKUP_OPTION_ON,
                         }
                       )}
@@ -227,7 +227,7 @@ const Shipping: React.FC<ShippingProps> = ({
                           Pick up your order
                         </span>
                       </div>
-                      <span className="text-orange-600 font-bold">
+                      <span className="text-accent font-black uppercase tracking-widest text-[10px]">
                         Free
                       </span>
                     </Radio>
@@ -258,10 +258,10 @@ const Shipping: React.FC<ShippingProps> = ({
                         data-testid="delivery-option-radio"
                         disabled={isDisabled}
                         className={clx(
-                          "flex items-center justify-between p-5 bg-white border rounded-2xl transition-all cursor-pointer",
+                          "flex items-center justify-between p-6 bg-white border-2 rounded-[2rem] transition-all cursor-pointer",
                           {
-                            "border-orange-500 ring-1 ring-orange-500 bg-orange-50/30": isSelected,
-                            "border-gray-100 hover:border-orange-200 hover:bg-orange-50/10": !isSelected && !isDisabled,
+                            "border-primary bg-secondary/30 shadow-lg shadow-primary/5": isSelected,
+                            "border-neutral-border hover:border-primary/50 hover:bg-background-light/50": !isSelected && !isDisabled,
                             "opacity-50 cursor-not-allowed grayscale": isDisabled,
                           }
                         )}
@@ -277,7 +277,7 @@ const Shipping: React.FC<ShippingProps> = ({
                              <span className="text-xs text-gray-400">Regular Shipping</span>
                           </div>
                         </div>
-                        <span className="font-bold text-orange-600">
+                        <span className="font-black text-accent uppercase tracking-widest text-[11px]">
                           {option.price_type === "flat" ? (
                             convertToLocale({
                               amount: option.amount!,
@@ -375,7 +375,7 @@ const Shipping: React.FC<ShippingProps> = ({
             />
             <Button
               size="large"
-              className="w-full h-12 bg-orange-500 hover:bg-orange-600 transition-all rounded-xl mt-4"
+              className="w-full h-16 bg-accent hover:bg-primary transition-all duration-300 rounded-2xl mt-6 text-white font-black uppercase tracking-[0.2em] shadow-xl shadow-accent/10 transform hover:-translate-y-1"
               onClick={handleSubmit}
               isLoading={isLoading}
               disabled={!cart.shipping_methods?.[0]}
@@ -389,17 +389,17 @@ const Shipping: React.FC<ShippingProps> = ({
         <div className="animate-in fade-in duration-500">
           <div className="text-small-regular">
             {cart && (cart.shipping_methods?.length ?? 0) > 0 && (
-              <div className="flex items-center gap-4 bg-neutral-50 p-4 rounded-2xl border border-neutral-100 max-w-max">
-                <div className="bg-orange-100 p-2 rounded-lg">
-                   <span className="material-symbols-outlined text-orange-600">local_shipping</span>
+              <div className="flex items-center gap-6 bg-background-light p-6 rounded-[2rem] border border-neutral-border max-w-max">
+                <div className="bg-secondary p-3 rounded-2xl shadow-sm">
+                   <span className="material-symbols-outlined text-primary text-2xl">local_shipping</span>
                 </div>
                 <div className="flex flex-col">
-                  <Text className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">
+                  <Text className="text-[9px] font-black text-primary/40 uppercase tracking-[0.2em] mb-1 italic">
                     Selected Method
                   </Text>
-                  <Text className="font-semibold text-gray-900">
+                  <Text className="font-black text-accent uppercase tracking-widest text-[11px]">
                     {cart.shipping_methods!.at(-1)!.name}{" "}
-                    <span className="text-orange-600">
+                    <span className="text-primary font-medium">
                       ({convertToLocale({
                         amount: cart.shipping_methods!.at(-1)!.amount!,
                         currency_code: cart?.currency_code,

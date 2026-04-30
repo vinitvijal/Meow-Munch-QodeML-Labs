@@ -36,8 +36,8 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
               className={clx(
                 "h-14 rounded-2xl p-4 text-xs font-bold transition-all duration-300 border-2 ",
                 {
-                  "border-orange-500 bg-orange-50 text-orange-600 shadow-lg shadow-orange-100": v === current,
-                  "border-slate-100 bg-white text-slate-600 hover:border-slate-200": v !== current,
+                  "border-primary bg-secondary/50 text-accent shadow-lg shadow-primary/10": v === current,
+                  "border-neutral-border bg-white text-primary/60 hover:border-primary/50": v !== current,
                 }
               )}
               disabled={disabled}

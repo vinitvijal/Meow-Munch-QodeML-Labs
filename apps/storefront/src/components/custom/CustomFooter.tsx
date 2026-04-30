@@ -13,33 +13,35 @@ export default async function CustomFooter() {
   const topCategories = categories ? categories.slice(0, 5) : [];
 
   return (
-    <footer className="bg-white dark:bg-neutral-surface-dark border-t border-neutral-border dark:border-neutral-border-dark pt-16 pb-8">
+    <footer className="bg-background-light border-t border-neutral-border pt-20 pb-10">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
           <div className="col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-8">
               <Link className="flex items-center gap-3 group" href="/">
-                <div className="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-orange-200 group-hover:rotate-6 transition-transform">
-                  <span className="material-symbols-outlined text-2xl font-bold">pets</span>
+                <div className="w-12 h-12 bg-accent rounded-2xl flex items-center justify-center text-white shadow-xl shadow-primary/20 group-hover:rotate-6 transition-transform">
+                  <span className="material-symbols-outlined text-3xl font-bold">pets</span>
                 </div>
-                <span className="text-xl font-black text-gray-900 tracking-tighter uppercase">
-                  Meow<span className="text-orange-500 font-medium">Munch</span>
+                <span className="text-2xl font-black text-accent tracking-tighter uppercase font-display">
+                  Meow<span className="text-primary font-medium tracking-normal lowercase italic">Munch</span>
                 </span>
               </Link>
             </div>
-            <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-sm mb-8">
-              Dedicated to providing the best for your feline companions. From premium nutrition to
-              engaging toys, we have everything your cat needs to thrive.
+            <p className="text-primary/70 text-base leading-relaxed max-w-sm mb-10 font-medium">
+              Curating the finest essentials for the modern feline. From artisanal nutrition to
+              thoughtfully designed play, we celebrate the bond between cat and human.
             </p>
-            <div className="flex gap-4">
-              <a className="size-10 rounded-full border border-neutral-border dark:border-neutral-border-dark flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300" href="#">W</a>
-              <a className="size-10 rounded-full border border-neutral-border dark:border-neutral-border-dark flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300" href="#">C</a>
-              <a className="size-10 rounded-full border border-neutral-border dark:border-neutral-border-dark flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300" href="#">E</a>
+            <div className="flex gap-5">
+              {['Instagram', 'Pinterest', 'Twitter'].map((social) => (
+                <a key={social} className="size-12 rounded-2xl border border-neutral-border flex items-center justify-center text-primary/40 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-sm" href="#">
+                  <span className="text-[10px] font-black uppercase tracking-tighter">{social[0]}</span>
+                </a>
+              ))}
             </div>
           </div>
           <div>
-            <h3 className="text-text-main dark:text-white font-bold mb-6 text-lg">Collections</h3>
-            <ul className="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
+            <h3 className="text-accent font-black mb-8 text-xs uppercase tracking-[0.2em]">Collections</h3>
+            <ul className="flex flex-col gap-5 text-sm text-primary/60 font-medium">
               {collections.map((c) => (
                 <li key={c.id}>
                   <Link className="hover:text-primary transition-colors" href={`/collections/${c.handle}`}>{c.title}</Link>
@@ -48,8 +50,8 @@ export default async function CustomFooter() {
             </ul>
           </div>
           <div>
-            <h3 className="text-text-main dark:text-white font-bold mb-6 text-lg">Categories</h3>
-            <ul className="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
+            <h3 className="text-accent font-black mb-8 text-xs uppercase tracking-[0.2em]">Boutique</h3>
+            <ul className="flex flex-col gap-5 text-sm text-primary/60 font-medium">
               {topCategories.map((c) => (
                 <li key={c.id}>
                   <Link className="hover:text-primary transition-colors" href={`/categories/${c.handle}`}>{c.name}</Link>
@@ -58,21 +60,21 @@ export default async function CustomFooter() {
             </ul>
           </div>
           <div>
-            <h3 className="text-text-main dark:text-white font-bold mb-6 text-lg">Company</h3>
-            <ul className="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
-              <li><Link className="hover:text-primary transition-colors" href="#">About Us</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Careers</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Blog</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Privacy Policy</Link></li>
+            <h3 className="text-accent font-black mb-8 text-xs uppercase tracking-[0.2em]">House</h3>
+            <ul className="flex flex-col gap-5 text-sm text-primary/60 font-medium">
+              <li><Link className="hover:text-primary transition-colors" href="#">Our Story</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Journal</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Ethics</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Support</Link></li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-neutral-border dark:border-neutral-border-dark pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-xs text-slate-400 text-center md:text-left">© 2026 Meow Munch. All rights reserved.</p>
-          <div className="flex items-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
-            <img alt="Visa" className="h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJob-kkNhtkT9oVs54BYgE-lGV_yhZ5GMsY3btwXfuYAieVo6FxkQobU3vdMbd8p5G3w_99P0oRzA1prvKsu55xVfa6Ua9j0E2OfCVQiFZma4GmRxfwB0OSjfhI1Iv93Kko8Bt-_KPy7hblVykk2kiPjk9HdnaliYZ-ors9wDN3bVzu0evyoCHB5FsSFbvYitgmf6PlAN3qYewrreu7JhsLfIs4wW8qA_8ZQ2DxnR_3CA_8zUHClAQyz5tfONK3jA3Ywj64z9aUA" />
-            <img alt="Mastercard" className="h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqbdGDr7xKrDXeySE800GbIqrYEUSDAo-Bdwb3Zptb9YreRtFA-KrOkDVDiv0BvBdYp_5WxpHuZhGNzVg-B6Z6QD0RjWumYj7tbi696nDztYpqqHMb5CLAWYNnE9O8cuxqpHNdvtagzPUqPwqzMJCSXT1L2vxZ67Tscjz3U12BeLm_UOabTwJKVhY1Pxt0zIepeTfmo4AjUY1EIv48YmSBN3mnUOmW3DHm6cntJA6_78Jl2_QvjU9qUbfsjO5nbuln2TNxUxKJHkk" />
-            <img alt="Paypal" className="h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoTvrNVUb1UvMebn701INgWWHbUghNn9duzfQ5ScXczKFw-e3kDaohsZqIbOtr2IOBuX-6cynyv-ZoEi_nrQTAh5OJ20W8M22xkW0he1tag7yzKNa0c3SehBVbp7Awk1U1QZZFqAv6lKTh2IB3yL_yFrSzg5-EDbeCRqhu8S-bqyOG9JwXFDJLstzCm50fG1mns1ZqVE0LILvigZbnQaTLh9uDvtO6BwDVZRbD5AwqJ-hpKvLK62Vyu09SSrINkWC5TOsxaqKuP-s" />
+        <div className="border-t border-neutral-border pt-10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <p className="text-[10px] font-black text-primary/30 uppercase tracking-[0.2em]">© 2026 Meow Munch House. Crafted with love.</p>
+          <div className="flex items-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+            <img alt="Visa" className="h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJob-kkNhtkT9oVs54BYgE-lGV_yhZ5GMsY3btwXfuYAieVo6FxkQobU3vdMbd8p5G3w_99P0oRzA1prvKsu55xVfa6Ua9j0E2OfCVQiFZma4GmRxfwB0OSjfhI1Iv93Kko8Bt-_KPy7hblVykk2kiPjk9HdnaliYZ-ors9wDN3bVzu0evyoCHB5FsSFbvYitgmf6PlAN3qYewrreu7JhsLfIs4wW8qA_8ZQ2DxnR_3CA_8zUHClAQyz5tfONK3jA3Ywj64z9aUA" />
+            <img alt="Mastercard" className="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqbdGDr7xKrDXeySE800GbIqrYEUSDAo-Bdwb3Zptb9YreRtFA-KrOkDVDiv0BvBdYp_5WxpHuZhGNzVg-B6Z6QD0RjWumYj7tbi696nDztYpqqHMb5CLAWYNnE9O8cuxqpHNdvtagzPUqPwqzMJCSXT1L2vxZ67Tscjz3U12BeLm_UOabTwJKVhY1Pxt0zIepeTfmo4AjUY1EIv48YmSBN3mnUOmW3DHm6cntJA6_78Jl2_QvjU9qUbfsjO5nbuln2TNxUxKJHkk" />
+            <img alt="Paypal" className="h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoTvrNVUb1UvMebn701INgWWHbUghNn9duzfQ5ScXczKFw-e3kDaohsZqIbOtr2IOBuX-6cynyv-ZoEi_nrQTAh5OJ20W8M22xkW0he1tag7yzKNa0c3SehBVbp7Awk1U1QZZFqAv6lKTh2IB3yL_yFrSzg5-EDbeCRqhu8S-bqyOG9JwXFDJLstzCm50fG1mns1ZqVE0LILvigZbnQaTLh9uDvtO6BwDVZRbD5AwqJ-hpKvLK62Vyu09SSrINkWC5TOsxaqKuP-s" />
           </div>
         </div>
       </div>
