@@ -1,241 +1,403 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
-import { ArrowRight, PlaySolid, StarSolid, Plus, Heart, Sparkles } from "@medusajs/icons"
+import React, { useState, useRef, useEffect } from "react"
+import { ArrowRight, Heart } from "@medusajs/icons"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-
-const slides = [
-    {
-        title: "Artisanal Comfort, Pure Joy.",
-        subtitle: "Handcrafted beds and organic wellness treats for the modern feline.",
-        image: "/images/hero_cat_bed_themed.png",
-        badge: "New Collection",
-        accent: "Pure Joy."
-    },
-    {
-        title: "The Handcrafted Feline Pantry.",
-        subtitle: "Elevate your cat's play with thoughtfully designed artisanal toys.",
-        image: "/images/hero_cat_toy_themed.png",
-        badge: "Limited Edition",
-        accent: "Modern Pantry."
-    },
-    {
-        title: "Elegance in Every Detail.",
-        subtitle: "Science-backed nutrition and accessories that make them purr.",
-        image: "/images/hero_cat_collar_themed.png",
-        badge: "Community Favorite",
-        accent: "Every Detail."
-    }
-]
 
 export default function CustomHome({
     categories = [],
     collections,
     region,
-    lifeStageCollections = [],
-    bestSellerProducts = []
+    newArrivalsProducts = [],
+    popularProducts = []
 }: any) {
     const [currentSlide, setCurrentSlide] = useState(0)
+    const testimonialsRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % slides.length)
-        }, 8000)
+        }, 5000)
         return () => clearInterval(timer)
     }, [])
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (testimonialsRef.current) {
+                const { scrollLeft, scrollWidth, clientWidth } = testimonialsRef.current;
+                if (scrollLeft + clientWidth >= scrollWidth - 10) {
+                    testimonialsRef.current.scrollTo({ left: 0, behavior: "smooth" });
+                } else {
+                    testimonialsRef.current.scrollBy({ left: 300, behavior: "smooth" });
+                }
+            }
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // Using dummy slides to match the slider behavior from before, but styled according to new mockup
+    const slides = [
+        {
+            title: "Stylish essentials for every cat",
+            subtitle: "Thoughtfully designed accessories for comfort, play and every little meow.",
+            image: "/images/hero_cat_collar_themed.png", // placeholder
+        },
+        {
+            title: "Premium Comfort for your feline",
+            subtitle: "Elevate your cat's play with thoughtfully designed artisanal toys.",
+            image: "/images/hero_cat_bed_themed.png", // placeholder
+        },
+        {
+            title: "Essentials for every cat",
+            subtitle: "Play and every little meow.",
+            image: "/images/hero_cat_toy_themed.png", // placeholder
+        },
+    ]
+
     const categoryIcons: Record<string, string> = {
-        "food": "https://images.unsplash.com/photo-1589924691106-073b13f15dc7?q=80&w=800&auto=format&fit=crop",
-        "toys": "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=800&auto=format&fit=crop",
-        "grooming": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=800&auto=format&fit=crop",
-        "litter": "https://images.unsplash.com/photo-1608501078713-8e445a709b39?q=80&w=800&auto=format&fit=crop"
+        "grooming": "/images/home/grooming.jpg",
+        "cat-toys": "/images/home/toys.webp",
+        "clothing-&-wear": "/images/home/wear.png",
+        "cats-bed-&-furniture": "/images/home/bed.jpg"
     }
 
-    return (
-        <div className="flex-1 w-full bg-background-light font-sans">
-            {/* Hero Section */}
-            <section className="relative w-full h-[600px] lg:h-[850px] overflow-hidden flex items-center bg-background-light">
-                {/* Background Image with Mask */}
-                <div className="absolute inset-0 z-0">
-                    {slides.map((slide, i) => (
-                        <div 
-                            key={i}
-                            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === currentSlide ? 'opacity-100' : 'opacity-0'}`}
-                        >
-                            <div 
-                                className="absolute inset-0 bg-cover bg-center lg:bg-right"
-                                style={{ 
-                                    backgroundImage: `url(${slide.image})`,
-                                    maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%), linear-gradient(to left, black 50%, transparent 100%)',
-                                    WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%), linear-gradient(to left, black 50%, transparent 100%)'
-                                }}
-                            />
-                        </div>
-                    ))}
-                    {/* Horizontal/Vertical Fade Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/60 lg:via-background-light/40 to-transparent z-10"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-background-light via-transparent to-transparent lg:hidden z-10"></div>
-                </div>
+    const formatPrice = (product: any) => {
+        return product?.formattedPrice || "£14.99";
+    };
 
-                <div className="content-container relative z-20 w-full">
-                    <div className="max-w-2xl lg:ml-0">
-                        <div className="overflow-hidden mb-4 lg:mb-6">
-                            <span className="inline-block px-4 py-1.5 lg:px-5 lg:py-2 bg-primary/10 text-primary rounded-full text-[9px] lg:text-[10px] font-black uppercase tracking-[0.4em] animate-in slide-in-from-bottom-full duration-700">
-                                {slides[currentSlide].badge}
-                            </span>
-                        </div>
-                        
-                        <h1 className="text-4xl sm:text-5xl lg:text-8xl font-black leading-[1] lg:leading-[0.9] text-accent mb-6 lg:mb-8 font-display tracking-tight">
-                            {slides[currentSlide].title.includes(',') ? slides[currentSlide].title.split(',')[0] : slides[currentSlide].title} <br />
-                            <span className="text-primary italic font-medium">{slides[currentSlide].accent}</span>
-                        </h1>
-                        
-                        <p className="text-base lg:text-xl text-accent/70 leading-relaxed mb-8 lg:mb-12 max-w-lg font-medium">
-                            {slides[currentSlide].subtitle}
-                        </p>
-                        
-                        <div className="flex flex-col sm:flex-row gap-4 lg:gap-5">
-                            <LocalizedClientLink
-                                href="/store"
-                                className="flex items-center justify-center rounded-2xl bg-accent hover:bg-primary text-white px-10 py-5 lg:px-12 lg:py-6 text-xs lg:text-sm font-black uppercase tracking-[0.2em] shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                            >
-                                Shop Collection
-                            </LocalizedClientLink>
-                            <LocalizedClientLink
-                                href="/contact"
-                                className="flex items-center justify-center rounded-2xl bg-white border border-neutral-border text-accent px-10 py-5 lg:px-12 lg:py-6 text-xs lg:text-sm font-black uppercase tracking-[0.2em] shadow-xl transition-all duration-300 hover:bg-background-light"
-                            >
-                                Our Philosophy
-                            </LocalizedClientLink>
-                        </div>
+    const renderProductCard = (product: any, i: number) => {
+        const title = product?.title || "Product Title";
+        const image = product?.thumbnail || "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=600&auto=format&fit=crop";
+        const handle = product?.handle || "#";
+
+        return (
+            <LocalizedClientLink
+                key={i}
+                href={`/products/${handle}`}
+                className="group flex flex-col bg-white rounded-2xl border border-accent/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            >
+                <div className="relative aspect-square overflow-hidden bg-[#FAF8F3] p-6 flex items-center justify-center">
+                    <button className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-sm z-10 hover:bg-background-light transition-colors border border-accent/10">
+                        <Heart className="w-4 h-4 text-accent" />
+                    </button>
+                    <img
+                        alt={title}
+                        className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                        src={image}
+                    />
+                </div>
+                <div className="flex justify-between items-end p-5">
+                    <div className="flex flex-col gap-1">
+                        <h3 className="font-display font-black text-accent text-sm sm:text-base leading-tight group-hover:text-primary transition-colors">{title}</h3>
+                        <div className="font-bold text-accent text-sm sm:text-base">{formatPrice(product)}</div>
                     </div>
                 </div>
+            </LocalizedClientLink>
+        )
+    };
 
-                {/* Slide Indicators */}
-                <div className="absolute bottom-8 lg:bottom-12 left-0 w-full z-30">
-                    <div className="content-container flex gap-2 lg:gap-3">
-                        {slides.map((_, i) => (
-                            <button 
-                                key={i}
-                                onClick={() => setCurrentSlide(i)}
-                                className={`h-1 lg:h-1.5 transition-all duration-500 rounded-full ${i === currentSlide ? 'w-10 lg:w-16 bg-primary' : 'w-3 lg:w-4 bg-primary/20'}`}
-                            />
+    const testimonials = [
+        {
+            rating: 5,
+            text: "The quality is purrfect!! My cat loves the collar and gets so many compliments.",
+            author: "Sophie L.",
+            image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=200&auto=format&fit=crop"
+        },
+        {
+            rating: 5,
+            text: "Fast delivery, beautiful packaging, and amazing products!",
+            author: "Daniel R.",
+            image: "https://images.unsplash.com/photo-1529778458726-36f1c4e7fb2d?q=80&w=200&auto=format&fit=crop"
+        },
+        {
+            rating: 5,
+            text: "Finally found a store that understands style and comfort for cats!",
+            author: "Mia T.",
+            image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?q=80&w=200&auto=format&fit=crop"
+        },
+        {
+            rating: 5,
+            text: "I am amazed by the craftsmanship! My two Maine Coons sleep all day now.",
+            author: "Alex J.",
+            image: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=200&auto=format&fit=crop"
+        },
+        {
+            rating: 5,
+            text: "The best cat accessories online. Fast shipping and my cat loves the organic treats.",
+            author: "Emma W.",
+            image: "https://images.unsplash.com/photo-1511044568932-338cba0ad803?q=80&w=200&auto=format&fit=crop"
+        }
+    ];
+
+    const blogPosts = [
+        {
+            title: "How to Choose the Right Collar for Your Cat",
+            date: "May 10, 2024",
+            image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+            title: "5 Fun Toys to Keep Your Cat Active Indoors",
+            date: "May 5, 2024",
+            image: "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+            title: "Creating the Purr-fect Cozy Space",
+            date: "April 28, 2024",
+            image: "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?q=80&w=600&auto=format&fit=crop"
+        }
+    ];
+
+    const instagramImages = [
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=400&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=400&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1511044568932-338cba0ad803?q=80&w=400&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?q=80&w=400&auto=format&fit=crop"
+    ];
+
+    return (
+        <div className="flex-1 w-full bg-[#FAF8F3] font-sans">
+            {/* Hero Section */}
+            <section className="relative w-full h-[70vh] min-h-[600px] lg:mt-10 overflow-hidden ">
+                {slides.map((slide, i) => (
+                    <div
+                        key={i}
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                    >
+                        <div className="absolute inset-0 overflow-hidden  bg-[#EFEAE2] border-black md:rounded-3xl flex flex-col lg:flex-row h-full w-full max-w-[1600px] mx-auto">
+                            <div className="w-full lg:w-1/2 pt-32 lg:pt-0 relative z-20 flex flex-col justify-center pl-8 sm:pl-16 lg:pl-32 pr-8">
+                                <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-display font-black text-accent mb-6 leading-[1] tracking-tight">
+                                    {slide.title}
+                                </h1>
+                                <p className="text-lg lg:text-xl text-accent/80 mb-10 max-w-sm font-medium">
+                                    {slide.subtitle}
+                                </p>
+                                <div>
+                                    <LocalizedClientLink
+                                        href="/store"
+                                        className="inline-flex items-center justify-center rounded-2xl bg-accent text-white px-12 py-5 text-sm font-black transition-all hover:bg-primary"
+                                    >
+                                        Shop Now
+                                    </LocalizedClientLink>
+                                </div>
+                            </div>
+                            <div className="w-full lg:w-2/3 h-full absolute lg:relative top-0 right-0 z-10">
+                                {/* Gradient to fade the image into the background color smoothly */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#EFEAE2] via-[#EFEAE2]/10 to-transparent z-10 hidden lg:block" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#EFEAE2] via-[#EFEAE2]/40 to-transparent z-10 lg:hidden" />
+                                <img src={slide.image} alt="Cat Hero" className="w-full h-full object-cover object-center lg:object-right mix-blend-multiply" />
+                            </div>
+                        </div>
+                    </div>
+                ))}
+
+                {/* Controls */}
+                <button
+                    onClick={() => setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))}
+                    className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md z-30 text-accent hover:bg-background-light transition-colors"
+                >
+                    &larr;
+                </button>
+                <button
+                    onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+                    className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md z-30 text-accent hover:bg-background-light transition-colors"
+                >
+                    &rarr;
+                </button>
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+                    {slides.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setCurrentSlide(i)}
+                            className={`w-2.5 h-2.5 rounded-full transition-all ${i === currentSlide ? 'bg-accent scale-110' : 'bg-accent/20'}`}
+                        />
+                    ))}
+                </div>
+            </section>
+
+            {/* Shop by Category */}
+            <section className="py-20 bg-background-light">
+                <div className="content-container">
+                    <h2 className="text-3xl font-display font-black text-center text-accent mb-12">Shop by Category</h2>
+                    <div className="flex flex-wrap justify-center gap-8 lg:gap-16">
+                        {[
+                            { name: "Grooming", handle: "grooming" },
+                            { name: "Cat Toys", handle: "cat-toys" },
+                            { name: "Clothing & Wear", handle: "clothing-&-wear" },
+                            { name: "Cats Beds & Furniture", handle: "cats-bed-&-furniture" }
+                        ].map((cat) => (
+                            <LocalizedClientLink key={cat.handle} href={`/category/${cat.handle}`} className="flex flex-col items-center gap-4 group">
+                                <div className="w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden bg-secondary/50 p-6 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 border border-transparent group-hover:border-primary/20">
+                                    <img src={categoryIcons[cat.handle]} alt={cat.name} className="w-full h-full object-contain mix-blend-multiply" />
+                                </div>
+                                <span className="font-bold text-accent font-display">{cat.name}</span>
+                            </LocalizedClientLink>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Shop by Category */}
-            <section className="py-20 lg:py-32 bg-white">
+            {/* New Arrivals */}
+            <section className="py-16 bg-background-light">
                 <div className="content-container">
-                    <div className="flex flex-col items-center text-center mb-16 lg:mb-20">
-                        <h2 className="text-3xl lg:text-5xl font-black text-accent tracking-tight font-display mb-4">Shop by Category</h2>
-                        <div className="h-1.5 w-16 lg:w-24 bg-primary rounded-full"></div>
-                    </div>
-
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12">
-                        {(categories.length > 0 ? categories : ["food", "toys", "grooming", "litter"]).slice(0, 4).map((cat: any, i: number) => {
-                            const name = typeof cat === 'string' ? cat : cat.name;
-                            const handle = typeof cat === 'string' ? cat : cat.handle;
-                            const isHighlighted = i === 2; // Mimicking the mockup's highlight
-
-                            return (
-                                <LocalizedClientLink
-                                    key={handle}
-                                    className={`group flex flex-col items-center gap-6 lg:gap-8 p-6 lg:p-12 rounded-[2rem] lg:rounded-[2.5rem] transition-all duration-500 ${isHighlighted ? 'bg-accent text-white shadow-2xl scale-105' : 'bg-secondary/40 text-accent hover:bg-secondary/60'}`}
-                                    href={`/category/${handle}`}
-                                >
-                                    <div className="size-20 lg:size-32 rounded-2xl lg:rounded-3xl bg-white/50 flex items-center justify-center overflow-hidden border border-white group-hover:scale-110 transition-all duration-500">
-                                        <img
-                                            alt={name}
-                                            className="w-full h-full object-cover"
-                                            src={categoryIcons[handle] || "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba"}
-                                        />
-                                    </div>
-                                    <span className="font-black text-lg lg:text-2xl uppercase tracking-widest font-display text-center">
-                                        {name}
-                                    </span>
-                                </LocalizedClientLink>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-            {/* Featured Products */}
-            <section className="py-20 lg:py-32 bg-background-light">
-                <div className="content-container">
-                    <div className="flex flex-col sm:flex-row items-center justify-between mb-16 lg:mb-20 border-b border-primary/10 pb-10 gap-6">
-                        <h2 className="text-3xl lg:text-5xl font-black text-accent tracking-tight font-display italic">Featured Products</h2>
-                        <LocalizedClientLink
-                            className="text-primary font-black uppercase tracking-widest text-xs lg:text-sm hover:text-accent transition-all flex items-center gap-3"
-                            href="/store"
-                        >
-                            View All <ArrowRight />
+                    <div className="flex justify-between items-end mb-8 border-b border-accent/10 pb-4">
+                        <h2 className="text-3xl font-display font-black text-accent">New Arrivals</h2>
+                        <LocalizedClientLink href="/collections/new-arrivals" className="text-sm font-bold text-accent hover:text-primary flex items-center gap-2">
+                            View all &rarr;
                         </LocalizedClientLink>
                     </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-                        {(bestSellerProducts.length > 0 ? bestSellerProducts : [1, 2, 3]).slice(0, 3).map((product: any, i: number) => {
-                            const isPlaceholder = typeof product === 'number';
-                            const title = isPlaceholder ? (i === 0 ? "Cozy Cat Bed" : i === 1 ? "Cat Scratching Post" : "Pet Carrier") : product.title;
-                            const image = isPlaceholder ? (i === 0 ? "https://images.unsplash.com/photo-1548247416-ec66f4900b2e" : i === 1 ? "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba" : "https://images.unsplash.com/photo-1511044568932-338cba0ad803") : product.thumbnail;
-                            const handle = isPlaceholder ? "#" : product.handle;
-
-                            return (
-                                <LocalizedClientLink
-                                    key={i}
-                                    href={`/products/${handle}`}
-                                    className="group flex flex-col bg-white rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-soft hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border border-secondary"
-                                >
-                                    <div className="aspect-[4/3] relative overflow-hidden bg-secondary/20 p-6 lg:p-8 flex items-center justify-center">
-                                        <img
-                                            alt={title}
-                                            className="w-full h-full object-contain transition-transform duration-[1.5s] group-hover:scale-110"
-                                            src={image}
-                                        />
-                                    </div>
-
-                                    <div className="p-8 lg:p-10 flex flex-col items-center text-center gap-4">
-                                        <h3 className="text-xl lg:text-2xl font-black text-accent font-display">{title}</h3>
-                                        <p className="text-accent/50 text-xs lg:text-sm font-medium line-clamp-2">
-                                            Handcrafted excellence designed for ultimate feline comfort and longevity.
-                                        </p>
-                                        <div className="mt-4 w-full py-3 lg:py-4 bg-accent group-hover:bg-primary text-white rounded-xl font-black uppercase tracking-[0.2em] transition-all text-[10px] lg:text-sm shadow-lg">
-                                            View Details
-                                        </div>
-                                    </div>
-                                </LocalizedClientLink>
-                            );
-                        })}
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        {newArrivalsProducts.length > 0 ? newArrivalsProducts.slice(0, 4).map(renderProductCard) : [1, 2, 3, 4].map((_, i) => renderProductCard(null, i))}
                     </div>
                 </div>
             </section>
 
-            {/* Community Section */}
-            <section className="py-20 lg:py-32 bg-accent text-white relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
-                <div className="content-container relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-                        <div className="relative">
-                            <img
-                                alt="Community"
-                                className="rounded-[2.5rem] lg:rounded-[4rem] shadow-2xl border-4 border-white/10"
-                                src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=1974&auto=format&fit=crop"
-                            />
-                            <div className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 bg-primary p-6 lg:p-10 rounded-[2rem] lg:rounded-[3rem] shadow-2xl rotate-3 scale-75 lg:scale-100">
-                                <Sparkles width={32} height={32} className="lg:w-12 lg:h-12" />
+            {/* What Cat Parents Say */}
+            <section className="py-16 bg-[#FAF8F3]">
+                <div className="content-container overflow-hidden">
+                    <h2 className="text-3xl font-display font-black text-center text-accent mb-10">What Cat Parents Say</h2>
+
+                    {/* Auto-scrolling Slider Container */}
+                    <div ref={testimonialsRef} className="flex overflow-x-auto snap-x snap-mandatory gap-6 hide-scrollbar pb-8 -mx-4 px-4 sm:mx-0 sm:px-0">
+                        {testimonials.map((t, i) => (
+                            <div key={i} className="flex-none w-[85vw] md:w-[calc(33.333%-1rem)] snap-start bg-[#F5EADF] p-8 rounded-2xl flex items-start gap-4 shadow-sm border border-accent/5">
+                                <img src={t.image} alt={t.author} className="w-16 h-16 rounded-2xl object-cover shrink-0 shadow-sm" />
+                                <div>
+                                    <div className="flex text-accent mb-3">
+                                        {[...Array(t.rating)].map((_, idx) => (
+                                            <svg key={idx} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                        ))}
+                                    </div>
+                                    <p className="text-accent/90 text-sm font-medium mb-4 leading-relaxed">"{t.text}"</p>
+                                    <span className="font-bold text-accent text-sm">– {t.author}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <style dangerouslySetInnerHTML={{
+                        __html: `
+                        .hide-scrollbar::-webkit-scrollbar {
+                            display: none;
+                        }
+                        .hide-scrollbar {
+                            -ms-overflow-style: none;
+                            scrollbar-width: none;
+                        }
+                    `}} />
+                </div>
+            </section>
+
+            {/* Most Popular Products */}
+            <section className="py-16 bg-background-light">
+                <div className="content-container">
+                    <div className="flex justify-between items-end mb-8 border-b border-accent/10 pb-4">
+                        <h2 className="text-3xl font-display font-black text-accent">Most Popular Products</h2>
+                        <LocalizedClientLink href="/collections/popular" className="text-sm font-bold text-accent hover:text-primary flex items-center gap-2">
+                            View all &rarr;
+                        </LocalizedClientLink>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        {popularProducts.length > 0 ? popularProducts.slice(0, 4).map(renderProductCard) : [1, 2, 3, 4].map((_, i) => renderProductCard(null, i))}
+                    </div>
+                </div>
+            </section>
+
+            {/* About Us */}
+            <section className="py-16 bg-background-light">
+                <div className="content-container">
+                    <div className="bg-[#F5EADF] rounded-3xl overflow-hidden flex flex-col md:flex-row items-center">
+                        <div className="w-full md:w-1/2 aspect-video md:aspect-auto h-full">
+                            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1000&auto=format&fit=crop" alt="Cat with tag" className="w-full h-full object-cover" />
+                        </div>
+                        <div className="w-full md:w-1/2 p-10 lg:p-16 relative">
+                            <span className="text-xs font-bold text-accent/60 uppercase tracking-widest mb-4 block">ABOUT US</span>
+                            <h2 className="text-3xl lg:text-4xl font-display font-black text-accent mb-6">Made for cats. Loved by cat parents.</h2>
+                            <p className="text-accent/80 font-medium mb-8 leading-relaxed">
+                                At MeowCrunch, we believe every cat deserves the best in style, comfort and care. Our accessories are designed with love, crafted with quality and tested by real cats.
+                            </p>
+                            <LocalizedClientLink href="/about" className="inline-block bg-accent text-white px-8 py-3 rounded-xl font-bold hover:bg-primary transition-colors">
+                                Learn Our Story
+                            </LocalizedClientLink>
+                            <Heart className="absolute bottom-8 right-8 w-24 h-24 text-primary/10" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Latest from our blog */}
+            <section className="py-16 bg-background-light">
+                <div className="content-container">
+                    <div className="flex justify-between items-end mb-8 border-b border-accent/10 pb-4">
+                        <h2 className="text-3xl font-display font-black text-accent">Latest from our blog</h2>
+                        <LocalizedClientLink href="/blog" className="text-sm font-bold text-accent hover:text-primary flex items-center gap-2">
+                            View all &rarr;
+                        </LocalizedClientLink>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {blogPosts.map((post, i) => (
+                            <LocalizedClientLink key={i} href="#" className="group flex flex-col">
+                                <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
+                                    <button className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-sm z-10 hover:bg-background-light transition-colors">
+                                        <Heart className="w-4 h-4 text-accent" />
+                                    </button>
+                                    <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                </div>
+                                <h3 className="font-display font-black text-accent text-lg mb-2 group-hover:text-primary transition-colors line-clamp-2">{post.title}</h3>
+                                <span className="text-xs font-bold text-accent/60">{post.date}</span>
+                            </LocalizedClientLink>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Follow us on instagram */}
+            <section className="py-16 bg-background-light border-b border-accent/10">
+                <div className="content-container">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
+                        <h2 className="text-3xl font-display font-black text-accent">Follow us on<br />instagram</h2>
+                        <a href="#" className="inline-block border border-accent/20 px-6 py-2 rounded-full text-sm font-bold text-accent hover:bg-accent hover:text-white transition-colors">
+                            Follow @meowcrunch
+                        </a>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {instagramImages.map((img, i) => (
+                            <div key={i} className="aspect-square rounded-2xl overflow-hidden">
+                                <img src={img} alt="Instagram" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Newsletter */}
+            <section className="py-16 bg-background-light">
+                <div className="content-container max-w-4xl">
+                    <div className="flex flex-col md:flex-row items-center gap-8 justify-between">
+                        <div className="flex items-center gap-6">
+                            <div className="w-16 h-16 rounded-full border-2 border-accent flex items-center justify-center shrink-0">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="#4A3728" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    <rect x="3" y="5" width="18" height="14" rx="2" stroke="#4A3728" strokeWidth="2" strokeLinecap="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 className="font-display font-black text-accent text-xl mb-1">Join our MeowCrunch community!</h3>
+                                <p className="text-sm font-medium text-accent/80">Sign up for meow-some deals, new arrivals & cat care tips.</p>
                             </div>
                         </div>
-                        <div>
-                            <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-6 lg:mb-8 block underline decoration-primary/30 underline-offset-8">Our Philosophy</span>
-                            <h2 className="text-4xl lg:text-6xl font-black mb-8 lg:mb-10 leading-[1] lg:leading-[0.9] font-display">Crafting <br /> <span className="italic font-medium text-secondary">Pure Joy.</span></h2>
-                            <p className="text-base lg:text-xl text-white/70 font-medium leading-relaxed mb-10 lg:mb-16 max-w-lg">
-                                "At Meow Munch, we believe every whisker counts. Our mission was born in a kitchen, perfected by scientists, and approved by the world's most demanding critics."
-                            </p>
-                            <button className="bg-white text-accent px-8 py-4 lg:px-12 lg:py-6 rounded-2xl font-black uppercase tracking-widest text-xs lg:text-base flex items-center gap-4 group hover:bg-primary hover:text-white transition-all shadow-2xl hover:gap-6">
-                                Join The Pride <ArrowRight width={20} height={20} className="lg:w-6 lg:h-6 group-hover:translate-x-2 transition-transform" />
-                            </button>
+                        <div className="w-full md:w-auto">
+                            <form className="flex w-full">
+                                <input
+                                    type="email"
+                                    placeholder="Enter your email address"
+                                    className="bg-white border-none rounded-l-xl px-6 py-4 outline-none w-full md:w-64 text-sm shadow-sm"
+                                />
+                                <button type="submit" className="bg-accent text-white px-8 py-4 rounded-r-xl font-bold text-sm shadow-sm hover:bg-primary transition-colors">
+                                    Subscribe
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
