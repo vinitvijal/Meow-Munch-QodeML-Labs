@@ -13,45 +13,42 @@ export default async function CustomFooter() {
   const topCategories = categories ? categories.slice(0, 5) : [];
 
   return (
-    <footer className="bg-background-light border-t border-neutral-border pt-20 pb-10">
+    <footer className="bg-[#EAE3DA] border-t border-accent/10 pt-16 pb-8">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
           <div className="col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-3 mb-8">
-              <Link className="flex items-center gap-3 group" href="/">
-                <div className="w-12 h-12 bg-accent rounded-2xl flex items-center justify-center text-white shadow-xl shadow-primary/20 group-hover:rotate-6 transition-transform">
-                  <span className="material-symbols-outlined text-3xl font-bold">pets</span>
+            <div className="flex items-center gap-3 mb-6">
+              <Link className="flex flex-col items-start gap-1 group" href="/">
+                <div className="flex items-center justify-center text-accent group-hover:rotate-6 transition-transform">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 18.5C14.7614 18.5 17 16.2614 17 13.5C17 10.7386 14.7614 8.5 12 8.5C9.23858 8.5 7 10.7386 7 13.5C7 16.2614 9.23858 18.5 12 18.5Z" stroke="#4A3728" strokeWidth="2"/>
+                        <path d="M7.5 10C6 8 5 6 5 4C7 4 9 5 10 6.5" stroke="#4A3728" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M16.5 10C18 8 19 6 19 4C17 4 15 5 14 6.5" stroke="#4A3728" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <circle cx="10" cy="14" r="1" fill="#4A3728"/>
+                        <circle cx="14" cy="14" r="1" fill="#4A3728"/>
+                        <path d="M11 16C11.5 16.5 12.5 16.5 13 16" stroke="#4A3728" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
                 </div>
-                <span className="text-2xl font-black text-accent tracking-tighter uppercase font-display">
-                  Meow<span className="text-primary font-medium tracking-normal lowercase italic">Munch</span>
+                <span className="text-2xl font-black text-accent tracking-tighter font-display">
+                  MeowCrunch
                 </span>
               </Link>
             </div>
-            <p className="text-primary/70 text-base leading-relaxed max-w-sm mb-10 font-medium">
-              Curating the finest essentials for the modern feline. From artisanal nutrition to
-              thoughtfully designed play, we celebrate the bond between cat and human.
+            <p className="text-accent/80 text-xs leading-relaxed max-w-xs mb-8 font-medium">
+              Stylish accessories for the happy, healthy cat.
             </p>
-            <div className="flex gap-5">
-              {['Instagram', 'Pinterest', 'Twitter'].map((social) => (
-                <a key={social} className="size-12 rounded-2xl border border-neutral-border flex items-center justify-center text-primary/40 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-sm" href="#">
-                  <span className="text-[10px] font-black uppercase tracking-tighter">{social[0]}</span>
+            <div className="flex gap-3">
+              {['Ig', 'Fb', 'Tw', 'Pt'].map((social) => (
+                <a key={social} className="size-8 rounded-full bg-accent flex items-center justify-center text-white hover:bg-primary transition-all shadow-sm" href="#">
+                  <span className="text-[10px] font-bold">{social[0]}</span>
                 </a>
               ))}
             </div>
           </div>
           <div>
-            <h3 className="text-accent font-black mb-8 text-xs uppercase tracking-[0.2em]">Collections</h3>
-            <ul className="flex flex-col gap-5 text-sm text-primary/60 font-medium">
-              {collections.map((c) => (
-                <li key={c.id}>
-                  <Link className="hover:text-primary transition-colors" href={`/collections/${c.handle}`}>{c.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-accent font-black mb-8 text-xs uppercase tracking-[0.2em]">Boutique</h3>
-            <ul className="flex flex-col gap-5 text-sm text-primary/60 font-medium">
+            <h3 className="text-accent font-black mb-6 text-sm">Shop</h3>
+            <ul className="flex flex-col gap-3 text-sm text-accent/80 font-medium">
+              <li><Link className="hover:text-primary transition-colors" href="/store">All Products</Link></li>
               {topCategories.map((c) => (
                 <li key={c.id}>
                   <Link className="hover:text-primary transition-colors" href={`/categories/${c.handle}`}>{c.name}</Link>
@@ -60,21 +57,40 @@ export default async function CustomFooter() {
             </ul>
           </div>
           <div>
-            <h3 className="text-accent font-black mb-8 text-xs uppercase tracking-[0.2em]">House</h3>
-            <ul className="flex flex-col gap-5 text-sm text-primary/60 font-medium">
+            <h3 className="text-accent font-black mb-6 text-sm">Customer Care</h3>
+            <ul className="flex flex-col gap-3 text-sm text-accent/80 font-medium">
+              <li><Link className="hover:text-primary transition-colors" href="#">Contact Us</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Shipping & Delivery</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Returns & Exchanges</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">FAQ's</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Track Your Order</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-accent font-black mb-6 text-sm">About Us</h3>
+            <ul className="flex flex-col gap-3 text-sm text-accent/80 font-medium">
               <li><Link className="hover:text-primary transition-colors" href="#">Our Story</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Journal</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Ethics</Link></li>
-              <li><Link className="hover:text-primary transition-colors" href="#">Support</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Sustainability</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Careers</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Press</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-accent font-black mb-6 text-sm">My Account</h3>
+            <ul className="flex flex-col gap-3 text-sm text-accent/80 font-medium">
+              <li><Link className="hover:text-primary transition-colors" href="/account">Sign In</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="/account/register">Register</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="#">Wishlist</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="/account/orders">Order History</Link></li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-neutral-border pt-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <p className="text-[10px] font-black text-primary/30 uppercase tracking-[0.2em]">© 2026 Meow Munch House. Crafted with love.</p>
-          <div className="flex items-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-            <img alt="Visa" className="h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaJob-kkNhtkT9oVs54BYgE-lGV_yhZ5GMsY3btwXfuYAieVo6FxkQobU3vdMbd8p5G3w_99P0oRzA1prvKsu55xVfa6Ua9j0E2OfCVQiFZma4GmRxfwB0OSjfhI1Iv93Kko8Bt-_KPy7hblVykk2kiPjk9HdnaliYZ-ors9wDN3bVzu0evyoCHB5FsSFbvYitgmf6PlAN3qYewrreu7JhsLfIs4wW8qA_8ZQ2DxnR_3CA_8zUHClAQyz5tfONK3jA3Ywj64z9aUA" />
-            <img alt="Mastercard" className="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqbdGDr7xKrDXeySE800GbIqrYEUSDAo-Bdwb3Zptb9YreRtFA-KrOkDVDiv0BvBdYp_5WxpHuZhGNzVg-B6Z6QD0RjWumYj7tbi696nDztYpqqHMb5CLAWYNnE9O8cuxqpHNdvtagzPUqPwqzMJCSXT1L2vxZ67Tscjz3U12BeLm_UOabTwJKVhY1Pxt0zIepeTfmo4AjUY1EIv48YmSBN3mnUOmW3DHm6cntJA6_78Jl2_QvjU9qUbfsjO5nbuln2TNxUxKJHkk" />
-            <img alt="Paypal" className="h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoTvrNVUb1UvMebn701INgWWHbUghNn9duzfQ5ScXczKFw-e3kDaohsZqIbOtr2IOBuX-6cynyv-ZoEi_nrQTAh5OJ20W8M22xkW0he1tag7yzKNa0c3SehBVbp7Awk1U1QZZFqAv6lKTh2IB3yL_yFrSzg5-EDbeCRqhu8S-bqyOG9JwXFDJLstzCm50fG1mns1ZqVE0LILvigZbnQaTLh9uDvtO6BwDVZRbD5AwqJ-hpKvLK62Vyu09SSrINkWC5TOsxaqKuP-s" />
+
+        <div className="border-t border-accent/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-xs font-medium text-accent/60">Privacy Policy | Terms & Conditions</p>
+          <div className="flex items-center gap-2 border border-accent/20 rounded-md px-3 py-1 bg-white">
+            <span className="text-xs font-bold text-accent">🇬🇧 United Kingdom</span>
+            <svg className="w-3 h-3 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
           </div>
         </div>
       </div>
