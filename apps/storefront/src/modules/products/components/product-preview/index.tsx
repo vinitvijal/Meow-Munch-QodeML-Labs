@@ -28,7 +28,7 @@ export default async function ProductPreview({
         <div className="absolute inset-0 flex items-center justify-center p-4 lg:p-8">
           <img
             alt={product.title}
-            className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-105"
+            className="w-full h-full mix-blend-multiply object-contain transition-transform duration-1000 group-hover:scale-105"
             src={product.thumbnail || "https://medusa-public-images.s3.eu-west-1.amazonaws.com/placeholder.png"}
           />
         </div>

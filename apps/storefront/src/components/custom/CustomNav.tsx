@@ -19,17 +19,10 @@ export default async function CustomNav() {
         {/* Logo */}
         <div className="flex items-center gap-8">
           <Link className="flex items-center gap-3 group" href="/">
-            <div className="w-10 h-10 flex items-center justify-center text-accent group-hover:rotate-6 transition-transform">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 18.5C14.7614 18.5 17 16.2614 17 13.5C17 10.7386 14.7614 8.5 12 8.5C9.23858 8.5 7 10.7386 7 13.5C7 16.2614 9.23858 18.5 12 18.5Z" stroke="#4A3728" strokeWidth="2"/>
-                <path d="M7.5 10C6 8 5 6 5 4C7 4 9 5 10 6.5" stroke="#4A3728" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M16.5 10C18 8 19 6 19 4C17 4 15 5 14 6.5" stroke="#4A3728" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="10" cy="14" r="1" fill="#4A3728"/>
-                <circle cx="14" cy="14" r="1" fill="#4A3728"/>
-                <path d="M11 16C11.5 16.5 12.5 16.5 13 16" stroke="#4A3728" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
+            <div className="w-16 flex items-center justify-center text-accent group-hover:rotate-6 transition-transform">
+              <img src="/logo.png" alt="" className="" />
             </div>
-            <span className="text-xl font-black text-accent tracking-tighter font-display">
+            <span className="lg:text-2xl text-xl font-black text-accent tracking-tighter font-display">
               MeowCrunch
             </span>
           </Link>
@@ -85,15 +78,15 @@ export default async function CustomNav() {
           <div className="hidden md:flex items-center gap-1 border border-accent/20 rounded-full px-3 py-1">
             <span className="text-xs font-bold text-accent">GBP £</span>
           </div>
-          
+
           <button className="flex items-center justify-center size-10 rounded-full hover:bg-accent/5 text-accent transition-colors">
             <MagnifyingGlass />
           </button>
-          
+
           <Link href="/account" className="hidden sm:flex items-center justify-center size-10 rounded-full hover:bg-accent/5 text-accent transition-colors">
             <User />
           </Link>
-          
+
           <Link href="/cart" className="relative flex items-center justify-center size-10 rounded-full hover:bg-accent/5 text-accent transition-colors">
             <ShoppingBag />
             {/* The cart count will be handled by cart-button in standard Medusa store, but for now we link to /cart which works */}

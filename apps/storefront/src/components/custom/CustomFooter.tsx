@@ -20,14 +20,8 @@ export default async function CustomFooter() {
             <div className="flex items-center gap-3 mb-6">
               <Link className="flex flex-col items-start gap-1 group" href="/">
                 <div className="flex items-center justify-center text-accent group-hover:rotate-6 transition-transform">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 18.5C14.7614 18.5 17 16.2614 17 13.5C17 10.7386 14.7614 8.5 12 8.5C9.23858 8.5 7 10.7386 7 13.5C7 16.2614 9.23858 18.5 12 18.5Z" stroke="#4A3728" strokeWidth="2"/>
-                        <path d="M7.5 10C6 8 5 6 5 4C7 4 9 5 10 6.5" stroke="#4A3728" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M16.5 10C18 8 19 6 19 4C17 4 15 5 14 6.5" stroke="#4A3728" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <circle cx="10" cy="14" r="1" fill="#4A3728"/>
-                        <circle cx="14" cy="14" r="1" fill="#4A3728"/>
-                        <path d="M11 16C11.5 16.5 12.5 16.5 13 16" stroke="#4A3728" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
+                  <img src="/logo.png" alt="" className=" h-16" />
+
                 </div>
                 <span className="text-2xl font-black text-accent tracking-tighter font-display">
                   MeowCrunch
