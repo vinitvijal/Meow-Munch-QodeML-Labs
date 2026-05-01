@@ -14,7 +14,7 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
   },
-  modules: [
+    modules: [
     // ...
     {
       resolve: "@medusajs/medusa/file",
@@ -34,7 +34,6 @@ module.exports = defineConfig({
               additional_client_config: {
                 forcePathStyle: true,
               },
-
 
             },
           },
