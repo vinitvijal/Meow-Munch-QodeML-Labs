@@ -99,32 +99,32 @@ export default function CustomHome({
     const testimonials = [
         {
             rating: 5,
-            text: "The quality is purrfect!! My cat loves the collar and gets so many compliments.",
-            author: "Sophie L.",
+            text: "The quality is seriously impressive! My cat is picky with toys, but she has not stopped playing with the fish toy since it arrived.",
+            author: "Ashley R.",
             image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=200&auto=format&fit=crop"
         },
         {
             rating: 5,
-            text: "Fast delivery, beautiful packaging, and amazing products!",
-            author: "Daniel R.",
+            text: "Super cute products and fast shipping. The ceramic bowl is sturdy, easy to clean, and looks amazing in my kitchen.",
+            author: "Michael T.",
             image: "https://images.unsplash.com/photo-1529778458726-36f1c4e7fb2d?q=80&w=200&auto=format&fit=crop"
         },
         {
             rating: 5,
-            text: "Finally found a store that understands style and comfort for cats!",
-            author: "Mia T.",
+            text: "I’ve ordered from a lot of pet stores, but this is by far my favorite. Great quality, adorable designs, and fair prices.",
+            author: "Jessica L.",
             image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?q=80&w=200&auto=format&fit=crop"
         },
         {
             rating: 5,
-            text: "I am amazed by the craftsmanship! My two Maine Coons sleep all day now.",
-            author: "Alex J.",
+            text: "The sweater fits my kitten perfectly and feels really soft. You can tell these products are made with care",
+            author: "Brandon C.",
             image: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=200&auto=format&fit=crop"
         },
         {
             rating: 5,
-            text: "The best cat accessories online. Fast shipping and my cat loves the organic treats.",
-            author: "Emma W.",
+            text: "My cat loves the scratching post and I love how it actually matches my apartment decor. Will definitely order again!",
+            author: "Lauren M.",
             image: "https://images.unsplash.com/photo-1511044568932-338cba0ad803?q=80&w=200&auto=format&fit=crop"
         }
     ];
