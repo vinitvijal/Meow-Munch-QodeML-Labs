@@ -68,7 +68,7 @@ export const listProducts = async ({
         },
         headers,
         next,
-        cache: "force-cache",
+        cache: "no-cache",
       }
     )
     .then(({ products, count }) => {
@@ -137,7 +137,7 @@ export const listProductsWithSort = async ({
 
   const pageParam = (page - 1) * limit
   const filteredCount = sortedProducts.length
-  const nextPage = filteredCount > pageParam + limit ? Math.floor(pageParam/limit) + 2 : null
+  const nextPage = filteredCount > pageParam + limit ? Math.floor(pageParam / limit) + 2 : null
 
   const paginatedProducts = sortedProducts.slice(pageParam, pageParam + limit)
 
