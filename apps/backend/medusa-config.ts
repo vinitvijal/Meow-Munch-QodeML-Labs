@@ -14,7 +14,7 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
   },
-    modules: [
+  modules: [
     // ...
     {
       resolve: "@medusajs/medusa/file",
