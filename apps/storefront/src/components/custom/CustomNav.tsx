@@ -6,101 +6,165 @@ import { listCategories } from "@lib/data/categories"
 
 export default async function CustomNav() {
   const [collectionsResponse, categories] = await Promise.all([
-    listCollections({ offset: "0", limit: "5" }),
+    listCollections({ offset: "0", limit: "10" }),
     listCategories()
   ]);
 
-  const collections = collectionsResponse?.collections?.slice(0, 5) || [];
-  const topCategories = categories ? categories.slice(0, 5) : [];
+  const collections = collectionsResponse?.collections || [];
+  // Filter top-level categories (no parent)
+  const topLevelCategories = categories ? categories.filter(c => !c.parent_category_id) : [];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#FAF8F3]/90 backdrop-blur-md border-b border-accent/10 px-4 sm:px-8 py-5 transition-all duration-300">
-      <div className="flex items-center justify-between max-w-[1440px] mx-auto w-full gap-4">
-        {/* Logo */}
-        <div className="flex items-center gap-8">
-          <Link className="flex items-center gap-3 group" href="/">
-            <div className="w-16 flex items-center justify-center text-accent group-hover:rotate-6 transition-transform">
-              <img src="/logo.png" alt="" className="" />
-            </div>
-            <span className="lg:text-2xl text-xl font-black text-accent tracking-tighter font-display">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm">
+      {/* Top Row: Logo, Search, Actions */}
+      <div className="bg-white px-4 sm:px-8 py-4 border-b border-gray-50">
+        <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-8">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 group shrink-0">
+            <img src="/logo.png" alt="Logo" className="h-10 w-auto transition-transform group-hover:scale-105" />
+            <span className="text-2xl font-black text-[#1a1a1a] tracking-tight font-display hidden sm:block">
               MeowCrunch
             </span>
           </Link>
-        </div>
 
-        {/* Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-8">
-          <div className="relative group">
-            <Link className="text-accent hover:text-primary text-sm font-bold transition-colors flex items-center gap-1" href="/store">
-              Shop
-              <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+          {/* Search Bar */}
+          <div className="flex-1 max-w-2xl relative group hidden md:block">
+            <input
+              type="text"
+              placeholder="Search for products, categories..."
+              className="w-full bg-gray-50 border border-gray-200 rounded-lg px-10 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+            />
+            <MagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-5" />
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center gap-6 shrink-0">
+            <Link href="/support" className="hidden lg:flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wider">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              Support
             </Link>
-            <div className="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-              <div className="bg-white border border-accent/10 rounded-xl shadow-lg p-4 w-48 flex flex-col gap-2">
-                {topCategories.map(c => (
-                  <Link key={c.id} href={`/categories/${c.handle}`} className="text-sm font-medium text-accent hover:text-primary">
-                    {c.name}
-                  </Link>
-                ))}
+            <Link href="/account" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wider">
+              <User className="size-5" />
+              <span className="hidden sm:inline">Account</span>
+            </Link>
+            <Link href="/cart" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wider relative group">
+              <div className="relative">
+                <ShoppingBag className="size-5" />
+                <span className="absolute -top-2 -right-2 bg-primary text-white text-[10px] font-bold size-4 flex items-center justify-center rounded-full shadow-sm group-hover:scale-110 transition-transform">
+                  1
+                </span>
               </div>
-            </div>
-          </div>
-
-          <div className="relative group">
-            <Link className="text-accent hover:text-primary text-sm font-bold transition-colors flex items-center gap-1" href="/store">
-              Collection
-              <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              <span className="hidden sm:inline">Cart</span>
             </Link>
-            <div className="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-              <div className="bg-white border border-accent/10 rounded-xl shadow-lg p-4 w-48 flex flex-col gap-2">
-                {collections.map(c => (
-                  <Link key={c.id} href={`/collections/${c.handle}`} className="text-sm font-medium text-accent hover:text-primary">
-                    {c.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <button className="md:hidden flex items-center justify-center size-10 rounded-full hover:bg-gray-100 text-gray-700">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
           </div>
-
-          <div className="relative group">
-            <Link className="text-accent hover:text-primary text-sm font-bold transition-colors flex items-center gap-1" href="/store">
-              Hot Deals
-              <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-            </Link>
-          </div>
-
-          <Link className="text-accent hover:text-primary text-sm font-bold transition-colors" href="/about">About Us</Link>
-          <Link className="text-accent hover:text-primary text-sm font-bold transition-colors" href="/blog">Blogs</Link>
-        </nav>
-
-        {/* Right Section */}
-        <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-1 border border-accent/20 rounded-full px-3 py-1">
-            <span className="text-xs font-bold text-accent">GBP £</span>
-          </div>
-
-          <button className="flex items-center justify-center size-10 rounded-full hover:bg-accent/5 text-accent transition-colors">
-            <MagnifyingGlass />
-          </button>
-
-          <Link href="/account" className="hidden sm:flex items-center justify-center size-10 rounded-full hover:bg-accent/5 text-accent transition-colors">
-            <User />
-          </Link>
-
-          <Link href="/cart" className="relative flex items-center justify-center size-10 rounded-full hover:bg-accent/5 text-accent transition-colors">
-            <ShoppingBag />
-            {/* The cart count will be handled by cart-button in standard Medusa store, but for now we link to /cart which works */}
-          </Link>
-
-          <button className="lg:hidden flex items-center justify-center size-10 rounded-full hover:bg-accent/5 text-accent transition-colors">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
         </div>
       </div>
+
+      {/* Bottom Row: Navigation Links */}
+      <nav className="bg-white px-4 sm:px-8 hidden md:block border-b border-gray-50">
+        <div className="max-w-[1440px] mx-auto flex items-center justify-center gap-10 relative">
+          {topLevelCategories.map((category) => (
+            <div key={category.id} className="group py-4">
+              <Link
+                href={`/categories/${category.handle}`}
+                className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] border-b-2 border-transparent group-hover:border-primary pb-1"
+              >
+                {category.name}
+              </Link>
+
+              {/* Mega Menu Dropdown */}
+              {((category.category_children && category.category_children.length > 0) || true) && (
+                <div className="absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 z-[100]">
+                  <div className="max-w-[1440px] mx-auto grid grid-cols-5 min-h-[350px]">
+                    {/* Categories Columns (4/5 width) */}
+                    <div className="col-span-4 p-12 grid grid-cols-4 gap-12">
+                      {category.category_children && category.category_children.length > 0 ? (
+                        category.category_children.map((child) => (
+                          <div key={child.id} className="flex flex-col gap-5">
+                            <h3 className="text-[11px] font-black text-gray-900 uppercase tracking-[0.2em] border-b border-gray-100 pb-3">
+                              {child.name}
+                            </h3>
+                            <div className="flex flex-col gap-3">
+                              {child.category_children && child.category_children.length > 0 ? (
+                                child.category_children.map((subChild) => (
+                                  <Link
+                                    key={subChild.id}
+                                    href={`/categories/${subChild.handle}`}
+                                    className="text-xs font-bold text-gray-500 hover:text-primary transition-colors"
+                                  >
+                                    {subChild.name}
+                                  </Link>
+                                ))
+                              ) : (
+                                <Link
+                                  href={`/categories/${child.handle}`}
+                                  className="text-xs font-bold text-gray-500 hover:text-primary transition-colors italic"
+                                >
+                                  Explore {child.name}
+                                </Link>
+                              )}
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="col-span-4 flex items-center justify-center text-gray-300 italic font-medium">
+                          Discover our exclusive {category.name} collection
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Featured/Banner Column (1/5 width) */}
+                    <div className="col-span-1 bg-[#FAF8F3] p-10 flex flex-col justify-between relative overflow-hidden group/banner border-l border-gray-100">
+                      <div className="relative z-10">
+                        <span className="text-[10px] font-black uppercase tracking-[0.25em] text-primary mb-3 block">Premium Picks</span>
+                        <h4 className="text-2xl font-black text-gray-900 leading-[1.1] mb-6 font-display">
+                          New Arrivals for {category.name}
+                        </h4>
+                        <Link
+                          href={`/categories/${category.handle}`}
+                          className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-gray-900 group-hover/banner:text-primary transition-colors"
+                        >
+                          <span className="border-b-2 border-primary pb-0.5">Shop Collection</span>
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </Link>
+                      </div>
+
+                      {/* Decorative elements */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl transition-transform duration-1000 group-hover/banner:scale-150" />
+                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full -ml-12 -mb-12 blur-2xl" />
+
+                      <div className="relative z-10 mt-12">
+                        <img
+                          src="/logo.png"
+                          alt=""
+                          className="h-16 w-auto opacity-10 grayscale brightness-0"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Additional static links */}
+          <Link href="/collections" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
+            Collections
+          </Link>
+          <Link href="/store" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
+            Hot Deals
+          </Link>
+        </div>
+      </nav>
+
     </header>
   )
 }
+

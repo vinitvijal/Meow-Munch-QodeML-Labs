@@ -40,17 +40,17 @@ export default function CustomHome({
         {
             title: "Stylish essentials for every cat",
             subtitle: "Thoughtfully designed accessories for comfort, play and every little meow.",
-            image: "/images/hero_cat_collar_themed.png", // placeholder
+            image: "/images/hero_1.png", // placeholder
         },
         {
             title: "Premium Comfort for your feline",
             subtitle: "Elevate your cat's play with thoughtfully designed artisanal toys.",
-            image: "/images/hero_cat_bed_themed.png", // placeholder
+            image: "/images/hero_2.png", // placeholder
         },
         {
             title: "Essentials for every cat",
             subtitle: "Play and every little meow.",
-            image: "/images/hero_cat_toy_themed.png", // placeholder
+            image: "/images/hero_3.png", // placeholder
         },
     ]
 
@@ -315,7 +315,7 @@ export default function CustomHome({
                             <span className="text-xs font-bold text-accent/60 uppercase tracking-widest mb-4 block">ABOUT US</span>
                             <h2 className="text-3xl lg:text-4xl font-display font-black text-accent mb-6">Made for cats. Loved by cat parents.</h2>
                             <p className="text-accent/80 font-medium mb-8 leading-relaxed">
-A brand built on the belief that cats are family, Meow Crunch was created to bring better standards to everyday pet care. With a focus on quality, reliability, and thoughtful design, it offers products that are simple, effective, and made to truly support your cat’s comfort and well-being.                            </p>
+                                A brand built on the belief that cats are family, Meow Crunch was created to bring better standards to everyday pet care. With a focus on quality, reliability, and thoughtful design, it offers products that are simple, effective, and made to truly support your cat’s comfort and well-being.                            </p>
                             <LocalizedClientLink href="/about" className="inline-block bg-accent text-white px-8 py-3 rounded-xl font-bold hover:bg-primary transition-colors">
                                 Learn Our Story
                             </LocalizedClientLink>

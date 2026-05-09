@@ -19,7 +19,7 @@ const EmptyCartMessage = () => {
       </Text>
       <div>
         <InteractiveLink href="/store" className="inline-flex items-center gap-2 bg-accent text-white px-10 py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-primary transition-all shadow-xl shadow-accent/10 transform hover:-translate-y-1">
-          Explore the Store
+          <span className=" text-white">Explore the Store</span>
         </InteractiveLink>
       </div>
     </div>
