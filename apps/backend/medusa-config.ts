@@ -40,6 +40,17 @@ module.exports = defineConfig({
         ],
       },
     },
+    {
+      resolve: '@alphabite/medusa-wishlist/modules/wishlist',
+      options: {
+        // all are optional, read bellow about default values
+        wishlistFields: [],
+        wishlistItemsFields: [],
+        includeWishlistItems: true,
+        includeWishlistItemsTake: 5,
+        allowGuestWishlist: true,
+      },
+    },
   ],
 
 })
