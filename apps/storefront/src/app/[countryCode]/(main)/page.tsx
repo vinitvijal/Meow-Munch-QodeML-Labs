@@ -6,6 +6,7 @@ import { getRegion } from "@lib/data/regions"
 import { listProducts } from "@lib/data/products"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { listCategories } from "@lib/data/categories"
+import { getBlogPosts } from "@lib/blog"
 
 export const metadata: Metadata = {
   title: "Meow Munch | Home",
@@ -21,6 +22,7 @@ export default async function Home(props: {
   const { countryCode } = params
 
   const region = await getRegion(countryCode)
+  const blogPosts = await getBlogPosts()
 
   const [categories, { collections }] = await Promise.all([
     listCategories(),
@@ -74,6 +76,7 @@ export default async function Home(props: {
         region={region}
         newArrivalsProducts={newArrivalsProducts}
         popularProducts={popularProducts}
+        blogPosts={blogPosts}
       />
     </>
   )
