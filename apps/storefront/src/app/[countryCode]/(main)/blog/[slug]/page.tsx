@@ -8,14 +8,15 @@ import { Heart } from "@medusajs/icons"
 import React from "react"
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string
     countryCode: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getBlogPostBySlug(params.slug)
+  const { slug } = await params
+  const post = await getBlogPostBySlug(slug)
   if (!post) return { title: "Post Not Found" }
 
   return {
@@ -27,15 +28,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+import { getRegion, listRegions } from "@lib/data/regions"
+
 export async function generateStaticParams() {
   const posts = await getBlogPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
+  const regions = await listRegions()
+
+  if (!regions) return []
+
+  const countryCodes = regions
+    .map((r) => r.countries?.map((c) => c.iso_2))
+    .flat()
+
+  return countryCodes.flatMap((countryCode) => 
+    posts.map((post) => ({
+      countryCode,
+      slug: post.slug,
+    }))
+  )
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = await getBlogPostBySlug(params.slug)
+  const { slug } = await params
+  const post = await getBlogPostBySlug(slug)
 
   if (!post) {
     notFound()

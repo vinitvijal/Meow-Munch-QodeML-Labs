@@ -9,7 +9,26 @@ export const metadata: Metadata = {
   description: "Latest news, tips, and guides for cat parents from the MeowCrunch team.",
 }
 
-export default async function BlogPage() {
+import { listRegions } from "@lib/data/regions"
+
+export async function generateStaticParams() {
+  const regions = await listRegions()
+
+  if (!regions) return []
+
+  const countryCodes = regions
+    .map((r) => r.countries?.map((c) => c.iso_2))
+    .flat()
+
+  return countryCodes.map((countryCode) => ({
+    countryCode,
+  }))
+}
+
+export default async function BlogPage(props: {
+  params: Promise<{ countryCode: string }>
+}) {
+  await props.params // Acknowledge params to satisfy Next.js 15
   const posts = await getBlogPosts()
 
   return (
