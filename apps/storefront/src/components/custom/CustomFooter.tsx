@@ -78,6 +78,7 @@ export default async function CustomFooter() {
             <ul className="flex flex-col gap-4 text-sm text-gray-400 font-bold">
               <li><Link className="hover:text-primary transition-colors" href="#">Our Story</Link></li>
               <li><Link className="hover:text-primary transition-colors" href="#">Sustainability</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="/blog">Our Blog</Link></li>
               <li><Link className="hover:text-primary transition-colors" href="/terms">Terms of Service</Link></li>
               <li><Link className="hover:text-primary transition-colors" href="/privacy">Privacy Policy</Link></li>
             </ul>

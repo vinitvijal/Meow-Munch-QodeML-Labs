@@ -9,7 +9,8 @@ export default function CustomHome({
     collections,
     region,
     newArrivalsProducts = [],
-    popularProducts = []
+    popularProducts = [],
+    blogPosts: serverBlogPosts = []
 }: any) {
     const [currentSlide, setCurrentSlide] = useState(0)
     const testimonialsRef = useRef<HTMLDivElement>(null);
@@ -139,21 +140,24 @@ export default function CustomHome({
         }
     ];
 
-    const blogPosts = [
+    const blogPosts = serverBlogPosts.length > 0 ? serverBlogPosts : [
         {
             title: "How to Choose the Right Collar for Your Cat",
             date: "May 10, 2024",
-            image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=600&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=600&auto=format&fit=crop",
+            slug: "#"
         },
         {
             title: "5 Fun Toys to Keep Your Cat Active Indoors",
             date: "May 5, 2024",
-            image: "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?q=80&w=600&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?q=80&w=600&auto=format&fit=crop",
+            slug: "#"
         },
         {
             title: "Creating the Purr-fect Cozy Space",
             date: "April 28, 2024",
-            image: "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?q=80&w=600&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?q=80&w=600&auto=format&fit=crop",
+            slug: "#"
         }
     ];
 
@@ -346,7 +350,7 @@ export default function CustomHome({
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
                         {blogPosts.map((post, i) => (
-                            <LocalizedClientLink key={i} href="#" className="group flex flex-col">
+                            <LocalizedClientLink key={i} href={post.slug === "#" ? "#" : `/blog/${post.slug}`} className="group flex flex-col">
                                 <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
                                     <button className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-sm z-10 hover:bg-background-light transition-colors">
                                         <Heart className="w-4 h-4 text-accent" />
