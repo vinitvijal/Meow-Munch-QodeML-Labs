@@ -43,14 +43,24 @@ export default function CustomHome({
             image: "/images/hero_1.png", // placeholder
         },
         {
-            title: "Premium Comfort for your feline",
-            subtitle: "Elevate your cat's play with thoughtfully designed artisanal toys.",
+            title: "Play. Pounce. Repeat.",
+            subtitle: "Engaging toys and accessories to spark every adventure.",
             image: "/images/hero_2.png", // placeholder
         },
         {
-            title: "Essentials for every cat",
-            subtitle: "Play and every little meow.",
+            title: "Stylish beds & furniture for happy cats",
+            subtitle: "Beautifully crafted pieces that blend comfort, function and modern style.",
             image: "/images/hero_3.png", // placeholder
+        },
+        {
+            title: "Travel Together",
+            subtitle: "Stylish and safe travel solutions for cats on the go.",
+            image: "/images/hero_4.png", // placeholder
+        },
+        {
+            title: "Groomed to Perfection",
+            subtitle: "Premium grooming essentials for healthy, happy cats.",
+            image: "/images/hero_5.png", // placeholder
         },
     ]
 
