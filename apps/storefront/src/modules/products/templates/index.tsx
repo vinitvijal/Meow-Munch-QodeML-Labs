@@ -48,6 +48,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             </div>
             <button
               onClick={() => setIsZoomOpen(false)}
+              aria-label="Close zoom view"
               className="fixed top-8 right-8 size-16 rounded-full bg-white flex items-center justify-center text-accent transition-all shadow-2xl hover:bg-primary hover:text-white group z-[100]"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:rotate-90 transition-transform">
@@ -72,58 +73,63 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
       {/* Product Hero Section */}
       <section className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 pb-24">
-        <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-12 xl:gap-x-24">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-12 xl:gap-x-20 items-start">
 
-          {/* Image Gallery - 7 cols */}
-          <div className="lg:col-span-7 flex flex-col gap-8">
-            <div className="aspect-square w-full rounded-[4rem] overflow-hidden bg-white relative group flex items-center justify-center border border-neutral-border shadow-soft transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10">
+          {/* Image Gallery - 5 cols */}
+          <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-32">
+            <div className="aspect-square w-full rounded-[3rem] overflow-hidden bg-white relative group flex items-center justify-center border border-neutral-border shadow-soft transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10">
               {mainImage ? (
                 <img
                   alt={product.title}
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   src={mainImage}
+                  width={800}
+                  height={800}
+                  fetchPriority="high"
                 />
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center text-primary/20 gap-4">
-                   <span className="material-symbols-outlined text-6xl">image</span>
-                  <span className="font-black text-xs uppercase tracking-[0.2em]">Image Unavailable</span>
+                  <span className="material-symbols-outlined text-5xl">image</span>
+                  <span className="font-black text-[10px] uppercase tracking-[0.2em]">Image Unavailable</span>
                 </div>
               )}
 
               {product.collection && (
-                <div className="absolute top-10 left-10 bg-white/40 backdrop-blur-xl border border-white/50 rounded-2xl px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-accent shadow-sm">
+                <div className="absolute top-6 left-6 bg-white/60 backdrop-blur-xl border border-white/50 rounded-xl px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] text-accent shadow-sm">
                   {product.collection.title}
                 </div>
               )}
 
               <button
                 onClick={() => setIsZoomOpen(true)}
-                className="absolute bottom-10 right-10 size-16 rounded-3xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-2xl hover:bg-primary hover:text-white transition-all duration-500 transform hover:scale-110 group border border-white/50"
+                aria-label="Open zoom view"
+                className="absolute bottom-6 right-6 size-12 rounded-2xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-xl hover:bg-primary hover:text-white transition-all duration-500 transform hover:scale-110 group border border-white/50"
               >
-                 <span className="material-symbols-outlined text-3xl">zoom_in</span>
+                <span className="material-symbols-outlined text-2xl">zoom_in</span>
               </button>
             </div>
 
             {images && images.length > 1 && (
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-6">
-                {images.slice(0, 6).map((image, idx) => (
+              <div className="grid grid-cols-4 sm:grid-cols-5 gap-4">
+                {images.slice(0, 5).map((image, idx) => (
                   <button
                     key={image.id || idx}
                     onClick={() => setMainImage(image.url)}
-                    className={`aspect-square rounded-[2rem] overflow-hidden bg-white transition-all border-2 ${mainImage === image.url ? 'border-primary shadow-lg scale-95' : 'border-neutral-border hover:border-primary/50'}`}
+                    aria-label={`View preview ${idx + 1}`}
+                    className={`aspect-square rounded-[1.5rem] overflow-hidden bg-white transition-all border-2 ${mainImage === image.url ? 'border-primary shadow-md scale-95' : 'border-neutral-border hover:border-primary/50'}`}
                   >
-                    <img src={image.url} alt={`Preview ${idx}`} className="w-full h-full object-cover" />
+                    <img src={image.url} alt={`Preview ${idx + 1}`} width={150} height={150} className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Product Details - 5 cols */}
-          <div className="lg:col-span-5 mt-12 lg:mt-0">
-            <div className="sticky top-32 flex flex-col h-full">
-              <div className="pb-10 border-b border-primary/10">
-                <div className="flex items-center gap-3 mb-8">
+          {/* Product Details - 7 cols */}
+          <div className="lg:col-span-7 mt-10 lg:mt-0">
+            <div className="flex flex-col h-full">
+              <div className="pb-8 border-b border-primary/10">
+                <div className="flex items-center gap-3 mb-6">
                   <div className="flex text-primary">
                     {[...Array(5)].map((_, i) => (
                       <span key={i} className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
@@ -132,18 +138,18 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                   <span className="text-[9px] font-black text-primary/40 tracking-[0.2em] uppercase">Verified Excellence • 124 Reviews</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-7xl font-black text-accent mb-8 leading-[0.95] tracking-tight font-display italic">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-accent mb-6 leading-[1.1] tracking-tight font-display italic text-balance">
                   {product.title}
                 </h1>
 
-                <div className="flex items-center gap-4 mb-10">
-                  <span className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-accent text-white text-[9px] font-black uppercase tracking-[0.2em]">
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-accent text-white text-[9px] font-black uppercase tracking-[0.2em]">
                     Artisanal Selection
                   </span>
-                  <span className="text-[10px] font-black text-primary/30 uppercase tracking-[0.2em]">{product.variants?.[0]?.sku || 'MM-PANTRY-001'}</span>
+                  <span className="text-[9px] font-black text-primary/40 uppercase tracking-[0.2em]">{product.variants?.[0]?.sku || 'MM-PANTRY-001'}</span>
                 </div>
 
-                <p className="text-primary/70 font-medium text-lg leading-relaxed max-w-xl">
+                <p className="text-primary/70 font-medium text-base leading-relaxed max-w-2xl text-pretty">
                   {product.description || "A curated masterpiece for your cat's daily routine, combining artisanal quality with modern feline science."}
                 </p>
               </div>
@@ -188,16 +194,16 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           <div className="lg:grid lg:grid-cols-2 lg:gap-32 lg:items-center">
             <div>
               <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-8 block underline decoration-primary/30 underline-offset-8">Our Feline Manifesto</span>
-              <h2 className="text-6xl lg:text-8xl font-black text-white tracking-tighter mb-12 leading-[0.85] font-display italic">Crafted for <br /> <span className="text-secondary not-italic tracking-normal">Instincts.</span></h2>
-              <p className="text-xl text-white/60 font-medium leading-relaxed mb-16 max-w-lg">Designed after studying thousands of feline interaction patterns. We don&apos;t just create objects; we craft moments of pure feline joy.</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tighter mb-8 leading-[1.1] font-display italic text-balance">Crafted for <br /> <span className="text-secondary not-italic tracking-normal">Instincts.</span></h2>
+              <p className="text-base lg:text-lg text-white/60 font-medium leading-relaxed mb-12 max-w-lg text-pretty">Designed after studying thousands of feline interaction patterns. We don&apos;t just create objects; we craft moments of pure feline joy.</p>
 
               <div className="grid grid-cols-2 gap-12">
                 <div className="space-y-3">
-                  <span className="text-6xl font-black text-white font-display italic">100%</span>
+                  <span className="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-display italic">100%</span>
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">House Grade Integrity</p>
                 </div>
                 <div className="space-y-3">
-                  <span className="text-6xl font-black text-white font-display">Elite</span>
+                  <span className="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-display">Elite</span>
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">Signature Profile</p>
                 </div>
               </div>
@@ -226,13 +232,13 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       {/* Upsell Section */}
       <section className="py-24 bg-background-light">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
-           <div className="flex items-center justify-between mb-16 border-b border-primary/10 pb-8">
-              <h2 className="text-4xl lg:text-5xl font-black text-accent font-display italic tracking-tight">You May Also Like</h2>
-              <LocalizedClientLink href="/store" className="text-primary font-black uppercase tracking-widest text-[10px] hover:text-accent transition-all flex items-center gap-3">
-                 View Pantry <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </LocalizedClientLink>
-           </div>
-           {relatedProducts}
+          <div className="flex items-center justify-between mb-16 border-b border-primary/10 pb-8">
+            <h2 className="text-3xl lg:text-4xl font-black text-accent font-display italic tracking-tight text-balance">You May Also Like</h2>
+            <LocalizedClientLink href="/store" className="text-primary font-black uppercase tracking-widest text-[10px] hover:text-accent transition-all flex items-center gap-3">
+              View Pantry <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </LocalizedClientLink>
+          </div>
+          {relatedProducts}
         </div>
       </section>
 
@@ -242,10 +248,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           <div className="grid lg:grid-cols-12 gap-32">
             <div className="lg:col-span-4">
               <div className="sticky top-32">
-                 <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-8 block">Community Voices</span>
-                <h2 className="text-6xl font-black text-accent tracking-tighter mb-12 font-display italic leading-none underline decoration-primary/20 decoration-8 underline-offset-8">The <br /> Purrs.</h2>
-                <div className="flex items-end gap-6 mb-12">
-                  <span className="text-9xl font-black text-accent tracking-tighter leading-none font-display italic">4.8</span>
+                <span className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-8 block">Community Voices</span>
+                <h2 className="text-4xl lg:text-5xl font-black text-accent tracking-tighter mb-10 font-display italic leading-none underline decoration-primary/20 decoration-8 underline-offset-8">The <br /> Purrs.</h2>
+                <div className="flex items-end gap-6 mb-10">
+                  <span className="text-6xl lg:text-7xl font-black text-accent tracking-tighter leading-none font-display italic">4.8</span>
                   <div className="mb-4 flex flex-col gap-3">
                     <div className="flex text-primary">
                       {[...Array(5)].map((_, i) => (
@@ -256,7 +262,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                   </div>
                 </div>
 
-                <button className="w-full bg-accent text-white h-24 rounded-[2.5rem] font-black uppercase tracking-[0.2em] shadow-2xl hover:bg-primary transition-all duration-500 transform hover:-translate-y-2">
+                <button className="w-fit px-12 bg-accent text-white h-20 rounded-[2.5rem] font-black uppercase tracking-[0.2em] shadow-2xl hover:bg-primary transition-all duration-500 transform hover:-translate-y-2">
                   Add Your Voice
                 </button>
               </div>
@@ -265,9 +271,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             <div className="lg:col-span-8 flex flex-col gap-12">
               {/* Review Cards */}
               {[1, 2].map((i) => (
-                <div key={i} className="p-16 rounded-[4.5rem] bg-secondary/20 border border-secondary transition-all duration-700 hover:shadow-2xl hover:bg-white relative overflow-hidden group">
+                <div key={i} className="p-12 rounded-[4.5rem] bg-secondary/20 border border-secondary transition-all duration-700 hover:shadow-2xl hover:bg-white relative overflow-hidden group">
                   <div className="absolute -top-10 -right-10 opacity-5 group-hover:opacity-10 transition-opacity duration-1000">
-                    <span className="material-symbols-outlined text-[15rem] text-primary">format_quote</span>
+                    <span className="material-symbols-outlined text-[8rem] lg:text-[15rem] text-primary">format_quote</span>
                   </div>
                   <div className="flex justify-between items-start mb-10 relative z-10">
                     <div className="flex items-center gap-6">
