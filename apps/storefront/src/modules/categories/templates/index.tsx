@@ -62,7 +62,7 @@ export default async function CategoryTemplate({
             </nav>
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                 <div className="max-w-2xl">
-                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-accent font-display italic leading-[1.1]">{category.name}</h1>
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter text-accent font-display italic leading-[1.1]">{category.name}</h1>
                     {category.description && (
                         <p className="mt-4 text-base lg:text-lg text-primary/70 font-medium leading-relaxed max-w-xl">{category.description}</p>
                     )}
