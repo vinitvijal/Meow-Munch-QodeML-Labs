@@ -18,7 +18,7 @@ const PolicyTemplate: React.FC<PolicyTemplateProps> = ({ title, effectiveDate, c
             <span className="w-1 h-1 rounded-full bg-primary/30" />
             <span className="text-primary">{title}</span>
           </nav>
-          <h1 className="text-4xl md:text-6xl font-display font-black text-accent mb-4 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-accent mb-4 tracking-tight">
             {title}
           </h1>
           <div className="flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs">
