@@ -179,7 +179,7 @@ export default function CustomHome({
                     >
                         <div className="absolute inset-0 overflow-hidden  bg-[#EFEAE2] border-black md:rounded-3xl flex flex-col lg:flex-row h-full w-full max-w-[1600px] mx-auto">
                             <div className="w-full lg:w-1/2 pt-32 lg:pt-0 relative z-20 flex flex-col justify-center pl-8 sm:pl-16 lg:pl-32 pr-8">
-                                <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-display font-black text-accent mb-6 leading-[1] tracking-tight">
+                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-black text-accent mb-6 leading-[1.1] tracking-tight text-balance">
                                     {slide.title}
                                 </h1>
                                 <p className="text-lg lg:text-xl text-accent/80 mb-10 max-w-sm font-medium">
