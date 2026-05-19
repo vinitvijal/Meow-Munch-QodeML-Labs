@@ -33,6 +33,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "s3.meowcrunch.com",
+      },
+      {
+        protocol: "https",
         hostname: "*.s3.*.amazonaws.com",
       },
       {
@@ -41,12 +45,12 @@ const nextConfig = {
       },
       ...(S3_HOSTNAME && S3_PATHNAME
         ? [
-            {
-              protocol: "https",
-              hostname: S3_HOSTNAME,
-              pathname: S3_PATHNAME,
-            },
-          ]
+          {
+            protocol: "https",
+            hostname: S3_HOSTNAME,
+            pathname: S3_PATHNAME,
+          },
+        ]
         : []),
     ],
   },
