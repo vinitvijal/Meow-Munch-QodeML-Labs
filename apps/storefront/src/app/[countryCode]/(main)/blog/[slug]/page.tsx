@@ -78,7 +78,7 @@ export default async function BlogPostPage({ params }: Props) {
                 <span className="text-primary">{post.category}</span>
               </nav>
               
-              <h1 className="text-4xl md:text-6xl font-display font-black text-accent mb-6 leading-[1.1] tracking-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-accent mb-6 leading-[1.1] tracking-tight text-balance">
                 {post.title}
               </h1>
               

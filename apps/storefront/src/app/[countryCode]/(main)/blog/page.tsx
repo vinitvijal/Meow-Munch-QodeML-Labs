@@ -41,7 +41,7 @@ export default async function BlogPage(props: {
             <span className="w-1 h-1 rounded-full bg-primary/30" />
             <span className="text-primary">Blog</span>
           </nav>
-          <h1 className="text-4xl md:text-6xl font-display font-black text-accent mb-4 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-accent mb-4 tracking-tight">
             The Meow Journal
           </h1>
           <p className="text-lg text-accent/80 max-w-2xl font-medium">
