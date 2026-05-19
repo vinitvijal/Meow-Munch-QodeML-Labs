@@ -50,7 +50,7 @@ export default async function RelatedProducts({
     <div className="product-page-constraint py-20">
       <div className="flex flex-col items-center text-center mb-24">
         <span className="text-orange-500 font-extrabold uppercase tracking-[0.4em] text-[10px] mb-8 block font-sans">Curated Pairing</span>
-        <h2 className="text-6xl font-black text-slate-900 tracking-tighter mb-10 font-display uppercase leading-none">Customers also <span className="text-slate-200">Loved.</span></h2>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tighter mb-10 font-display uppercase leading-none">Customers also <span className="text-slate-200">Loved.</span></h2>
         <p className="text-lg text-slate-400 font-medium max-w-lg">
           Complete your gourmet collection with these hand-picked favorites from our current stock.
         </p>
