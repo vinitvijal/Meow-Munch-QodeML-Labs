@@ -3,6 +3,10 @@ import Link from "next/link"
 import { MagnifyingGlass, ShoppingBag, User } from "@medusajs/icons"
 import { listCollections } from "@lib/data/collections"
 import { listCategories } from "@lib/data/categories"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+
+import MobileMenu from "./MobileMenu"
+import SearchBar from "./SearchBar"
 
 export default async function CustomNav() {
   const [collectionsResponse, categories] = await Promise.all([
@@ -15,39 +19,32 @@ export default async function CustomNav() {
   const topLevelCategories = categories ? categories.filter(c => !c.parent_category_id) : [];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm relative">
       {/* Top Row: Logo, Search, Actions */}
       <div className="bg-white px-4 sm:px-8 py-4 border-b border-gray-50">
         <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group shrink-0">
+          <LocalizedClientLink href="/" className="flex items-center gap-2 group shrink-0">
             <img src="/logo.png" alt="Logo" className="h-10 w-auto transition-transform group-hover:scale-105" />
             <span className="text-2xl font-black text-[#1a1a1a] tracking-tight font-display hidden sm:block">
               MeowCrunch
             </span>
-          </Link>
+          </LocalizedClientLink>
 
           {/* Search Bar */}
-          <div className="flex-1 max-w-2xl relative group hidden md:block">
-            <input
-              type="text"
-              placeholder="Search for products, categories..."
-              className="w-full bg-gray-50 border border-gray-200 rounded-lg px-10 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-            />
-            <MagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-5" />
-          </div>
+          <SearchBar className="flex-1 max-w-2xl group hidden md:block" />
 
           {/* Actions */}
           <div className="flex items-center gap-6 shrink-0">
-            <Link href="/support" className="hidden lg:flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wider">
+            <LocalizedClientLink href="/support" className="hidden lg:flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wider">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
               Support
-            </Link>
-            <Link href="/account" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wider">
+            </LocalizedClientLink>
+            <LocalizedClientLink href="/account" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wider">
               <User className="size-5" />
               <span className="hidden sm:inline">Account</span>
-            </Link>
-            <Link href="/cart" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wider relative group">
+            </LocalizedClientLink>
+            <LocalizedClientLink href="/cart" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors uppercase tracking-wider relative group">
               <div className="relative">
                 <ShoppingBag className="size-5" />
                 <span className="absolute -top-2 -right-2 bg-primary text-white text-[10px] font-bold size-4 flex items-center justify-center rounded-full shadow-sm group-hover:scale-110 transition-transform">
@@ -55,14 +52,8 @@ export default async function CustomNav() {
                 </span>
               </div>
               <span className="hidden sm:inline">Cart</span>
-            </Link>
-            <button className="md:hidden flex items-center justify-center size-10 rounded-full hover:bg-gray-100 text-gray-700">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-              </svg>
-            </button>
+            </LocalizedClientLink>
+            <MobileMenu categories={topLevelCategories} />
           </div>
         </div>
       </div>
@@ -72,12 +63,12 @@ export default async function CustomNav() {
         <div className="max-w-[1440px] mx-auto flex items-center justify-center gap-10 relative">
           {topLevelCategories.map((category) => (
             <div key={category.id} className="group py-4">
-              <Link
+              <LocalizedClientLink
                 href={`/categories/${category.handle}`}
                 className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] border-b-2 border-transparent group-hover:border-primary pb-1"
               >
                 {category.name}
-              </Link>
+              </LocalizedClientLink>
 
               {/* Mega Menu Dropdown */}
               {((category.category_children && category.category_children.length > 0) || true) && (
@@ -94,21 +85,21 @@ export default async function CustomNav() {
                             <div className="flex flex-col gap-3">
                               {child.category_children && child.category_children.length > 0 ? (
                                 child.category_children.map((subChild) => (
-                                  <Link
+                                  <LocalizedClientLink
                                     key={subChild.id}
                                     href={`/categories/${subChild.handle}`}
                                     className="text-xs font-bold text-gray-500 hover:text-primary transition-colors"
                                   >
                                     {subChild.name}
-                                  </Link>
+                                  </LocalizedClientLink>
                                 ))
                               ) : (
-                                <Link
+                                <LocalizedClientLink
                                   href={`/categories/${child.handle}`}
                                   className="text-xs font-bold text-gray-500 hover:text-primary transition-colors italic"
                                 >
                                   Explore {child.name}
-                                </Link>
+                                </LocalizedClientLink>
                               )}
                             </div>
                           </div>
@@ -127,13 +118,13 @@ export default async function CustomNav() {
                         <h4 className="text-2xl font-black text-gray-900 leading-[1.1] mb-6 font-display">
                           New Arrivals for {category.name}
                         </h4>
-                        <Link
+                        <LocalizedClientLink
                           href={`/categories/${category.handle}`}
                           className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-gray-900 group-hover/banner:text-primary transition-colors"
                         >
                           <span className="border-b-2 border-primary pb-0.5">Shop Collection</span>
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </Link>
+                        </LocalizedClientLink>
                       </div>
 
                       {/* Decorative elements */}
@@ -155,15 +146,15 @@ export default async function CustomNav() {
           ))}
 
           {/* Additional static links */}
-          <Link href="/store" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
+          <LocalizedClientLink href="/store" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
             Collections
-          </Link>
-          <Link href="/store" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
+          </LocalizedClientLink>
+          <LocalizedClientLink href="/store" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
             Hot Deals
-          </Link>
-          <Link href="/blog" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
+          </LocalizedClientLink>
+          <LocalizedClientLink href="/blog" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
             Blogs
-          </Link>
+          </LocalizedClientLink>
         </div>
       </nav>
 
