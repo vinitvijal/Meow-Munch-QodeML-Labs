@@ -155,14 +155,14 @@ export default async function CustomNav() {
           ))}
 
           {/* Additional static links */}
-          <Link href="/collections" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
+          <Link href="/store" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
             Collections
           </Link>
           <Link href="/store" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
             Hot Deals
           </Link>
           <Link href="/blog" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
-            Blog
+            Blogs
           </Link>
         </div>
       </nav>
