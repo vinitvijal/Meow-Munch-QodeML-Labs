@@ -58,9 +58,9 @@ export default async function CollectionTemplate({
                         </h3>
                         <RefinementList sortBy={sort} />
                     </div>
-                    
+
                     <div className="h-px bg-neutral-border/50"></div>
-                    
+
                     {/* Filter Group: Categories */}
                     <div>
                         <h3 className="font-black text-accent mb-5 lg:mb-6 flex items-center justify-between text-[10px] lg:text-xs uppercase tracking-[0.3em]">
@@ -68,9 +68,9 @@ export default async function CollectionTemplate({
                         </h3>
                         <div className="flex lg:flex-col flex-wrap gap-2 lg:gap-4">
                             {product_categories && product_categories.map((c) => (
-                                <LocalizedClientLink 
-                                    key={c.id} 
-                                    href={`/categories/${c.handle}`} 
+                                <LocalizedClientLink
+                                    key={c.id}
+                                    href={`/categories/${c.handle}`}
                                     className="block text-[9px] lg:text-[10px] text-primary/60 hover:text-accent transition-colors font-black uppercase tracking-[0.2em] bg-white lg:bg-transparent px-3 py-1.5 lg:p-0 rounded-full border border-neutral-border lg:border-0"
                                 >
                                     {c.name}
