@@ -23,6 +23,7 @@ export default async function PaginatedProducts({
   countryCode,
   minPrice,
   maxPrice,
+  q,
 }: {
   sortBy?: SortOptions
   page: number
@@ -32,6 +33,7 @@ export default async function PaginatedProducts({
   countryCode: string
   minPrice?: string
   maxPrice?: string
+  q?: string
 }) {
   const queryParams: PaginatedProductsParams = {
     limit: 12,
@@ -51,6 +53,11 @@ export default async function PaginatedProducts({
 
   if (sortBy === "created_at") {
     queryParams["order"] = "created_at"
+  }
+  
+  if (q) {
+    // @ts-ignore - 'q' is a valid param in Medusa's StoreProductListParams
+    queryParams["q"] = q
   }
 
   const region = await getRegion(countryCode)
