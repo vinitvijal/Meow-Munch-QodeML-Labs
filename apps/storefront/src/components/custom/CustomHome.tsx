@@ -66,10 +66,10 @@ export default function CustomHome({
     ]
 
     const categoryIcons: Record<string, string> = {
-        "grooming": "/images/home/grooming.jpg",
-        "cat-toys": "/images/home/toys.webp",
-        "clothing-&-wear": "/images/home/wear.png",
-        "cats-bed-&-furniture": "/images/home/bed.jpg"
+        "grooming": "/images/shopbycategory/grooming.png",
+        "cat-toys": "/images/shopbycategory/cat-toys.png",
+        "clothing-&-wear": "/images/shopbycategory/clothing-and-wear.png",
+        "cats-bed-&-furniture": "/images/shopbycategory/cats-beds.png"
     }
 
     const formatPrice = (product: any) => {
