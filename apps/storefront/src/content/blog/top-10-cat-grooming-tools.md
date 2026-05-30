@@ -3,7 +3,7 @@ title: "Top 10 Must-Have Cat Grooming Tools (Beginner to Pro)"
 date: "May 14, 2026"
 author: "MeowCrunch Team"
 excerpt: "Everything you need to know about grooming your cat, from basic brushes to professional-grade tools."
-image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1000&auto=format&fit=crop"
+image: "/images/home/top-10-blog.jpg"
 category: "Cat Care"
 ---
 

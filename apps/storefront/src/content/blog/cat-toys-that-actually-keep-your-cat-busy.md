@@ -3,7 +3,7 @@ title: "Cat Toys That Actually Keep Your Cat Busy (Tested Picks)"
 date: "May 14, 2026"
 author: "MeowCrunch Team"
 excerpt: "If you’ve ever bought a cat toy only to watch your cat ignore it after 2 minutes, you’re not alone. Cats are naturally curious but also very selective. Many toys fail because they don’t match a cat’s instincts for hunting, chasing, or problem-solving."
-image: "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?q=80&w=600&auto=format&fit=crop"
+image: "/images/home/cat-blog.jpg"
 category: "Cat Care"
 ---
 

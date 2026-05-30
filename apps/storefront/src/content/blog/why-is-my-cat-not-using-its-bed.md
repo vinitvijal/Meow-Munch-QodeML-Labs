@@ -3,7 +3,7 @@ title: "Why Is My Cat Not Using Its Bed? (And How to Fix It)"
 date: "May 14, 2026"
 author: "MeowCrunch Team"
 excerpt: "You bought a cozy bed for your cat—but they still choose the floor, your laptop, or a random box. This is common. Cats are selective, and if they’re avoiding the bed, there’s always a reason."
-image: "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?q=80&w=600&auto=format&fit=crop"
+image: "/images/home/why-blog.jpg"
 category: "Cat Care"
 ---
 
