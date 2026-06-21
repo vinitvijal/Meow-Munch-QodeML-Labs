@@ -51,6 +51,9 @@ module.exports = defineConfig({
         allowGuestWishlist: true,
       },
     },
+    {
+      resolve: "./src/modules/support",
+    },
   ],
 
 })
