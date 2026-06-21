@@ -236,8 +236,8 @@ export default function CustomHome({
                         {[
                             { name: "Grooming", handle: "grooming" },
                             { name: "Cat Toys", handle: "cat-toys" },
-                            { name: "Clothing & Wear", handle: "clothing-&-wear" },
-                            { name: "Cats Beds & Furniture", handle: "cats-bed-&-furniture" }
+                            { name: "Clothing & Wear", handle: "clothing-and-wear" },
+                            { name: "Cats Beds & Furniture", handle: "cats-bed-and-furniture" }
                         ].map((cat) => (
                             <LocalizedClientLink key={cat.handle} href={`/categories/${cat.handle}`} className="flex flex-col items-center gap-4 group">
                                 <div className="w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden bg-secondary/50 p-6 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 border border-transparent group-hover:border-primary/20">
