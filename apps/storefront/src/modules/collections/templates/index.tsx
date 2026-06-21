@@ -59,10 +59,10 @@ export default async function CollectionTemplate({
                         <RefinementList sortBy={sort} />
                     </div>
 
-                    <div className="h-px bg-neutral-border/50"></div>
+                    {/* <div className="h-px bg-neutral-border/50"></div> */}
 
                     {/* Filter Group: Categories */}
-                    <div>
+                    {/* <div>
                         <h3 className="font-black text-accent mb-5 lg:mb-6 flex items-center justify-between text-[10px] lg:text-xs uppercase tracking-[0.3em]">
                             Categories
                         </h3>
@@ -77,7 +77,7 @@ export default async function CollectionTemplate({
                                 </LocalizedClientLink>
                             ))}
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="h-px bg-neutral-border/50"></div>
 
