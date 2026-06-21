@@ -68,8 +68,8 @@ export default function CustomHome({
     const categoryIcons: Record<string, string> = {
         "grooming": "/images/shopbycategory/grooming.png",
         "cat-toys": "/images/shopbycategory/cat-toys.png",
-        "clothing-&-wear": "/images/shopbycategory/clothing-and-wear.png",
-        "cats-bed-&-furniture": "/images/shopbycategory/cats-beds.png"
+        "clothing-and-wear": "/images/shopbycategory/clothing-and-wear.png",
+        "cats-bed-and-furniture": "/images/shopbycategory/cats-beds.png"
     }
 
     const formatPrice = (product: any) => {
@@ -178,7 +178,7 @@ export default function CustomHome({
                         className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                     >
                         <div className="absolute inset-0 overflow-hidden  bg-[#eadeca] border-black md:rounded-3xl flex flex-col lg:flex-row h-full w-full max-w-[1600px] mx-auto">
-                            <div className="w-full lg:w-1/2 pt-32 lg:pt-0 relative z-20 flex flex-col justify-center pl-8 sm:pl-16 lg:pl-32 pr-8">
+                            <div className="w-full lg:w-1/2 pt-20 sm:pt-28 lg:pt-0 relative z-20 flex flex-col justify-center pl-8 sm:pl-16 lg:pl-32 pr-8">
                                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-black text-accent mb-6 leading-[1.1] tracking-tight text-balance">
                                     {slide.title}
                                 </h1>
@@ -194,11 +194,11 @@ export default function CustomHome({
                                     </LocalizedClientLink>
                                 </div>
                             </div>
-                            <div className="w-full lg:w-2/3 h-full absolute lg:relative top-0 right-0 z-10">
+                            <div className="w-full lg:w-2/3 h-[48%] lg:h-full absolute lg:relative bottom-0 top-auto right-0 z-10">
                                 {/* Gradient to fade the image into the background color smoothly */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-[#eadeca] via-[#EFEAE2]/5 to-transparent z-10 hidden lg:block" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#eadeca] via-[#EFEAE2]/5 to-transparent z-10 lg:hidden" />
-                                <img src={slide.image} alt="Cat Hero" className="w-full h-full object-cover object-center lg:object-right mix-blend-multiply" />
+                                <div className="absolute inset-0 bg-gradient-to-b from-[#eadeca] via-[#eadeca]/40 to-transparent z-10 lg:hidden" />
+                                <img src={slide.image} alt="Cat Hero" className="w-full h-full object-cover object-bottom lg:object-right mix-blend-multiply" />
                             </div>
                         </div>
                     </div>
