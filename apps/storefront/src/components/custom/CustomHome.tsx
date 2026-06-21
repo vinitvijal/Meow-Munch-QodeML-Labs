@@ -162,10 +162,10 @@ export default function CustomHome({
     ];
 
     const instagramImages = [
-        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=400&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=400&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1511044568932-338cba0ad803?q=80&w=400&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?q=80&w=400&auto=format&fit=crop"
+        "https://media.vinucode.in/cat/Screenshot%202026-06-21%20162455.png",
+        "https://media.vinucode.in/cat/Screenshot%202026-06-21%20162514.png",
+        "https://media.vinucode.in/cat/Screenshot%202026-06-21%20162524.png",
+        "https://media.vinucode.in/cat/Screenshot%202026-06-21%20162533.png"
     ];
 
     return (

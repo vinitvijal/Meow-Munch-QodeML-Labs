@@ -26,7 +26,40 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   relatedProducts,
 }) => {
   const [mainImage, setMainImage] = React.useState<string | undefined>(images?.[0]?.url || product.thumbnail || "")
+  const [displayImage, setDisplayImage] = React.useState<string | undefined>(mainImage)
+  const [isChanging, setIsChanging] = React.useState(false)
   const [isZoomOpen, setIsZoomOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    if (mainImage !== displayImage) {
+      setIsChanging(true)
+      const timer = setTimeout(() => {
+        setDisplayImage(mainImage)
+        setIsChanging(false)
+      }, 150)
+      return () => clearTimeout(timer)
+    }
+  }, [mainImage, displayImage])
+
+  const currentIndex = images ? images.findIndex((img) => img.url === mainImage) : -1
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (images && images.length > 0) {
+      const activeIdx = currentIndex !== -1 ? currentIndex : 0
+      const nextIndex = (activeIdx - 1 + images.length) % images.length
+      setMainImage(images[nextIndex].url)
+    }
+  }
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (images && images.length > 0) {
+      const activeIdx = currentIndex !== -1 ? currentIndex : 0
+      const nextIndex = (activeIdx + 1) % images.length
+      setMainImage(images[nextIndex].url)
+    }
+  }
 
   if (!product || !product.id) {
     return notFound()
@@ -78,11 +111,11 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           {/* Image Gallery - 5 cols */}
           <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-32">
             <div className="aspect-square w-full rounded-[3rem] overflow-hidden bg-white relative group flex items-center justify-center border border-neutral-border shadow-soft transition-all duration-700 hover:shadow-2xl hover:shadow-primary/10">
-              {mainImage ? (
+              {displayImage ? (
                 <img
                   alt={product.title}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  src={mainImage}
+                  className={`w-full h-full object-cover transition-all duration-300 group-hover:scale-105 ${isChanging ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
+                  src={displayImage}
                   width={800}
                   height={800}
                   fetchPriority="high"
@@ -100,6 +133,25 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                 </div>
               )}
 
+              {images && images.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrev}
+                    aria-label="Previous image"
+                    className="absolute left-6 top-1/2 -translate-y-1/2 size-12 rounded-2xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-xl hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 z-20 border border-white/50 opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
+                  >
+                    <span className="material-symbols-outlined text-2xl font-bold">chevron_left</span>
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    aria-label="Next image"
+                    className="absolute right-6 top-1/2 -translate-y-1/2 size-12 rounded-2xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-xl hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 z-20 border border-white/50 opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
+                  >
+                    <span className="material-symbols-outlined text-2xl font-bold">chevron_right</span>
+                  </button>
+                </>
+              )}
+
               <button
                 onClick={() => setIsZoomOpen(true)}
                 aria-label="Open zoom view"
@@ -111,7 +163,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
             {images && images.length > 1 && (
               <div className="grid grid-cols-4 sm:grid-cols-5 gap-4">
-                {images.slice(0, 5).map((image, idx) => (
+                {images.map((image, idx) => (
                   <button
                     key={image.id || idx}
                     onClick={() => setMainImage(image.url)}
