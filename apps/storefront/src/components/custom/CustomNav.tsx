@@ -65,7 +65,7 @@ export default async function CustomNav() {
             <div key={category.id} className="group py-4">
               <LocalizedClientLink
                 href={`/categories/${category.handle}`}
-                className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] border-b-2 border-transparent group-hover:border-primary pb-1"
+                className="text-[12px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] border-b-2 border-transparent group-hover:border-primary pb-1"
               >
                 {category.name}
               </LocalizedClientLink>
@@ -146,13 +146,13 @@ export default async function CustomNav() {
           ))}
 
           {/* Additional static links */}
-          <LocalizedClientLink href="/store" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
+          <LocalizedClientLink href="/store" className="text-[11px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
             Collections
           </LocalizedClientLink>
-          <LocalizedClientLink href="/store" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
+          <LocalizedClientLink href="/store" className="text-[11px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
             Hot Deals
           </LocalizedClientLink>
-          <LocalizedClientLink href="/blog" className="text-[13px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
+          <LocalizedClientLink href="/blog" className="text-[11px] font-black text-gray-800 hover:text-primary transition-colors uppercase tracking-[0.15em] py-4 border-b-2 border-transparent hover:border-primary">
             Blogs
           </LocalizedClientLink>
         </div>
