@@ -67,7 +67,7 @@ export default async function CustomFooter() {
           <div className="flex flex-col gap-8">
             <h3 className="text-sm font-black uppercase tracking-[0.2em] text-white">Support</h3>
             <ul className="flex flex-col gap-4 text-sm text-gray-400 font-bold">
-              <li><Link className="hover:text-primary transition-colors" href="#">Help Center</Link></li>
+              <li><Link className="hover:text-primary transition-colors" href="/support">Help Center</Link></li>
               <li><Link className="hover:text-primary transition-colors" href="/shipping">Shipping Policy</Link></li>
               <li><Link className="hover:text-primary transition-colors" href="/refund">Returns & Exchanges</Link></li>
               <li><Link className="hover:text-primary transition-colors" href="#">Track Your Order</Link></li>
