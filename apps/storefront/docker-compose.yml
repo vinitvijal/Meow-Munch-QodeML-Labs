@@ -1,6 +1,6 @@
 services:
   app:
-    image: cat-storefront
+    image: cat-storefront-original
     container_name: cat_storefront
     ports:
       - "8000:8000"
