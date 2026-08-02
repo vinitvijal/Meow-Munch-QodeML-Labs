@@ -23,16 +23,10 @@ export default function CheckoutLayout({
             </span>
           </LocalizedClientLink>
 
-          <LocalizedClientLink
-            href="/"
-            className="flex items-center gap-2 group"
-            data-testid="store-link"
-          >
-            <div className="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-orange-200 group-hover:rotate-6 transition-transform">
-              <span className="material-symbols-outlined text-2xl font-bold">pets</span>
-            </div>
-            <span className="text-xl font-black text-gray-900 tracking-tighter uppercase">
-              Meow<span className="text-orange-500 font-medium">Munch</span>
+          <LocalizedClientLink href="/" className="flex items-center gap-2 group shrink-0">
+            <img src="/logo.png" alt="Logo" className="h-10 w-auto transition-transform group-hover:scale-105" />
+            <span className="text-2xl font-black text-[#1a1a1a] tracking-tight font-display hidden sm:block">
+              MeowCrunch
             </span>
           </LocalizedClientLink>
 
@@ -71,12 +65,12 @@ export default function CheckoutLayout({
           <div className="w-16 h-px bg-neutral-800"></div>
 
           <div className="flex flex-col items-center gap-2">
-            <span className="text-xl font-black text-white tracking-widest uppercase">
-              Meow<span className="text-orange-500">Munch</span>
+            <LocalizedClientLink href="/" className="flex items-center gap-2 group shrink-0">
+            <img src="/logo.png" alt="Logo" className="h-10 w-auto transition-transform group-hover:scale-105 invert" />
+            <span className="text-2xl font-black text-white tracking-tight font-display hidden sm:block">
+              MeowCrunch
             </span>
-            <p className="text-neutral-500 text-xs">
-              © {new Date().getFullYear()} Meow Munch. All rights reserved.
-            </p>
+          </LocalizedClientLink>
           </div>
 
           <div className="flex gap-6 mt-4">

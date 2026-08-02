@@ -14,6 +14,19 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
   },
+  plugins: [
+    {
+      resolve: "@alphabite/medusa-paypal",
+      options: {
+        clientId: process.env.PAYPAL_CLIENT_ID,
+        clientSecret: process.env.PAYPAL_CLIENT_SECRET,
+        isSandbox: process.env.PAYPAL_IS_SANDBOX === "true",
+        webhookId: process.env.PAYPAL_WEBHOOK_ID,
+        includeShippingData: false,
+        includeCustomerData: false,
+      },
+    },
+  ],
   modules: [
     // ...
     {
@@ -35,6 +48,25 @@ module.exports = defineConfig({
                 forcePathStyle: true,
               },
 
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: "@medusajs/medusa/payment",
+      options: {
+        providers: [
+          {
+            resolve: "@alphabite/medusa-paypal/providers/paypal",
+            id: "paypal",
+            options: {
+              clientId: process.env.PAYPAL_CLIENT_ID,
+              clientSecret: process.env.PAYPAL_CLIENT_SECRET,
+              isSandbox: process.env.PAYPAL_IS_SANDBOX === "true",
+              webhookId: process.env.PAYPAL_WEBHOOK_ID,
+              includeShippingData: false,
+              includeCustomerData: false,
             },
           },
         ],

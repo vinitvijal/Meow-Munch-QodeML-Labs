@@ -7,6 +7,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import ProductTabs from "@modules/products/components/product-tabs"
 import Modal from "@modules/common/components/modal"
 import Image from "next/image"
+import { formatProductDescription } from "@modules/products/utils/format-description"
 
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
@@ -29,6 +30,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   const [displayImage, setDisplayImage] = React.useState<string | undefined>(mainImage)
   const [isChanging, setIsChanging] = React.useState(false)
   const [isZoomOpen, setIsZoomOpen] = React.useState(false)
+  const descriptionParagraphs = formatProductDescription(product.description)
 
   React.useEffect(() => {
     if (mainImage !== displayImage) {
@@ -201,9 +203,19 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                   <span className="text-[9px] font-black text-primary/40 uppercase tracking-[0.2em]">{product.variants?.[0]?.sku || 'MM-PANTRY-001'}</span>
                 </div>
 
-                <p className="text-primary/70 font-medium text-base leading-relaxed max-w-2xl text-pretty">
-                  {product.description || "A curated masterpiece for your cat's daily routine, combining artisanal quality with modern feline science."}
-                </p>
+                <div className="max-w-2xl space-y-4 text-primary/70 font-medium text-base leading-8">
+                  {descriptionParagraphs.length > 0 ? (
+                    descriptionParagraphs.map((paragraph, index) => (
+                      <p key={index} className="text-pretty">
+                        {paragraph}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="text-pretty">
+                      A curated masterpiece for your cat&apos;s daily routine, combining artisanal quality with modern feline science.
+                    </p>
+                  )}
+                </div>
               </div>
 
               <div className="py-12">
@@ -347,7 +359,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                   <p className="text-primary/60 font-medium text-xl leading-relaxed max-w-2xl relative z-10">
                     {i === 1
                       ? "I was hesitant about the price at first, but seeing the joy in my cat's eyes every morning makes it more than worth it. The packaging itself is a piece of art!"
-                      : "We have tried every premium brand on the market and Meow Munch is the only one that gets them running to the kitchen. Top tier quality."
+                      : "We have tried every premium brand on the market and Meow Crunch is the only one that gets them running to the kitchen. Top tier quality."
                     }
                   </p>
                 </div>

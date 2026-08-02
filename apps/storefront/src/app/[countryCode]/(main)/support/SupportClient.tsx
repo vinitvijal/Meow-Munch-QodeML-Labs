@@ -113,7 +113,7 @@ export default function SupportClient() {
               </p>
             </div>
             <span className="text-accent font-black text-sm block">
-              +1 (888) MEOW-MUNCH
+              +1 (888) MEOW-CRUNCH
               <span className="block text-xs text-accent/60 font-bold mt-1">Mon-Fri: 9 AM - 6 PM EST</span>
             </span>
           </div>

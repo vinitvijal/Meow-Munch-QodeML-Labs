@@ -42,26 +42,31 @@ export default function CustomHome({
             title: "Stylish essentials for every cat",
             subtitle: "Thoughtfully designed accessories for comfort, play and every little meow.",
             image: "/images/hero_1.png", // placeholder
+            link: "/categories/cats-bed-and-furniture"
         },
         {
             title: "Play. Pounce. Repeat.",
             subtitle: "Engaging toys and accessories to spark every adventure.",
             image: "/images/hero_2.png", // placeholder
+            link: "/categories/cat-toys"
         },
         {
             title: "Stylish beds & furniture for happy cats",
             subtitle: "Beautifully crafted pieces that blend comfort, function and modern style.",
             image: "/images/hero_3.png", // placeholder
+            link: "/categories/cats-bed-and-furniture"
         },
         {
             title: "Travel Together",
             subtitle: "Stylish and safe travel solutions for cats on the go.",
             image: "/images/hero_4.png", // placeholder
+            link: "/categories/travel-and-carriers"
         },
         {
             title: "Groomed to Perfection",
             subtitle: "Premium grooming essentials for healthy, happy cats.",
             image: "/images/hero_5.png", // placeholder
+            link: "/categories/grooming"
         },
     ]
 
@@ -113,12 +118,6 @@ export default function CustomHome({
             text: "The quality is seriously impressive! My cat is picky with toys, but she has not stopped playing with the fish toy since it arrived.",
             author: "Ashley R.",
             image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=200&auto=format&fit=crop"
-        },
-        {
-            rating: 5,
-            text: "Super cute products and fast shipping. The ceramic bowl is sturdy, easy to clean, and looks amazing in my kitchen.",
-            author: "Michael T.",
-            image: "https://images.unsplash.com/photo-1529778458726-36f1c4e7fb2d?q=80&w=200&auto=format&fit=crop"
         },
         {
             rating: 5,
@@ -187,7 +186,7 @@ export default function CustomHome({
                                 </p>
                                 <div>
                                     <LocalizedClientLink
-                                        href="/store"
+                                        href={slide.link}
                                         className="inline-flex items-center justify-center rounded-2xl bg-accent text-white px-12 py-5 text-sm font-black transition-all hover:bg-primary"
                                     >
                                         Shop Now

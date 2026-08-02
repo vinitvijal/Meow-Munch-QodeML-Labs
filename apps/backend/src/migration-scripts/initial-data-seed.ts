@@ -102,7 +102,7 @@ export default async function initial_data_seed({
           name: "Europe",
           currency_code: "eur",
           countries,
-          payment_providers: ["pp_system_default"],
+          payment_providers: ["pp_system_default", "pp_paypal_paypal"],
         },
       ],
     },

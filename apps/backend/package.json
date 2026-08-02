@@ -23,6 +23,7 @@
     "test:unit": "TEST_TYPE=unit NODE_OPTIONS=--experimental-vm-modules jest --silent --runInBand --forceExit"
   },
   "dependencies": {
+    "@alphabite/medusa-paypal": "^0.2.6",
     "@alphabite/medusa-wishlist": "^0.5.9",
     "@medusajs/admin-sdk": "2.14.0",
     "@medusajs/admin-shared": "2.14.0",
