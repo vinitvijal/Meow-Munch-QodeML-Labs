@@ -3,13 +3,16 @@ import { loadEnv, defineConfig } from '@medusajs/framework/utils'
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
+  admin: {
+    backendUrl: process.env.MEDUSA_ADMIN_BACKEND_URL || "https://storeapp.vinucode.in",
+  },
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,
     http: {
-      storeCors: process.env.STORE_CORS!,
-      adminCors: process.env.ADMIN_CORS!,
-      authCors: process.env.AUTH_CORS!,
+      storeCors: process.env.STORE_CORS! || "https://storeapp.vinucode.in",
+      adminCors: process.env.ADMIN_CORS! || "https://storeapp.vinucode.in",
+      authCors: process.env.AUTH_CORS! || "https://storeapp.vinucode.in",
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
@@ -53,25 +56,42 @@ module.exports = defineConfig({
         ],
       },
     },
+    // {
+    //   resolve: "@medusajs/medusa/payment",
+    //   options: {
+    //     providers: [
+    //       {
+    //         resolve: "@alphabite/medusa-paypal/providers/paypal",
+    //         id: "paypal",
+    //         options: {
+    //           clientId: process.env.PAYPAL_CLIENT_ID,
+    //           clientSecret: process.env.PAYPAL_CLIENT_SECRET,
+    //           isSandbox: process.env.PAYPAL_IS_SANDBOX === "true",
+    //           webhookId: process.env.PAYPAL_WEBHOOK_ID,
+    //           includeShippingData: false,
+    //           includeCustomerData: false,
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
+
     {
       resolve: "@medusajs/medusa/payment",
       options: {
         providers: [
           {
-            resolve: "@alphabite/medusa-paypal/providers/paypal",
-            id: "paypal",
+            resolve: "@medusajs/medusa/payment-stripe",
+            id: "stripe",
             options: {
-              clientId: process.env.PAYPAL_CLIENT_ID,
-              clientSecret: process.env.PAYPAL_CLIENT_SECRET,
-              isSandbox: process.env.PAYPAL_IS_SANDBOX === "true",
-              webhookId: process.env.PAYPAL_WEBHOOK_ID,
-              includeShippingData: false,
-              includeCustomerData: false,
+              apiKey: process.env.STRIPE_API_KEY,
+              webhookSecret: process.env.STRIPE_WEBHOOK
             },
           },
         ],
       },
     },
+
     {
       resolve: '@alphabite/medusa-wishlist/modules/wishlist',
       options: {
