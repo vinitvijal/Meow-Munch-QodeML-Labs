@@ -6,6 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm config set strict-ssl false 
 RUN npm cache clean --force
+RUN npm config set registry https://registry.npmmirror.com
 RUN npm install --legacy-peer-deps
 
 # Copy source code
