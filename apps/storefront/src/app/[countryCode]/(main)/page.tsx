@@ -9,7 +9,7 @@ import { listCategories } from "@lib/data/categories"
 import { getBlogPosts } from "@lib/blog"
 
 export const metadata: Metadata = {
-  title: "Meow Munch | Home",
+  title: "Meow Crunch | Home",
   description:
     "Elevate Their Everyday Life with thoughtfully designed essentials for the modern cat.",
 }
