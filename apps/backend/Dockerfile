@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm config set strict-ssl false 
 RUN npm cache clean --force
 RUN npm install --legacy-peer-deps
-
+RUN npm config set registry https://registry.npmmirror.com
 # Copy the rest of the backend source code
 COPY . .
 
