@@ -4,15 +4,15 @@ loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 module.exports = defineConfig({
   admin: {
-    backendUrl: process.env.MEDUSA_ADMIN_BACKEND_URL || "https://storeapp.vinucode.in",
+    backendUrl: process.env.MEDUSA_ADMIN_BACKEND_URL || "https://jungle.meowcrunch.com",
   },
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     redisUrl: process.env.REDIS_URL,
     http: {
-      storeCors: process.env.STORE_CORS! || "https://storeapp.vinucode.in",
-      adminCors: process.env.ADMIN_CORS! || "https://storeapp.vinucode.in",
-      authCors: process.env.AUTH_CORS! || "https://storeapp.vinucode.in",
+      storeCors: process.env.STORE_CORS! || "https://jungle.meowcrunch.com",
+      adminCors: process.env.ADMIN_CORS! || "https://jungle.meowcrunch.com",
+      authCors: process.env.AUTH_CORS! || "https://jungle.meowcrunch.com",
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
