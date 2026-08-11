@@ -17,21 +17,7 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
   },
-  plugins: [
-    {
-      resolve: "@alphabite/medusa-paypal",
-      options: {
-        clientId: process.env.PAYPAL_CLIENT_ID,
-        clientSecret: process.env.PAYPAL_CLIENT_SECRET,
-        isSandbox: process.env.PAYPAL_IS_SANDBOX === "true",
-        webhookId: process.env.PAYPAL_WEBHOOK_ID,
-        includeShippingData: false,
-        includeCustomerData: false,
-      },
-    },
-  ],
   modules: [
-    // ...
     {
       resolve: "@medusajs/medusa/file",
       options: {
@@ -46,11 +32,9 @@ module.exports = defineConfig({
               region: process.env.S3_REGION,
               bucket: process.env.S3_BUCKET,
               endpoint: process.env.S3_ENDPOINT,
-              // other options...
               additional_client_config: {
                 forcePathStyle: true,
               },
-
             },
           },
         ],
@@ -61,41 +45,29 @@ module.exports = defineConfig({
       options: {
         providers: [
           {
-            resolve: "@alphabite/medusa-paypal/providers/paypal",
+            resolve: "./src/modules/paypal",
             id: "paypal",
             options: {
               clientId: process.env.PAYPAL_CLIENT_ID,
               clientSecret: process.env.PAYPAL_CLIENT_SECRET,
-              isSandbox: process.env.PAYPAL_IS_SANDBOX === "true",
+              isSandbox: process.env.PAYPAL_IS_SANDBOX !== "false",
               webhookId: process.env.PAYPAL_WEBHOOK_ID,
-              includeShippingData: false,
-              includeCustomerData: false,
             },
           },
-        ],
-      },
-    },
-
-    {
-      resolve: "@medusajs/medusa/payment",
-      options: {
-        providers: [
           {
             resolve: "@medusajs/medusa/payment-stripe",
             id: "stripe",
             options: {
               apiKey: process.env.STRIPE_API_KEY,
-              webhookSecret: process.env.STRIPE_WEBHOOK
+              webhookSecret: process.env.STRIPE_WEBHOOK,
             },
           },
         ],
       },
     },
-
     {
       resolve: '@alphabite/medusa-wishlist/modules/wishlist',
       options: {
-        // all are optional, read bellow about default values
         wishlistFields: [],
         wishlistItemsFields: [],
         includeWishlistItems: true,
@@ -107,5 +79,4 @@ module.exports = defineConfig({
       resolve: "./src/modules/support",
     },
   ],
-
 })

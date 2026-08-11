@@ -26,7 +26,8 @@ const PayPalWrapper: React.FC<PayPalWrapperProps> = ({
   const initialOptions = {
     clientId,
     currency: paymentSession.currency_code?.toUpperCase() || "USD",
-    intent:  "authorize",
+    // Must match backend PayPal order intent (CAPTURE)
+    intent: "capture" as const,
     components: "buttons",
   }
 

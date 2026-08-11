@@ -69,10 +69,17 @@ const PayPalPaymentButton: React.FC<PayPalPaymentButtonProps> = ({
     )
   }
 
-  const onApprove = async () => {
+  const onApprove = async (data: { orderID?: string }) => {
     try {
       setSubmitting(true)
       setErrorMessage(null)
+
+      // PayPal only fires onApprove after the buyer approved the order.
+      // Guard against empty approvals before calling Medusa complete.
+      if (!data?.orderID && !getPayPalOrderId()) {
+        throw new Error("PayPal approval did not return an order ID")
+      }
+
       await onPaymentCompleted()
     } catch (error: any) {
       setErrorMessage(error.message || "Failed to process PayPal payment")
